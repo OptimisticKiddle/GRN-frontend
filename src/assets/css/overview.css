@@ -1,0 +1,456 @@
+/*human*/
+.home-human{
+    position: relative;
+    width: 100%;
+    padding: 40px 0;
+    padding-bottom: 70px;
+}
+.home-human img.human-body{
+    display: block;
+    max-width: 380px;
+    width: 40%;
+    margin: 0 auto;
+
+}
+
+.organ-block{
+    position: absolute;
+    width:84px;
+    height:84px;
+    border-radius:50%;
+}
+.organ-name {
+    position: absolute;
+    top: 28px;
+    right: 92px;
+    font-size:18px;
+    color: #333333;
+    white-space: nowrap;
+}
+.right .organ-name{
+    left: 92px;
+}
+@media (max-width: 1200px) {
+    .organ-block{
+        width:54px;
+        height:54px;
+    }
+    .organ-name {
+        position: absolute;
+        top: 16px;
+        right: 58px;
+        font-size:14px;
+    }
+    .right .organ-name{
+        left: 58px;
+    }
+}
+@media (max-width:768px){
+    .organ-block{
+        width:34px;
+        height:34px;
+    }
+    .organ-name {
+        position: absolute;
+        top: 8px;
+        right: 40px;
+        font-size:12px;
+    }
+    .right .organ-name{
+        left: 40px;
+    }
+}
+img.organ-pic{
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+/* img.organ-pic:hover{
+    opacity: 1;
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+} */
+img.organ-act:hover{
+    opacity: 1;
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+}
+.human-eye{
+    top: 0%;
+    left: 32%;
+}
+.human-breast {
+    top: 11%;
+    left: 24%;
+}
+.human-stomach {
+    top: 22%;
+    left: 16%;
+}
+.human-intestine{
+    top: 33%;
+    left: 13%;
+}
+/* .human-pancreas{
+    top: 52%;
+    left: 12%;
+} */
+.human-esophagus{
+    top: 44%;
+    left: 13%;
+    /* left: 10%; */
+}
+.human-kidney{
+    top: 55%;
+    left: 13%;
+}
+.human-prostate{
+    top: 66%;
+    left: 14%;
+}
+.human-skin{
+    top: 77%;
+    left: 18%;
+}
+.human-muscle{
+    top: 88%;
+    left: 24%;
+}
+.human-brain{
+    top: 0%;
+    right: 30%;
+}
+.human-lung{
+    top: 11%;
+    right: 24%;
+}
+.human-heart{
+    top: 22%;
+    right: 16%;
+}
+/* .human-liver{
+    top: 39%;
+    right: 12%;
+} */
+.human-thyroid{
+    top: 33%;
+    right: 13%;
+}
+/* .human-adipose{
+    top: 52%;
+    right: 12%;
+} */
+.human-stem-cell{
+    top: 44%;
+    /* right: 10%; */
+    right: 13%;
+}
+.human-blood{
+    top: 55%;
+    right: 13%;
+}
+.human-ovary{
+    top: 66%;
+    right: 14%;
+}
+/* .human-others{
+    top: 91%;
+    right: 28%;
+} */
+.human-uterus{
+    top: 77%;
+    right: 18%;
+}
+.human-lymph{
+    top: 88%;
+    right: 24%;
+}
+.human-embryo{
+    top: 93%;
+    left: 45%;
+}
+
+
+
+
+
+
+/*organ-link-pop*/
+.organ-link-pop {
+    top: 50%;
+    position: absolute;
+    padding: 10px;
+    border: 1px solid #d4d4d4;
+    border-radius: 5px;
+    background-color: white;
+    z-index: 1050;
+    -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+    font-size: 12px;
+}
+.organ-link-pop::before{
+    content: " ";
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    margin-top: -14px;
+    right: -15px;
+    border-top: 15px solid transparent;
+    border-right: 0 solid #ccc;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid #ccc;
+}
+.organ-link-pop:after {
+    content: " ";
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    margin-top: -14px;
+    right: -14px;
+    border-top: 14px solid transparent;
+    border-right: 0 solid #fff;
+    border-bottom: 14px solid transparent;
+    border-left: 14px solid #fff;
+}
+.right .organ-link-pop::before{
+    right: auto;
+    left: -15px;
+    border-right-width: 15px;
+    border-left-width: 0;
+}
+.right .organ-link-pop::after {
+    right: auto;
+    left: -14px;
+    border-right-width: 14px;
+    border-left-width: 0;
+}
+.right  .organ-link-pop .link-content{
+    border-left: 1px solid #a3a3a3;
+    border-right: none;
+}
+.top .organ-link-pop{
+    top: auto;
+    bottom: 120%;
+    left: 50%;
+}
+.top .organ-link-pop::before{
+    top: auto;
+    right: auto;
+    left: 50%;
+    margin-left: -14px;
+    bottom: -15px;
+    border-right: 15px solid transparent;
+    border-bottom: 0 solid #ccc;
+    border-left: 15px solid transparent;
+    border-top: 15px solid #ccc;
+}
+.top .organ-link-pop::after {
+    top: auto;
+    right: auto;
+    left: 50%;
+    margin-left: -14px;
+    bottom: -14px;
+    border-right: 14px solid transparent;
+    border-bottom: 0 solid #fff;
+    border-left: 14px solid transparent;
+    border-top: 14px solid #fff;
+}
+.top .organ-link-pop .link-content{
+    border-bottom: 1px solid #a3a3a3;
+    border-right: none;
+}
+.bottom .organ-link-pop{
+    bottom: auto;
+    top: 120%;
+    left: 50%;
+}
+.bottom .organ-link-pop::before{
+    bottom: auto;
+    right: auto;
+    left: 50%;
+    margin-left: -14px;
+    margin-top: 0;
+    top: -15px;
+    border-right: 15px solid transparent;
+    border-top: 0 solid #ccc;
+    border-left: 15px solid transparent;
+    border-bottom: 15px solid #ccc;
+}
+.bottom .organ-link-pop::after {
+    bottom: auto;
+    right: auto;
+    left: 50%;
+    margin-left: -14px;
+    margin-top: 0;
+    top: -14px;
+    border-right: 14px solid transparent;
+    border-top: 0 solid #fff;
+    border-left: 14px solid transparent;
+    border-bottom: 14px solid #fff;
+}
+.bottom .organ-link-pop .link-content{
+    border-top: 1px solid #a3a3a3;
+    border-right: none;
+}
+.link-content{
+    width: 200px;
+    padding: 0 10px;
+    border-right: 1px solid #a3a3a3;
+}
+.link-item{
+    /* white-space: nowrap; */
+}
+.link-item a{
+    text-decoration: underline;
+    cursor: default;
+}
+/*mouse*/
+.home-mouse{
+    position: relative;
+    width: 100%;
+    padding: 25% 0 30% 0;
+}
+.home-mouse img.mouse-body{
+    display: block;
+    max-width: 460px;
+    width: 44%;
+    margin: 0 auto;
+}
+.home-mouse .organ-name {
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 90px;
+    left: 0;
+    font-size:18px;
+    color: #333333;
+    white-space: nowrap;
+    text-align: center;
+}
+@media (max-width: 1400px) {
+    .home-mouse .organ-block{
+        width:54px;
+        height:54px;
+    }
+    .home-mouse .organ-name {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        font-size:14px;
+    }
+}
+@media (max-width:768px){
+    .home-mouse .organ-block{
+        width:34px;
+        height:34px;
+    }
+    .home-mouse .organ-name {
+        position: absolute;
+        top: 40px;
+        left: 0;
+        font-size:12px;
+    }
+}
+.mouse-blood{
+    top: 30%;
+    left: 16%;
+}
+.mouse-liver{
+    top: 16%;
+    left: 30%;
+}
+.mouse-lung{
+    top: 14%;
+    left: 46%;
+}
+.mouse-heart{
+    top: 16%;
+    right: 30%;
+}
+.mouse-brain{
+    top: 30%;
+    right: 16%;
+}
+.mouse-adipose{
+    top: 48%;
+    right: 24%;
+}
+/*.mouse-limb{
+    top: 56%;
+    right: 37%;
+}*/
+.mouse-others{
+    top: 56%;
+    right: 37%;
+}
+.mouse-stomach{
+    top: 56%;
+    left: 37%;
+}
+.mouse-spleen{
+    top: 46%;
+    left: 25%;
+}
+/* switch-section */
+.switch-section{
+   text-align: left;
+}
+.switch-section .switch-icon{
+    width:58px;
+    height:48px;
+    display: inline-block;
+    text-align: center;
+    color: #333333;
+    font-size:12px;
+}
+.switch-section .switch-icon i{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+}
+.switch-section .switch-icon a{
+    display: block;
+    color: #333333;
+}
+@media (max-width:768px){
+    .switch-section .switch-icon{
+        width:58px;
+        height:30px;
+        font-size:12px;
+    }
+    .switch-section .switch-icon i{
+        display: inline-block;
+        width: 26px;
+        height: 26px;
+    }
+}
+.switch-section .switch-icon i.human-icon{
+    background-image: url('../images/human_dark.png');
+    background-size: 100% 100%
+}
+.switch-section .switch-icon.active i.human-icon{
+    background-image: url('../images/human.png');
+    background-size: 100% 100%
+}
+.switch-section .switch-icon i.mouse-icon{
+    background-image: url('../images/mouse_dark.png');
+    background-size: 100% 100%
+}
+.switch-section .switch-icon.active i.mouse-icon{
+    background-image: url('../images/mouse.png');
+    background-size: 100% 100%
+}
+.switch-section .switch-icon i.drosophila-icon{
+    background-image: url('../images/drosophila_dark.png');
+    background-size: 100% 100%
+}
+.switch-section .switch-icon i.others-icon{
+    background-image: url('../images/others_dark.png');
+    background-size: 100% 100%
+}

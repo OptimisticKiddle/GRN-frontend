@@ -1,20 +1,105 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import home from '../views/home.vue'
+import search from '../views/search.vue'
+import Layout from '../layout/Layout.vue'
+import stastics from '../views/stastics.vue'
+import detail from '../views/detail.vue'
+
+
+
 
 const routes = [
+
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'Layout',
+    component: Layout,
+    redirect: "/home",
+    children: [
+      {
+        path: '/home',
+        name: 'home',
+        component: home
+      },
+      {
+        path: '/stastics',
+        name: 'stastics',
+        component: stastics
+      },
+      {
+        path: '/search',
+        name: 'search',
+        component: search,
+        
+      },
+      {
+        path: '/detail',
+            name: 'detail',
+            component: detail,
+            redirect: "/Total",
+            children: [
+              {
+                path: '/Total',
+                name: 'Total',
+                component: () => import("@/views/detail/Total.vue"),
+              },
+              {
+                path: '/Diff_peak',
+                name: 'Diff_peak',
+                component: () => import("@/views/detail/Diff_peak.vue"),
+              },
+              {
+                path: '/Diff_enrichment',
+                name: 'Diff_enrichment',
+                component: () => import("@/views/detail/Diff_enrichment.vue"),
+              },
+              {
+                path: '/Diff_motif',
+                name: 'Diff_motif',
+                component: () => import("@/views/detail/Diff_motif.vue"),
+              },
+              {
+                path: '/Diff_footprint',
+                name: 'Diff_footprint',
+                component: () => import("@/views/detail/Diff_footprint.vue"),
+              },
+              {
+                path: '/Ctrl',
+                name: 'Ctrl',
+                component: () => import("@/views/detail/Ctrl.vue"),
+              },
+              {
+                path: '/Treat',
+                name: 'Treat',
+                component: () => import("@/views/detail/Treat.vue"),
+              },
+            ]
+      },
+      {
+        path: '/download',
+        name: 'download',
+        component: () => import("@/views/download"),
+      },
+      {
+        path: '/tutorial',
+        name: 'tutorial',
+        component: () => import("@/views/tutorial"),
+      },
+      {
+        path: '/help',
+        name: 'help',
+        component: () => import("@/views/help"),
+      },
+      {
+        path: '/about',
+        name: 'about',
+        component: () => import("@/views/about"),
+      },
+      
+    ]
   },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+
+
 ]
 
 const router = createRouter({
