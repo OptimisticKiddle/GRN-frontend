@@ -6,8 +6,6 @@ import stastics from '../views/stastics.vue'
 import detail from '../views/detail.vue'
 
 
-
-
 const routes = [
 
   {
@@ -94,11 +92,9 @@ const routes = [
         path: '/about',
         name: 'about',
         component: () => import("@/views/about"),
-      },
-      
+      }
     ]
-  },
-
+  }
 
 ]
 

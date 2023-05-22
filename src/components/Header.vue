@@ -4,7 +4,7 @@
 <template>
   <el-menu :default-active="activeIndex" class="el-menu-demo gtco-nav" mode="horizontal" router :ellipsis="false">
     <div style="margin:5px 10% 0 ">
-      <a href="Home"><img src="@/assets/images/logo-v1.png" width="100"></a>
+      <a href="Home"><img src="@/assets/images/GP-ATACdb/GP-ATACdb_logo.png" width="210"></a>
     </div>
     <div class="flex-grow"></div>
     <div class="menu-item">

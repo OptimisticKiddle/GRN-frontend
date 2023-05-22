@@ -15,7 +15,7 @@
 								<h4 style='padding-left:50px'>perturbations on human chromatin accessibility</h4>
 							</div>
 							<div class="header-img animate-box">
-								<img src="@/assets/images/logo-v1.png" alt="" width="250" style='margin-top:30px'>
+								<img src="@/assets/images/GP-ATACdb/GP-ATACdb_logo.png" alt="" width="350" style='margin-top:55px'>
 							</div>
 
 						</div>
@@ -34,7 +34,7 @@
 							<template #title>
 								<el-icon>
 									<View />
-								</el-icon>&nbspOverview
+								</el-icon>
 							</template>
 
 							<div class="panel-body">
