@@ -1,6 +1,6 @@
 <template>
     <!-- 主体 -->
-    <div style="width: 95%;margin: 2% auto;">
+    <div style="width: 95%;margin: 2% auto">
         <!-- 展示面板1 -->
         <div class="col-md-12" data-plugin-portlet>
             <el-collapse v-model="activeNames">
@@ -31,7 +31,7 @@
             </el-collapse>
         </div>
         <!-- 展示面板2 -->
-        <div class="col-md-12" data-plugin-portlet style="margin-top: 2%;">
+        <div class="col-md-12" data-plugin-portlet style="margin-top: 2%;margin-bottom: 3%;">
             <el-collapse v-model="activeNames">
                 <el-collapse-item name="2">
                     <!-- 展示面板2 title -->
@@ -41,15 +41,13 @@
                                 title="<div align='left'> The meaning of columns is explained in the HELP page.</div>"><i
                                     class="ti-info-alt" style="font-size: 70%"> </i></span></sup>
                     </template>
-                    <div class="panel-body frame">
-						<embed id="demo_html" type="text/html" src="ATACdb_tutorial.html" style="width: 100%; border:none">
-						
+                    <div class="panel-body frame" >
+						<embed id="demo_html" type="text/html" src="/tutorial_demo.html" style="width: 100%;height: 950px; border:none">
 					</div>
-
-
                 </el-collapse-item>
             </el-collapse>
         </div>
+        
     </div>
     <el-backtop :bottom="20" :right="20">
     <div
@@ -80,7 +78,7 @@ export default {
     name: "tutorial",
     data() {
         return {
-            activeNames: ['1'],
+            activeNames: ['1','2'],
         }
     }
 }
