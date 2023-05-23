@@ -42,7 +42,7 @@
                                     class="ti-info-alt" style="font-size: 70%"> </i></span></sup>
                     </template>
                     <div class="panel-body frame" >
-						<embed id="demo_html" type="text/html" src="/tutorial_demo.html" style="width: 100%;height: 950px; border:none">
+						<embed id="demo_html" type="text/html" src="tutorial_demo.html" style="width: 100%;height: 950px; border:none">
 					</div>
                 </el-collapse-item>
             </el-collapse>

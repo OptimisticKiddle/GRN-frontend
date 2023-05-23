@@ -163,12 +163,9 @@ export default {
       this.filter = {}
     },
     onDownload() {
-      this.pb_gene = sessionStorage.getItem('pb_gene');
-      this.celline = sessionStorage.getItem('celline');
-
       let link = document.createElement('a');
       link.style.display = 'none';
-      link.href = `http://43.143.155.140/atac_db/${this.dbID}/csv/id-${this.dbID}_${this.pb_gene}_${this.celline}_treat_peaks.csv`;
+      link.href = `http://43.143.155.140/atac_db/${this.dbID}/csv/treat_peaks.tar.gz`;
       document.body.appendChild(link);
       link.click();
     },
@@ -273,7 +270,7 @@ export default {
   },
   props: {
     dbID: Number,
-    dataSet: Object
+    globalDataset: Object
 
   },
   data() {

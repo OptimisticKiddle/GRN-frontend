@@ -68,7 +68,7 @@
                     class="ti-info-alt" style="font-size: 70%"> </i>
                 </span></sup>
             <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/GO_enrichment.png`"
-              :download="`id-${this.dbID}_${this.pb_gene}_${this.celline}_GO_enrichment.png`" target="_blank"
+              :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_GO_enrichment.png`" target="_blank"
               style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                   <Download />
                 </el-icon></el-button></a>
@@ -146,7 +146,7 @@
                     class="ti-info-alt" style="font-size: 70%"> </i>
                 </span></sup>
             <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/KEGG_enrichment.png`"
-              :download="`id-${this.dbID}_${this.pb_gene}_${this.celline}_KEGG_enrichment.png`" target="_blank"
+              :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_KEGG_enrichment.png`" target="_blank"
               style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                   <Download />
                 </el-icon></el-button></a>
@@ -215,22 +215,17 @@ export default {
     },
     
     onDownload1() {
-      this.pb_gene = sessionStorage.getItem('pb_gene');
-      this.celline = sessionStorage.getItem('celline');
 
       let link = document.createElement('a');
       link.style.display = 'none';
-      link.href = `http://43.143.155.140/atac_db/${this.dbID}/csv/id-${this.dbID}_${this.pb_gene}_${this.celline}_diff_peaks_GO_enrich.csv`;
+      link.href = `http://43.143.155.140/atac_db/${this.dbID}/csv/id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_diff_peaks_GO_enrich.csv`;
       document.body.appendChild(link);
       link.click();
     },
     onDownload2() {
-      this.pb_gene = sessionStorage.getItem('pb_gene');
-      this.celline = sessionStorage.getItem('celline');
-
       let link = document.createElement('a');
       link.style.display = 'none';
-      link.href = `http://43.143.155.140/atac_db/${this.dbID}/csv/id-${this.dbID}_${this.pb_gene}_${this.celline}_diff_peaks_KEGG_enrich.csv`;
+      link.href = `http://43.143.155.140/atac_db/${this.dbID}/csv/id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_diff_peaks_KEGG_enrich.csv`;
       document.body.appendChild(link);
       link.click();
     },
@@ -357,8 +352,7 @@ export default {
   },
   props: {
     dbID: Number,
-    dataSet: Object
-
+    globalDataset:Object
   },
   data() {
     return {
@@ -368,7 +362,7 @@ export default {
       currentPage: 1,
       total1: 10,
       total2: 10,
-      pageSize: 10,
+      pageSize: 5,
 
       activeNames: ['1'],
 
@@ -381,7 +375,7 @@ export default {
       seq2: {},
       paging: {
         "start": 0, //起始数据点（分页）
-        "length": 10
+        "length": 5
       }
 
 

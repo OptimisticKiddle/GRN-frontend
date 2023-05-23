@@ -11,9 +11,10 @@
       <el-menu-item index="Home"><el-icon>
           <HomeFilled />
         </el-icon>Home</el-menu-item>
-      <el-menu-item index="Stastics"><el-icon>
+      <!--statistics 后续有时间后开发qwq -->
+      <!-- <el-menu-item index="Stastics"><el-icon>
           <PieChart />
-        </el-icon>Stastics</el-menu-item>
+        </el-icon>Stastics</el-menu-item> -->
       <el-menu-item index="Search"><el-icon>
           <Search />
         </el-icon>Search</el-menu-item>
@@ -23,9 +24,10 @@
       <el-menu-item index="Tutorial"><el-icon>
           <Memo />
         </el-icon>Tutorial</el-menu-item>
-      <el-menu-item index="Help"><el-icon>
+      <!--Help 后续有时间后开发qwq -->
+      <!-- <el-menu-item index="Help"><el-icon>
           <QuestionFilled />
-        </el-icon>Help</el-menu-item>
+        </el-icon>Help</el-menu-item> -->
       <el-menu-item index="About"><el-icon>
           <Avatar />
         </el-icon>About</el-menu-item>
@@ -53,7 +55,7 @@ export default {
 
   },
   created() {
-
+    
   },
 
 

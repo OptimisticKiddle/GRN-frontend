@@ -7,22 +7,22 @@
       <Total :dbID="globalID"></Total>
     </el-tab-pane>
     <el-tab-pane label="Diff Peaks">
-      <Diff_peak :dbID="globalID" ></Diff_peak>
+      <Diff_peak :dbID="globalID" :globalDataset="globalDataset"></Diff_peak>
     </el-tab-pane>
     <el-tab-pane label="Diff Enrichment">
-      <Diff_enrichment :dbID="globalID" ></Diff_enrichment>
+      <Diff_enrichment :dbID="globalID" :globalDataset="globalDataset"></Diff_enrichment>
     </el-tab-pane>
     <el-tab-pane label="Diff Motif">
-      <Diff_motif :dbID="globalID" ></Diff_motif>
+      <Diff_motif :dbID="globalID" :globalDataset="globalDataset"></Diff_motif>
     </el-tab-pane>
     <el-tab-pane label="Diff Footprint">
-      <Diff_footprint :dbID="globalID" ></Diff_footprint>
+      <Diff_footprint :dbID="globalID" :globalDataset="globalDataset"></Diff_footprint>
     </el-tab-pane>
     <el-tab-pane label="Ctrl Peaks">
-      <Ctrl :dbID="globalID" ></Ctrl>
+      <Ctrl :dbID="globalID" :globalDataset="globalDataset"></Ctrl>
     </el-tab-pane>
     <el-tab-pane label="Treat Peaks">
-      <Treat :dbID="globalID"></Treat>
+      <Treat :dbID="globalID" :globalDataset="globalDataset"></Treat>
     </el-tab-pane>
   </el-tabs>
 
@@ -51,8 +51,8 @@ export default {
 
   },
  props: {
-  globalID:Number
-
+  globalID:Number,
+  globalDataset: Object
  },
  data () {
       return {

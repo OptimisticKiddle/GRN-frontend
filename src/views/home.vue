@@ -197,8 +197,8 @@
 											<div class="timeline-panel">
 												<div class="timeline-heading">
 													<h4 style="font-size: 15px;" class="timeline-title">Provided a
-														<!-- <router-link to="/tutorial">demo</router-link>  -->
-														<a href="#" @click="toTutorial">demo</a>
+														<router-link to="/tutorial">demo</router-link> 
+														<!-- <a href @click="toTutorial">demo</a> -->
 														of ATAC-seq dataset
 														analysis.
 													</h4>
@@ -274,10 +274,10 @@ export default {
 		return {
 			activeNames: ['1', '2', '3'],
 			pics: [
-				{ url: require("../assets/images/new/browse1.png") },
-				{ url: require("../assets/images/new/browse2.png") },
-				{ url: require("../assets/images/new/browse3.png") },
-				{ url: require("../assets/images/new/tutorial.png") },
+				{ url: require("../assets/images/GP-ATACdb/rotograph_1.png") },
+				{ url: require("../assets/images/GP-ATACdb/rotograph_2.png") },
+				{ url: require("../assets/images/GP-ATACdb/rotograph_3.png") },
+				{ url: require("../assets/images/GP-ATACdb/rotograph_4.png") },
 			]
 
 		};
@@ -286,9 +286,7 @@ export default {
 	methods: {
 		toTutorial() {
 			this.$router.replace({ name: "tutorial" })
-
 		}
-
 	}
 
 }

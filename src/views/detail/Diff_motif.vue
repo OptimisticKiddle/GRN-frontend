@@ -89,12 +89,9 @@ export default {
         })
     },
     onDownload() {
-      this.pb_gene = sessionStorage.getItem('pb_gene');
-      this.celline = sessionStorage.getItem('celline');
-      
       let link = document.createElement('a');
       link.style.display = 'none';
-      link.href = `http://43.143.155.140/atac_db/${this.dbID}/csv/id-${this.dbID}_${this.pb_gene}_${this.celline}_diff_motif.csv`;
+      link.href = `http://43.143.155.140/atac_db/${this.dbID}/csv/id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_diff_motif.csv`;
       document.body.appendChild(link);
       link.click();
     },
@@ -203,8 +200,7 @@ export default {
   
   props: {
     dbID: Number,
-    dataSet: Object
-
+    globalDataset: Object
   },
   data() {
     return {

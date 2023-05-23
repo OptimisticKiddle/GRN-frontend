@@ -67,11 +67,13 @@
           <el-table-column prop="peak_id" label="Peak ID" align="center" width="100px">
 
           </el-table-column>
-          <el-table-column prop="chr" label="Chr" :filters="filter"
-                 align="center" >
+          <!-- 待后续修改，属性名下筛选框 -->
+          <!-- <el-table-column prop="chr" label="Chr" :filters="filter" align="center">
             <template #header >
               <el-input v-model="filter.chr"  size="mini" />
             </template>
+          </el-table-column> -->
+          <el-table-column prop="chr" label="Chr"  align="center">
           </el-table-column>
             <el-table-column prop="start" label="Start" :sortable="'custom'" align="center" width="100px" />
             <el-table-column prop="end" label="End" :sortable="'custom'" align="center" width="100px" />
@@ -129,7 +131,7 @@
                     class="ti-info-alt" style="font-size: 70%"> </i>
                 </span></sup>
               <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/diffPeaks_plotDistToTSS.png`"
-                :download="`id-${this.dbID}_${this.pb_gene}_${this.celline}_diffPeaks_plotDistToTSS.png`" target="_blank"
+                :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_diffPeaks_plotDistToTSS.png`" target="_blank"
                 style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                     <Download />
                   </el-icon></el-button></a>
@@ -147,7 +149,7 @@
                     style="font-size: 70%"> </i>
                 </span></sup>
               <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/diff_dis_TSS_Heatmap.png`"
-                :download="`id-${this.dbID}_${this.pb_gene}_${this.celline}_diff_dis_TSS_Heatmap.png`" target="_blank"
+                :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_diff_dis_TSS_Heatmap.png`" target="_blank"
                 style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                     <Download />
                   </el-icon></el-button></a>
@@ -165,7 +167,7 @@
                     style="font-size: 70%"> </i>
                 </span></sup>
               <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/diff_plotAvgProf.png`"
-                :download="`id-${this.dbID}_${this.pb_gene}_${this.celline}_diff_plotAvgProf.png`" target="_blank"
+                :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_diff_plotAvgProf.png`" target="_blank"
                 style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                     <Download />
                   </el-icon></el-button></a>
@@ -195,7 +197,7 @@
                     class="ti-info-alt" style="font-size: 70%"> </i>
                 </span></sup>
               <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/diffPeaks_plotAnnoBar.png`"
-                :download="`id-${this.dbID}_${this.pb_gene}_${this.celline}_diffPeaks_plotAnnoBar.png`" target="_blank"
+                :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_diffPeaks_plotAnnoBar.png`" target="_blank"
                 style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                     <Download />
                   </el-icon></el-button></a>
@@ -212,7 +214,7 @@
                   title="Pieplot from diff peak genomic annotation"><i class="ti-info-alt" style="font-size: 70%"> </i>
                 </span></sup>
               <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/diffPeaks_plotAnnoPie.png`"
-                :download="`id-${this.dbID}_${this.pb_gene}_${this.celline}_diffPeaks_plotAnnoPie.png`" target="_blank"
+                :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_diffPeaks_plotAnnoPie.png`" target="_blank"
                 style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                     <Download />
                   </el-icon></el-button></a>
@@ -230,7 +232,7 @@
                     style="font-size: 70%"> </i>
                 </span></sup>
               <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/diffPeaks_upsetplot.png`"
-                :download="`id-${this.dbID}_${this.pb_gene}_${this.celline}_diffPeaks_upsetplot.png`" target="_blank"
+                :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_diffPeaks_upsetplot.png`" target="_blank"
                 style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                     <Download />
                   </el-icon></el-button></a>
@@ -259,7 +261,7 @@
                   title="Principal Component Analysis plot"><i class="ti-info-alt" style="font-size: 70%"> </i>
                 </span></sup>
               <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotPCA.png`"
-                :download="`id-${this.dbID}_${this.pb_gene}_${this.celline}_plotPCA.png`" target="_blank"
+                :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_plotPCA.png`" target="_blank"
                 style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                     <Download />
                   </el-icon></el-button></a>
@@ -277,7 +279,7 @@
                     style="font-size: 70%"> </i>
                 </span></sup>
               <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotMA.png`"
-                :download="`id-${this.dbID}_${this.pb_gene}_${this.celline}_plotMA.png`" target="_blank"
+                :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_plotMA.png`" target="_blank"
                 style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                     <Download />
                   </el-icon></el-button></a>
@@ -295,7 +297,7 @@
                     style="font-size: 70%"> </i>
                 </span></sup>
               <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotVolcano.png`"
-                :download="`id-${this.dbID}_${this.pb_gene}_${this.celline}_plotVolcano.png`" target="_blank"
+                :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_plotVolcano.png`" target="_blank"
                 style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                     <Download />
                   </el-icon></el-button></a>
@@ -313,7 +315,7 @@
                     style="font-size: 70%"> </i>
                 </span></sup>
               <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotBox.png`"
-                :download="`id-${this.dbID}_${this.pb_gene}_${this.celline}_plotBox.png`" target="_blank"
+                :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_plotBox.png`" target="_blank"
                 style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                     <Download />
                   </el-icon></el-button></a>
@@ -331,7 +333,7 @@
                   </i>
                 </span></sup>
               <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotHeatmap.png`"
-                :download="`id-${this.dbID}_${this.pb_gene}_${this.celline}_plotHeatmap.png`" target="_blank"
+                :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_plotHeatmap.png`" target="_blank"
                 style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                     <Download />
                   </el-icon></el-button></a>
@@ -349,7 +351,7 @@
                     class="ti-info-alt" style="font-size: 70%"> </i>
                 </span></sup>
               <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotProfile.png`"
-                :download="`id-${this.dbID}_${this.pb_gene}_${this.celline}_plotProfile.png`" target="_blank"
+                :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_plotProfile.png`" target="_blank"
                 style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                     <Download />
                   </el-icon></el-button></a>
@@ -386,10 +388,6 @@ export default {
   methods: {
 
     load() {
-
-
-
-
       request.post("/get_diff_peak_data",
         {
           id: this.dbID,
@@ -403,9 +401,6 @@ export default {
           this.total = res.records_sum;
 
         })
-      this.pb_gene = sessionStorage.getItem('pb_gene');
-      this.celline = sessionStorage.getItem('celline');
-
     },
     onSubmit() {
       request.post("/get_diff_peak_data",
@@ -427,11 +422,9 @@ export default {
       this.filter = {}
     },
     onDownload() {
-
-
       let link = document.createElement('a');
       link.style.display = 'none';
-      link.href = `http://43.143.155.140/atac_db/${this.dbID}/csv/id-${this.dbID}_${this.pb_gene}_${this.celline}_diff_peak_data.csv`;
+      link.href = `http://43.143.155.140/atac_db/${this.dbID}/csv/id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_diff_peak_data.csv`;
       document.body.appendChild(link);
       link.click();
     },
@@ -558,6 +551,7 @@ export default {
   },
   props: {  //父组件向子组件传递的值只会在mount阶段挂载到页面一次，之后便不再执行这个阶段。
     dbID: Number,
+    globalDataset:Object
     // dataSet: {
     //   type: Object,
     //   default() {
@@ -600,7 +594,6 @@ export default {
   },
   created() {
     this.load();
-
   },
 
 }

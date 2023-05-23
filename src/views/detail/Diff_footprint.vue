@@ -93,7 +93,7 @@
                     class="ti-info-alt" style="font-size: 70%"> </i>
                 </span></sup>
               <a :href="`http://43.143.155.140/atac_db/${this.dbID}/footprint_lineplots/${this.motif_id}.png`"
-                :download="`id-${this.dbID}_${this.pb_gene}_${this.celline}_${this.motif}.png`" target="_blank"
+                :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_diff_footprint——${this.motif}.png`" target="_blank"
                 style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                     <Download />
                   </el-icon></el-button></a>
@@ -129,7 +129,7 @@
                 </span></sup>
 
               <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`"
-                :download="`id-${this.dbID}_${this.pb_gene}_${this.celline}_differential_statistics.png`" target="_blank"
+                :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_differential_statistics.png`" target="_blank"
                 style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                     <Download />
                   </el-icon></el-button></a>
@@ -148,7 +148,7 @@
                 </span></sup>
 
               <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_log2foldChange.png`"
-                :download="`id-${this.dbID}_${this.pb_gene}_${this.celline}_differential_log2foldChange.png`" target="_blank"
+                :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_differential_log2foldChange.png`" target="_blank"
                 style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                     <Download />
                   </el-icon></el-button></a>
@@ -185,7 +185,7 @@
                     class="ti-info-alt" style="font-size: 70%"> </i>
                 </span></sup>
               <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/PPIN.png`"
-                :download="`id-${this.dbID}_${this.pb_gene}_${this.celline}_PPIN.png`" target="_blank"
+                :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_PPIN.png`" target="_blank"
                 style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                     <Download />
                   </el-icon></el-button></a>
@@ -203,7 +203,7 @@
                     class="ti-info-alt" style="font-size: 70%"> </i>
                 </span></sup>
               <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/PPIN_diy.png`"
-                :download="`id-${this.dbID}_${this.pb_gene}_${this.celline}_PPIN_diy.png`" target="_blank"
+                :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_PPIN_diy.png`" target="_blank"
                 style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                     <Download />
                   </el-icon></el-button></a>
@@ -303,7 +303,7 @@ export default {
 
       let link = document.createElement('a');
       link.style.display = 'none';
-      link.href = `http://43.143.155.140/atac_db/${this.dbID}/csv/id-${this.dbID}_${this.pb_gene}_${this.celline}_diff_footprint.csv`;
+      link.href = `http://43.143.155.140/atac_db/${this.dbID}/csv/id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_diff_footprint.csv`;
       document.body.appendChild(link);
       link.click();
     },
@@ -350,12 +350,14 @@ export default {
     tableData: function() {
       this.$nextTick(function() {
         this.$refs.multipleTable.setCurrentRow(this.tableData[0])  // 默认选中table的第一行，高亮显示
+        this.motif = this.tableData[0].motif
+        this.motif_id = this.tableData[0].motif.slice(0, 8);
       })
     }
   },
   props: {
     dbID: Number,
-    dataSet: Object
+    globalDataset: Object
   },
   data() {
     return {
@@ -365,7 +367,7 @@ export default {
       currentPage: 1,
       filter: {},
       total: 0,
-      pageSize: 10,
+      pageSize: 5,
 
       activeNames: ['1', '2', '3'],
 
@@ -380,7 +382,7 @@ export default {
       seq: {},
       paging: {
         "start": 0, //起始数据点（分页）
-        "length": 10
+        "length": 5
       }
 
 

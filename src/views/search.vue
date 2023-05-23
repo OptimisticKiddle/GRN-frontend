@@ -127,7 +127,7 @@
         </div>
         <!-- detail组件 -->
         <div class="col-md-12" data-plugin-portlet style="margin-top: 2%;">
-            <detail :globalID="globalID" :key="timer"></detail>
+            <detail :globalID="globalID" :globalDataset="globalDataset" :key="timer"></detail>
         </div>
     </div>
     <el-backtop :bottom="20" :right="20">
@@ -140,7 +140,7 @@
         text-align: center;
         line-height: 45px;
         color: #15a585;
-      "
+        "
     >
 	<el-icon><Top /></el-icon>
     </div>
@@ -186,7 +186,6 @@ export default {
                 }).then(res => {
                     this.tableData = res.data;
                     this.total = res.records_sum;
-
                 })
 
         },
@@ -243,6 +242,8 @@ export default {
         //  选中表格某一行,对应id存储到globalID的函数
         rowClick(row, column) {
             this.globalID = row.id;
+            this.globalDataset.pb_gene = row.pb_gene
+            this.globalDataset.cell_line = row.celline
             this.timer = new Date().getTime()  //父组件中每次点击按钮重新加载子组件,与上面的:key="timer"对应
         }
     },
@@ -250,22 +251,30 @@ export default {
     tableData: function() {
       this.$nextTick(function() {
         this.$refs.multipleTable.setCurrentRow(this.tableData[0])  // 默认选中table的第一行，高亮显示
+        this.globalID = this.tableData[0].id
+        this.globalDataset.pb_gene = this.tableData[0].pb_gene
+        this.globalDataset.cell_line = this.tableData[0].celline
       })
     }
   },
 
     data() {
         return {
-
             currentPage: 1,
             total: 0,
             pageSize: 10,
+
             datasourceList: [],
             methodList: [],
             activeNames: ['1', '2'],
-            globalID: 1,
             timer: '',
 
+            // 页面传输参数
+            globalID: 1,
+            globalDataset:{
+                pb_gene: '',
+                cell_line: ''
+            },
 
             tableData: [],
             filter: {},

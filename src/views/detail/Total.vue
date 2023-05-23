@@ -42,14 +42,18 @@
               title="Sample correlation matrix of experimental group and control group"><i class="ti-info-alt"
                 style="font-size: 70%"> </i>
             </span></sup>
-          <a href="" :download="`http://43.143.155.140/atac_db/${this.dbID}/plots/cor_plot.png`" target="_blank"
-            style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
+          <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/cor_plot.png`"
+             :download="`id-${this.dbID}_${this.dataSet.pb_gene}_${this.dataSet.celline}_cor_plot.png`" target="_blank"
+             style="position: absolute;right: 2vw;">
+             <el-button type="warning" size="small" circle>
+              <el-icon>
                 <Download />
-              </el-icon></el-button></a>
-
+              </el-icon>
+            </el-button>
+          </a>
+              
         </header>
         <div class="panel-body">
-
           <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/cor_plot.png`" alt="">
         </div>
       </section>
@@ -75,7 +79,8 @@
                 title="The distance from the peak (binding site) to the TSS of the nearest gene"><i class="ti-info-alt"
                   style="font-size: 70%"> </i>
               </span></sup>
-            <a href="" :download="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" target="_blank"
+            <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`"
+             :download="`id-${this.dbID}_${this.dataSet.pb_gene}_${this.dataSet.celline}_plotDistToTSS.png`" target="_blank"
               style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                   <Download />
                 </el-icon></el-button></a>
@@ -91,7 +96,8 @@
                 title="Plot the heatmap of peaks align to flank sequences of TSS"><i class="ti-info-alt"
                   style="font-size: 70%"> </i>
               </span></sup>
-            <a href="" :download="`http://43.143.155.140/atac_db/${this.dbID}/plots/peakHeatmap.png`" target="_blank"
+            <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/peakHeatmap.png`"
+             :download="`id-${this.dbID}_${this.dataSet.pb_gene}_${this.dataSet.celline}_peakHeatmap.png`" target="_blank"
               style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                   <Download />
                 </el-icon></el-button></a>
@@ -108,13 +114,13 @@
                 title="Visualize the distribution spectra of peaks in the 1kb range for multiple samples"><i class="ti-info-alt"
                   style="font-size: 70%"> </i>
               </span></sup>
-            <a href="" :download="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotAvgProf.png`" target="_blank"
+            <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotAvgProf.png`"
+             :download="`id-${this.dbID}_${this.dataSet.pb_gene}_${this.dataSet.celline}_plotAvgProf.png`" target="_blank"
               style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                   <Download />
                 </el-icon></el-button></a>
           </header>
           <div class="panel-body">
-
             <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotAvgProf.png`" alt="">
           </div>
         </section>
@@ -129,13 +135,13 @@
                 title="The distribution of different samples in the characterized regions of the genome"><i class="ti-info-alt"
                   style="font-size: 70%"> </i>
               </span></sup>
-            <a href="" :download="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotAnnoBar.png`" target="_blank"
+            <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotAnnoBar.png`"
+             :download="`id-${this.dbID}_${this.dataSet.pb_gene}_${this.dataSet.celline}_plotAnnoBar.png`" target="_blank"
               style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                   <Download />
                 </el-icon></el-button></a>
           </header>
           <div class="panel-body">
-
             <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotAnnoBar.png`" alt="">
           </div>
         </section>
@@ -147,13 +153,13 @@
                 title="Pieplot from peak genomic annotation"><i class="ti-info-alt"
                   style="font-size: 70%"> </i>
               </span></sup>
-              <a href="" :download="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotAnnoPie.png`" target="_blank"
+              <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotAnnoPie.png`"
+               :download="`id-${this.dbID}_${this.dataSet.pb_gene}_${this.dataSet.celline}_plotAnnoPie.png`" target="_blank"
                 style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                     <Download />
                   </el-icon></el-button></a>
             </header>
             <div class="panel-body">
-
               <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotAnnoPie.png`" alt="">
             </div>
           </section>
@@ -166,13 +172,13 @@
                 title="Comparison of overlapping annotations of different samples"><i class="ti-info-alt"
                   style="font-size: 70%"> </i>
               </span></sup>
-              <a href="" :download="`http://43.143.155.140/atac_db/${this.dbID}/plots/upsetplot.png`" target="_blank"
+              <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/upsetplot.png`"
+               :download="`id-${this.dbID}_${this.dataSet.pb_gene}_${this.dataSet.celline}_upsetplot.png`" target="_blank"
                 style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                     <Download />
                   </el-icon></el-button></a>
             </header>
             <div class="panel-body">
-
               <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/upsetplot.png`" alt="">
             </div>
           </section>
@@ -205,8 +211,7 @@ export default {
 
   },
   props: {
-    dbID: Number
-
+    dbID: Number,
   },
   data() {
     return {
