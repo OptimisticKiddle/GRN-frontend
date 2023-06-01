@@ -34,7 +34,7 @@
 							<template #title>
 								<el-icon>
 									<View />
-								</el-icon>
+								</el-icon>&nbsp Overview
 							</template>
 
 							<div class="panel-body">
@@ -237,7 +237,7 @@
 
 				</div>
 			</div>
-			<router-view />
+			
 			<el-footer>
 
 				<el-backtop :bottom="20" :right="20">

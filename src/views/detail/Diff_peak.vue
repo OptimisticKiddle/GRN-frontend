@@ -1,7 +1,7 @@
 <template>
   <!-- 主体 -->
   <!-- 上面的筛选 -->
-  <!-- <router-view></router-view> -->
+
   <div style="margin-bottom: 2%; overflow: hidden;">
     <!-- 筛选面板 -->
 
@@ -82,8 +82,8 @@
             <el-table-column prop="conc_ctrl" label="Conc Ctrl" :sortable="'custom'" align="center" width="110px" />
             <el-table-column prop="conc_treat" label="Conc Treat" :sortable="'custom'" align="center" width="120px" />
             <el-table-column prop="fold" label="Fold" :sortable="'custom'" align="center" width="100px" />
-            <el-table-column prop="p_value" label="P.Value" :sortable="'custom'" align="center" width="120px" />
-            <el-table-column prop="FDR" label="FDR" :sortable="'custom'" align="center" width="120px" />
+            <el-table-column prop="p_value" label="P.Value" :sortable="'custom'" align="center" width="200px" />
+            <el-table-column prop="FDR" label="FDR" :sortable="'custom'" align="center" width="200px" />
             <el-table-column prop="annotation" label="Annotation" align="center"
               :width="flexColumnWidth('annotation', tableData)" />
             <el-table-column prop="gene_chr" label="Gene Chr" align="center" width="110px" />
@@ -91,8 +91,8 @@
             <el-table-column prop="gene_end" label="Gene End" :sortable="'custom'" align="center" width="120px" />
             <el-table-column prop="gene_len" label="Gene Length" :sortable="'custom'" align="center" width="120px" />
             <el-table-column prop="gene_strand" label="Gene Strand" align="center" width="130px" />
-            <el-table-column prop="gene_id" label="Gene ID" align="center" width="120px" />
-            <el-table-column prop="transcript_id" label="Transcript ID" align="center" width="130px" />
+            <el-table-column prop="gene_id" label="Gene ID" align="center" width="200px" />
+            <el-table-column prop="transcript_id" label="Transcript ID" align="center" width="200px" />
 
 
             <el-table-column prop="distance_to_tss" label="DIS To TSS" sortable align="center" width="130px" />

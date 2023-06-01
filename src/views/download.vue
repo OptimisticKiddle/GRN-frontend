@@ -1,6 +1,6 @@
 <template>
     <!-- 上面的筛选 -->
-    <router-view></router-view>
+
 
     <div style="width: 95%;margin: 2% auto; overflow: hidden;">
         <!-- 筛选面板 -->
@@ -108,25 +108,25 @@
                         <el-table-column label="NarrowPeaks" align="center">
                             <template v-slot="scope">
                                 <a href="javascript:;" @click="dlNarrowPeaks(scope.row)">
-                                    <el-icon style="text-align: middle">
+                                    <el-icon style="text-align: middle; vertical-align: -15%;">
                                         <Download />
-                                    </el-icon></a>
+                                    </el-icon>[tar]</a>
                             </template>
                         </el-table-column>
                         <el-table-column label="DBA Obj" align="center">
                             <template v-slot="scope">
                                 <a href="javascript:;" @click="dlDBA(scope.row)">
-                                    <el-icon style="text-align: middle">
+                                    <el-icon style="text-align: middle; vertical-align: -15%;">
                                         <Download />
-                                    </el-icon></a>
+                                    </el-icon>[RData]</a>
                             </template>
                         </el-table-column>
                         <el-table-column label="Diff Footprint" align="center">
                             <template v-slot="scope">
                                 <a href="javascript:;" @click="dlDiff(scope.row)">
-                                    <el-icon style="text-align: middle">
+                                    <el-icon style="text-align: middle; vertical-align: -15%;">
                                         <Download />
-                                    </el-icon></a>
+                                    </el-icon>[csv]</a>
                             </template>
                         </el-table-column>
 

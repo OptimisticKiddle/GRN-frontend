@@ -2,7 +2,7 @@ import { createRouter, createWebHistory,createWebHashHistory } from 'vue-router'
 import home from '../views/home.vue'
 import search from '../views/search.vue'
 import Layout from '../layout/Layout.vue'
-import stastics from '../views/stastics.vue'
+import statistics from '../views/statistics.vue'
 import detail from '../views/detail.vue'
 
 
@@ -20,13 +20,15 @@ const routes = [
         component: home
       },
       {
-        path: '/stastics',
-        name: 'stastics',
-        component: stastics
+        path: '/statistics',
+        name: 'statistics',
+        // meta:{keepAlive: true}, // 是否缓存组件
+        component: statistics
       },
       {
         path: '/search',
         name: 'search',
+        // meta:{keepAlive: true}, // 是否缓存组件
         component: search,
         
       },
