@@ -10,8 +10,8 @@
   </keep-alive>
   <router-view v-if="!$route.meta.keepAlive"></router-view> -->
   <!-- 需要缓存的组件 -->
-  <keep-alive include="statistics search">
-    <router-view></router-view>
+  <keep-alive :include = [statistics,search]>
+    <router-view :key="$route.path"></router-view>
   </keep-alive>
 
 </template>

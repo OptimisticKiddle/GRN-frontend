@@ -33,7 +33,7 @@
             <Menu />
           </el-icon>&nbsp Statistics of diff data
         </template>
-          <el-descriptions title="" :column="2" :size="size" border>
+          <el-descriptions title="" :column="2" :size="size" border style="padding: 0 2vw;">
             <el-descriptions-item label="diff peaks number :" width="5vw" label-align="right">{{
               diff_data.diff_peaks_num }}</el-descriptions-item>
             <el-descriptions-item label="diff motif number :" width="5vw" label-align="right">{{

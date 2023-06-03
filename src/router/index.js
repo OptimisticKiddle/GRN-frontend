@@ -4,14 +4,15 @@ import search from '../views/search.vue'
 import Layout from '../layout/Layout.vue'
 import statistics from '../views/statistics.vue'
 import detail from '../views/detail.vue'
+import App from '../App.vue'
 
 
 const routes = [
 
   {
     path: '/',
-    name: 'Layout',
-    component: Layout,
+    // name: 'App',
+    // component: App,
     redirect: "/home",
     children: [
       {
@@ -22,13 +23,13 @@ const routes = [
       {
         path: '/statistics',
         name: 'statistics',
-        // meta:{keepAlive: true}, // 是否缓存组件
+        meta:{keepAlive: true}, // 是否缓存组件
         component: statistics
       },
       {
         path: '/search',
         name: 'search',
-        // meta:{keepAlive: true}, // 是否缓存组件
+        meta:{keepAlive: true}, // 是否缓存组件
         component: search,
         
       },
