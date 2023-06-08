@@ -100,6 +100,7 @@
                         <el-table-column prop="n_sample" label="Sample Num" align="center" />
                         <el-table-column prop="celline" label="Cell Line" align="center" />
                         <el-table-column prop="method" label="Method" align="center" />
+                        <el-table-column prop="condition" label="Condition" align="center" />
                         <el-table-column prop="accession" label="Accession" align="center">
                             <template v-slot="scope">
                                 <div v-html="scope.row.accession"></div>
