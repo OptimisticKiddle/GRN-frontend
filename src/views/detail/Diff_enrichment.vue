@@ -27,9 +27,9 @@
                   :width="flexColumnWidth('description', tableData1)" />
                 <el-table-column prop="gene_ratio" label="Gene Ratio" align="center" width="120px" />
                 <el-table-column prop="bg_ratio" label="Bg Ratio" align="center" width="120px" />
-                <el-table-column prop="p_value" label="p.value" :sortable="'custom'" align="center" width="120px" />
-                <el-table-column prop="p_adjust" label="p.adjust" :sortable="'custom'" align="center" width="120px" />
-                <el-table-column prop="q_value" label="q.value" :sortable="'custom'" align="center" width="110px" />
+                <el-table-column prop="p_value" label="p.value" :sortable="'custom'" align="center" width="200px" />
+                <el-table-column prop="p_adjust" label="p.adjust" :sortable="'custom'" align="center" width="200px" />
+                <el-table-column prop="q_value" label="q.value" :sortable="'custom'" align="center" width="200px" />
                 <el-table-column prop="gene_ids" label="Gene IDs" align="center" :width="flexColumnWidth('gene_ids', tableData1)">
                   <template #header>
                     <span>gene_ids</span>
@@ -104,9 +104,9 @@
                   :width="flexColumnWidth('description', tableData2)" />
                 <el-table-column prop="gene_ratio" label="Gene Ratio" align="center" width="120px" />
                 <el-table-column prop="bg_ratio" label="Bg Ratio" align="center" width="120px" />
-                <el-table-column prop="p_value" label="p.value" :sortable="'custom'" align="center" width="120px" />
-                <el-table-column prop="p_adjust" label="p.adjust" :sortable="'custom'" align="center" width="120px" />
-                <el-table-column prop="q_value" label="q.value" :sortable="'custom'" align="center" width="110px" />
+                <el-table-column prop="p_value" label="p.value" :sortable="'custom'" align="center" width="200px" />
+                <el-table-column prop="p_adjust" label="p.adjust" :sortable="'custom'" align="center" width="200px" />
+                <el-table-column prop="q_value" label="q.value" :sortable="'custom'" align="center" width="200px" />
                 <el-table-column prop="gene_ids" label="Gene IDs" align="center" :width="flexColumnWidth('gene_ids', tableData2)">
                   <template #header>
                     <span>gene_ids</span>
@@ -385,7 +385,7 @@ export default {
   },
   created() {
     this.load();
-    console.log(this.dbID);
+    // console.log(this.dbID);
   },
 
 }

@@ -1,18 +1,30 @@
 <template>
-    <router-view/>
+  <nav>
+    <!-- 头部导航 -->
+    <Header></Header>
+
+  </nav>
+  <!-- 内容区域 -->
+  <!-- 缓存页面组件 -->
+  <router-view v-slot="{ Component }">
+      <keep-alive>
+        <component :is="Component" />
+      </keep-alive>
+    </router-view>
+
 </template>
-
-<style>
-
-
-</style>
-
+  
+<style></style>
+  
 <script>
-
-export default{
-  name:"App",
- 
+import Header from "@/components/Header.vue";
+export default {
+  name: "App",
+  components: {
+    Header
+  }
 }
 
 
 </script>
+  

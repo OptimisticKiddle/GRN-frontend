@@ -35,3 +35,7 @@ npm run serve
 ```
 
 即可启动前台vue工程
+
+
+## web访问地址
+http://43.143.155.140/GP-ATACdb/

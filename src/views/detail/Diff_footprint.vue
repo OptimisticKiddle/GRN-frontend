@@ -2,7 +2,7 @@
   <!-- 主体 -->
 
   <!-- 上面的筛选 -->
-  <!-- <router-view></router-view> -->
+
   <div style="margin-bottom: 2%; overflow: hidden;">
     <!-- 0--筛选面板 -->
     
@@ -57,7 +57,7 @@
               header-cell-class-name="header-cell-class-name" style="color: black;margin-top: 20px;font-size: 10px;"
               @row-click="rowClick" @sort-change="sortChange">
               <!-- Motif、TF、Num、Protection Score Ctrl、Protection Score Treat、TC Ctrl、TC Treat、TF Activity、z.score、p.value-->
-              <el-table-column prop="motif" label="Motif" align="center" width="100px" />
+              <el-table-column prop="motif" label="Motif" align="center" width="130px" />
               <el-table-column prop="tf" label="TF" align="center" width="80px" />
               <el-table-column prop="num" label="Num" :sortable="'custom'" align="center" width="80px" />
               <el-table-column prop="protection_score_ctrl" label="Protection Score Ctrl" :sortable="'custom'"
@@ -68,7 +68,7 @@
               <el-table-column prop="tc_treat" label="TC Treat" :sortable="'custom'" align="center" width="120px" />
               <el-table-column prop="tf_activity" label="TF Activity" :sortable="'custom'" align="center" width="110px" />
               <el-table-column prop="z_score" label="z.score" :sortable="'custom'" align="center" width="100px" />
-              <el-table-column prop="p_value" label="p.value" :sortable="'custom'" align="center" width="100px" />
+              <el-table-column prop="p_value" label="p.value" :sortable="'custom'" align="center" width="200px" />
 
             </el-table>
             <div style="margin: 3vh auto;">
@@ -440,7 +440,7 @@ export default {
 .el-collapse-item__wrap,
 .col-md-6 {
   padding: 1vw;
-  height: 800px;
+  /* height: 800px; */
 }
 
 .showimg {
@@ -449,10 +449,10 @@ export default {
 
 }
 
-.twoimg {
+/* .twoimg {
   height: 720px;
 
-}
+} */
 
 img {
   width: 100%;

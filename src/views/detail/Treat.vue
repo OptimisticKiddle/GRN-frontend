@@ -1,7 +1,7 @@
 <template>
   <!-- 主体 -->
   <!-- 上面的筛选 -->
-  <!-- <router-view></router-view> -->
+
   <div style="margin-bottom: 2%; overflow: hidden;">
     <!-- 筛选面板 -->
 

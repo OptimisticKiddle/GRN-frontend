@@ -12,9 +12,9 @@
           <HomeFilled />
         </el-icon>Home</el-menu-item>
       <!--statistics 后续有时间后开发qwq -->
-      <!-- <el-menu-item index="Stastics"><el-icon>
+      <el-menu-item index="Statistics"><el-icon>
           <PieChart />
-        </el-icon>Stastics</el-menu-item> -->
+        </el-icon>Statistics</el-menu-item>
       <el-menu-item index="Search"><el-icon>
           <Search />
         </el-icon>Search</el-menu-item>

@@ -22,7 +22,7 @@
                             become an effective method for studying open regulatory regions.
                         </p>
                         <p >
-                            The demo used in this tutorial can be downloaded from the IPython notebook.
+                            The demo used in this tutorial can be downloaded from the <a href="http://43.143.155.140/atac_db/tutorial_demo.ipynb">IPython</a> notebook.
                         </p>
                     </div>
 

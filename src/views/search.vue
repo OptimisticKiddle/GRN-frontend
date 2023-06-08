@@ -1,6 +1,5 @@
 <template>
     <!-- 上面的筛选 -->
-    <router-view></router-view>
 
     <div style="width: 95%;margin: 2% auto; overflow: hidden;">
         <!-- 筛选面板 -->
@@ -20,20 +19,20 @@
 
                             <el-form-item label="ID :">
                                 <el-input v-model="filter.id" clearable
-                                    style="width: 70%;"></el-input>
+                                    style="width: 86px;"></el-input>
                             </el-form-item>
                             <el-form-item label="Pb_gene :">
                                 <el-input v-model="filter.pb_gene" placeholder="e.g. ATP5F1C" clearable
-                                    style="width: 70%;"></el-input>
+                                    style="width: 100%;"></el-input>
                             </el-form-item>
                             <el-form-item label="Pb_ensembl :">
                                 <el-input v-model="filter.pb_ensembl" placeholder="e.g. ENSG00000165629" clearable
-                                    style="width: 85%;"></el-input>
+                                    style="width: 150px;"></el-input>
                             </el-form-item>
 
-                            <el-form-item label="n_sample range :">
-                                <el-input v-model="filter.n_sample_greater" style="width: 80px;"></el-input>&nbsp-&nbsp
-                                <el-input v-model="filter.n_sample_less" style="width: 80px;"></el-input>
+                            <el-form-item label="n_sample range :" style="margin-left: 2vw;">
+                                <el-input v-model="filter.n_sample_greater" style="width: 50px;"></el-input>&nbsp-&nbsp
+                                <el-input v-model="filter.n_sample_less" style="width: 50px;"></el-input>
                             </el-form-item>
                         </div>
                         <div class="formRow2">
@@ -43,7 +42,7 @@
                             </el-form-item>
                             <el-form-item label="Method :">
                                 <el-select v-model="filter.method" placeholder="Please select the knockout method"
-                                    style="width: 100%;">
+                                    style="width: 300px;">
                                     <!-- <el-option label= "RNAi_interference"  value="method"></el-option>
                         <el-option label="CRISPR_deletion" value="method"></el-option> -->
                                     <el-option v-for='item in methodList' :key='item' :label="item" :value="item">
@@ -254,6 +253,9 @@ export default {
         this.globalID = this.tableData[0].id
         this.globalDataset.pb_gene = this.tableData[0].pb_gene
         this.globalDataset.cell_line = this.tableData[0].celline
+        this.timer = new Date().getTime()              // 下面的total组件跟上面默认选中的第一行数据一致
+
+
       })
     }
   },
@@ -301,7 +303,7 @@ export default {
   
 <style scoped>
 .el-form {
-    margin-left: 4vw;
+    margin-left: -4vw;
 }
 
 .el-form-item__label {
@@ -315,11 +317,11 @@ export default {
 
 .formRow1 {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 2fr 2fr 3fr;
     justify-content: space-between;
 
     margin-top: 20px;
-    margin-right: 20px;
+    /* margin-right: 20px; */
 }
 
 .formRow2 {
