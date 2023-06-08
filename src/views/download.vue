@@ -239,8 +239,8 @@ export default {
             let id = row.id;
             let pb_gene = row.pb_gene;
             let celline = row.celline;
-            let href = `http://43.143.155.140/atac_db/${id}/DBA/dba_DBA_obj.RData`;
-            let fileName = `id-${id}_${pb_gene}_${celline}_DBA_obj.RData`
+            let href = `http://43.143.155.140/atac_db/${id}/DBA/DBA_obj.tar.gz`;
+            let fileName = `id-${id}_${pb_gene}_${celline}_DBA_obj.tar.gz`
             downloadFile(href, fileName)
         },
         // 下载Diff Footprint函数
