@@ -9,7 +9,7 @@
 
 						<div class="gtco-container" style="display: flex;">
 
-							<div class="animate-box" style="margin-top: 3rem;">
+							<div class="animate-box welcome-text" style="margin-top: 3rem;">
 								<h2 style='padding-left:50px; font-weight:bold;'>Welcome to ATACdb</h2>
 								<h4 style='padding-left:50px'>A database exploring the effects of genetic inheritance </h4>
 								<h4 style='padding-left:50px'>perturbations on human chromatin accessibility</h4>
@@ -37,7 +37,7 @@
 								</el-icon>&nbsp Overview
 							</template>
 
-							<div class="panel-body">
+							<div class="panel-body overview-introduction">
 								<!-- 第一个面板 body 文字 -->
 								<p style="margin-top: 0px;">
 									ATAC-seq, a high-throughput sequencing approach targeting open chromatin, provides an
@@ -298,5 +298,12 @@ export default {
 
 .el-footer {
 	--el-footer-padding: 0;
+}
+
+.welcome-text h4 {
+	line-height: 200%;
+}
+.overview-introduction p {
+	line-height: 165%;
 }
 </style>

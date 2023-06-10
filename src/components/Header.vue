@@ -67,6 +67,7 @@ export default {
 }
 
 .el-menu-item {
+  font-size: medium;
   font-weight: bold;
   color: #fff !important;
   /* font-size: larger; */
@@ -79,7 +80,7 @@ img {
 .menu-item {
   width: 70%;
   display: flex;
-  padding-right: 5%;
+  padding-right: 10%;
   justify-content: space-around;
 }
 

@@ -25,7 +25,7 @@
           }}</el-descriptions-item>
           <el-descriptions-item label="Method :" width="5vw" label-align="right">{{ dataSet.method
           }}</el-descriptions-item>
-          <el-descriptions-item label="Condition :" width="5vw" label-align="right">{{ dataSet.condition
+          <el-descriptions-item label="Condition :" width="5vw" label-align="right">{{ dataSet.conditions
           }}</el-descriptions-item>
           <el-descriptions-item label="Accession :" width="5vw" label-align="right">
             <div v-html="dataSet.accession"></div>
