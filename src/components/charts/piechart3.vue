@@ -4,7 +4,7 @@
 </template>
   
 <script>
-import echarts from 'echarts'
+import * as echarts from 'echarts';
 
 export default {
     name: "piechart3",
@@ -44,10 +44,11 @@ export default {
                         name: '',
                         type: 'pie',
                         radius: ['40%', '70%'],
+                        startAngle: 180,
                         avoidLabelOverlap: false,
                         top: '8%',
                         itemStyle: {
-                            borderRadius: 10,
+                            borderRadius: 5,
                             borderColor: '#fff',
                             borderWidth: 2
                         },

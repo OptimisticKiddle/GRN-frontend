@@ -186,7 +186,7 @@
 															<Clock />
 														</el-icon>
 														19 June
-														2022</small>
+														2023</small>
 												</div>
 											</div>
 										</li>
@@ -305,5 +305,9 @@ export default {
 }
 .overview-introduction p {
 	line-height: 165%;
+}
+.overview-introduction li {
+	line-height: 200%;
+	margin-left: 2vw;
 }
 </style>
