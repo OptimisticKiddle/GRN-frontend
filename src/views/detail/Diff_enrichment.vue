@@ -27,9 +27,21 @@
                   :width="flexColumnWidth('description', tableData1)" />
                 <el-table-column prop="gene_ratio" label="Gene Ratio" align="center" width="120px" />
                 <el-table-column prop="bg_ratio" label="Bg Ratio" align="center" width="120px" />
-                <el-table-column prop="p_value" label="p.value" :sortable="'custom'" align="center" width="200px" />
-                <el-table-column prop="p_adjust" label="p.adjust" :sortable="'custom'" align="center" width="200px" />
-                <el-table-column prop="q_value" label="q.value" :sortable="'custom'" align="center" width="200px" />
+                <el-table-column prop="p_value" label="p.value" :sortable="'custom'" align="center" width="120px">
+                  <template v-slot="scope">
+                {{ formatFour(scope.row.p_value) }}
+              </template>
+              </el-table-column>
+                <el-table-column prop="p_adjust" label="p.adjust" :sortable="'custom'" align="center" width="120px">
+                  <template v-slot="scope">
+                {{ formatFour(scope.row.p_adjust) }}
+              </template>
+              </el-table-column>
+                <el-table-column prop="q_value" label="q.value" :sortable="'custom'" align="center" width="120px">
+                  <template v-slot="scope">
+                {{ formatFour(scope.row.q_value) }}
+              </template>
+              </el-table-column>
                 <el-table-column prop="gene_ids" label="Gene IDs" align="center" :width="flexColumnWidth('gene_ids', tableData1)">
                   <template #header>
                     <span>gene_ids</span>
@@ -91,8 +103,6 @@
                     data-placement="right" title="The meaning of columns is explained in the Help page."><i
                       class="ti-info-alt" style="font-size: 70%"> </i></span></sup>
               </template>
-
-
               <!-- 表格展示 -->
               <el-table :data="tableData2" border stripe table-layout="auto" :cell-style="{ padding: '0px' }"
                 @sort-change="sortChange2" header-cell-class-name="header-cell-class-name"
@@ -104,9 +114,21 @@
                   :width="flexColumnWidth('description', tableData2)" />
                 <el-table-column prop="gene_ratio" label="Gene Ratio" align="center" width="120px" />
                 <el-table-column prop="bg_ratio" label="Bg Ratio" align="center" width="120px" />
-                <el-table-column prop="p_value" label="p.value" :sortable="'custom'" align="center" width="200px" />
-                <el-table-column prop="p_adjust" label="p.adjust" :sortable="'custom'" align="center" width="200px" />
-                <el-table-column prop="q_value" label="q.value" :sortable="'custom'" align="center" width="200px" />
+                <el-table-column prop="p_value" label="p.value" :sortable="'custom'" align="center" width="120px">
+                  <template v-slot="scope">
+                {{ formatFour(scope.row.p_value) }}
+              </template>
+                </el-table-column>
+                <el-table-column prop="p_adjust" label="p.adjust" :sortable="'custom'" align="center" width="120px">
+                  <template v-slot="scope">
+                {{ formatFour(scope.row.p_adjust) }}
+              </template>
+              </el-table-column>
+                <el-table-column prop="q_value" label="q.value" :sortable="'custom'" align="center" width="120px">
+                  <template v-slot="scope">
+                {{ formatFour(scope.row.q_value) }}
+              </template>
+              </el-table-column>
                 <el-table-column prop="gene_ids" label="Gene IDs" align="center" :width="flexColumnWidth('gene_ids', tableData2)">
                   <template #header>
                     <span>gene_ids</span>
@@ -176,21 +198,41 @@ import request from "@/utils/request";
 
 export default {
   name: "Diff_enrichment",
-  components: {
-
+  props: {
+    dbID: Number,
+    globalDataset:Object
   },
+  data() {
+    return {
+      pb_gene: '',
+      celline: '',
 
+      currentPage: 1,
+      total1: 10,
+      total2: 10,
+      pageSize: 5,
+
+      activeNames: ['1'],
+
+
+
+      tableData1: [],
+      tableData2: [],
+
+      seq1: {},
+      seq2: {},
+      paging: {
+        "start": 0, //起始数据点（分页）
+        "length": 5
+      }
+
+
+    };
+  },
 
   methods: {
 
     load() {
-      /*  if(sessionStorage.getItem('dbID')){
- 
- this.dbID = JSON.parse(sessionStorage.getItem('dbID'));
- 
- } */
-
-
       request.post("get_diff_GO_enrichment_data",
         {
           id: this.dbID,
@@ -316,7 +358,6 @@ export default {
         }
         columnContent = tableData[index][str]
       }
-      // console.log('该列数据[i]:', columnContent)
       // 以下分配的单位长度可根据实际需求进行调整
       let flexWidth = 0
       for (const char of columnContent) {
@@ -344,45 +385,13 @@ export default {
         flexWidth = 5000
       }
       return flexWidth + 'px'
-    }
-
-
-
-
+    },
+    formatFour(val) {
+      let number = (String(val).indexOf('e')>=0) ? String(val).replace(/^(.*\..{4})[0-9]*(e-[0-9]*)$/,"$1"+"$2") : val.toPrecision(4);
+      return Number(number);
+    },
   },
-  props: {
-    dbID: Number,
-    globalDataset:Object
-  },
-  data() {
-    return {
-      pb_gene: '',
-      celline: '',
 
-      currentPage: 1,
-      total1: 10,
-      total2: 10,
-      pageSize: 5,
-
-      activeNames: ['1'],
-
-
-
-      tableData1: [],
-      tableData2: [],
-
-      seq1: {},
-      seq2: {},
-      paging: {
-        "start": 0, //起始数据点（分页）
-        "length": 5
-      }
-
-
-    };
-  },
-  computed: {
-  },
   created() {
     this.load();
     // console.log(this.dbID);

@@ -31,8 +31,8 @@
                             </el-form-item>
 
                             <el-form-item label="n_sample range :" style="margin-left: 2vw;">
-                                <el-input v-model="filter.n_sample_greater" style="width: 50px;"></el-input>&nbsp-&nbsp
-                                <el-input v-model="filter.n_sample_less" style="width: 50px;"></el-input>
+                                <el-input v-model="filter.n_sample_greater" style="width: 80px;"></el-input>&nbsp-&nbsp
+                                <el-input v-model="filter.n_sample_less" style="width: 80px;"></el-input>
                             </el-form-item>
                         </div>
                         <div class="formRow2">
@@ -43,29 +43,22 @@
                             <el-form-item label="Method :">
                                 <el-select v-model="filter.method" placeholder="Please select the knockout method"
                                     style="width: 300px;">
-                                    <!-- <el-option label= "RNAi_interference"  value="method"></el-option>
-                        <el-option label="CRISPR_deletion" value="method"></el-option> -->
                                     <el-option v-for='item in methodList' :key='item' :label="item" :value="item">
-
                                     </el-option>
                                 </el-select>
                             </el-form-item>
                             <el-form-item label="Datasource :">
                                 <el-select v-model="filter.datasource" placeholder="Please select datasource"
                                     style="width: 80%;">
-                                    <!-- <el-option label="ENCODE"  value="datasource"></el-option>
-                        <el-option label="GEO"  value="datasource"></el-option> -->
                                     <el-option v-for='item in datasourceList' :key='item' :label="item" :value="item">
-
                                     </el-option>
-
                                 </el-select>
                             </el-form-item>
                         </div>
                         <div class="formRow3">
                             <el-form-item style="margin-left: -120px;">
-                                <el-button type="success" @click="onSubmit" style="width: 100px;">Submit</el-button>
-                                <el-button @click="onReset" style="margin-left: 100px;width: 100px;">Reset</el-button>
+                                <el-button type="success" @click="onSubmit" style="width: 100px;font-weight: 700;">Submit</el-button>
+                                <el-button @click="onReset" style="margin-left: 100px;width: 100px;font-weight: 700;">Reset</el-button>
                             </el-form-item>
                         </div>
                     </el-form>
@@ -86,8 +79,6 @@
                                 data-placement="right" title="The meaning of columns is explained in the Help page."><i
                                     class="ti-info-alt" style="font-size: 70%"> </i></span></sup>
                     </template>
-
-
                     <!-- 表格展示 -->
                     <el-table :data="tableData" border stripe table-layout="auto" highlight-current-row ref="multipleTable"
                         @row-click="rowClick" header-cell-class-name="header-cell-class-name"
@@ -107,8 +98,6 @@
                             </template>
                         </el-table-column>
                         <el-table-column prop="datasource" label="DataSource" align="center" />
-                       
-
                     </el-table>
                     <div class="table-foot" style="margin: 3vh auto;">
                         <!-- 下载 -->

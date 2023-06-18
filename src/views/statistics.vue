@@ -259,6 +259,6 @@ export default {
   margin-top: 15px;
 }
 .col-md-4 {
-  padding: 0 5px;
+  padding: 0 0 0 15px;
 }
 </style>

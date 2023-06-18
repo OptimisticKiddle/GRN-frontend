@@ -25,18 +25,18 @@
             </el-table-column>
             <el-table-column prop="name" label="Name" align="center" :width="flexColumnWidth('name',tableData)" />
             <el-table-column prop="consensus" label="Consensus" align="center" width="140px" />
-            <el-table-column prop="p_value" label="p.value" :sortable="'custom'" align="center" width="90px" />
-            <el-table-column prop="log_p_value" label="log.p.value" align="center" width="90px" />
+            <el-table-column prop="p_value" label="p.value" :sortable="'custom'" align="center" width="110px" />
+            <el-table-column prop="log_p_value" label="log.p.value" align="center" width="120px" />
             <el-table-column prop="q_value" label="q.value" :sortable="'custom'" align="center" width="110px" />
             <el-table-column prop="target_sequences" label="Target Sequences" :sortable="'custom'" align="center"
-              width="120px" />
+              width="170px" />
             <el-table-column prop="target_sequences_percent" label="Target Seq Percent" align="center"
               width="150px" >
               <template v-slot="scope">
                 {{ formatPercent(scope.row.target_sequences_percent) }}
               </template>
             </el-table-column>
-            <el-table-column prop="bg_sequences" label="Bg Sequences" :sortable="'custom'" align="center" width="120px" />
+            <el-table-column prop="bg_sequences" label="Bg Sequences" :sortable="'custom'" align="center" width="140px" />
             <el-table-column prop="bg_sequences_percent" label="Bg Seq Percent" align="center" width="150px">
               <template v-slot="scope">
                 {{ formatPercent(scope.row.bg_sequences_percent) }}

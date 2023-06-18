@@ -176,7 +176,12 @@ blockquote {
     text-align: center;
     vertical-align: middle !important;
 }
-
+/* th {
+  pointer-events: none;  
+}
+th i {
+    pointer-events: auto;
+  } */
 .btn-example {
   color: #ffffff ;
   background-color: #dc9c6a;
