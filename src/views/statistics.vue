@@ -33,25 +33,22 @@
             <Menu />
           </el-icon>&nbsp Statistics of diff data
         </template>
-          <el-descriptions title="" :column="2" :size="size" border style="padding: 0 2vw;">
-            <el-descriptions-item label="diff peaks number :" width="5vw" label-align="right">{{
-              diff_data.diff_peaks_num }}</el-descriptions-item>
-            <el-descriptions-item label="diff motif number :" width="5vw" label-align="right">{{
+          <el-descriptions  title="" :column="2" :size="size" border style="padding: 0 2vw;">
+            <el-descriptions-item label="diff peaks number :" width="5vw" label-align="left">
+              {{diff_data.diff_peaks_num }}
+            </el-descriptions-item>
+            <el-descriptions-item label="diff motif number :" width="5vw" label-align="left">{{
               diff_data.diff_motif_num }}</el-descriptions-item>
-            <el-descriptions-item label="diff GO enrichment number :" width="5vw" label-align="right">{{
+            <el-descriptions-item label="diff GO enrichment number :" width="5vw" label-align="left">{{
               diff_data.diff_GO_enrich_num }}</el-descriptions-item>
-            <el-descriptions-item label="diff KEGG enrichment number :" width="5vw" label-align="right">{{
+            <el-descriptions-item label="diff KEGG enrichment number :" width="5vw" label-align="left">{{
               diff_data.diff_KEGG_enrich_num }}</el-descriptions-item>
-            <el-descriptions-item label="diff footprint number :" width="5vw" label-align="right">{{
+            <el-descriptions-item label="diff footprint number :" width="5vw" label-align="left">{{
               diff_data.diff_footprint_num }}</el-descriptions-item>
           </el-descriptions>
-        
-
       </el-collapse-item>
     
     <!-- 3--中间的两个饼图 -->
-
-    
       <el-collapse-item name="2">
         <!-- 展示面板title -->
         <template #title>
@@ -199,6 +196,7 @@ export default {
       perturbed_gene_frequency: {},
       cell_line_frequency: {},
       diff_peaks_num_in_struct: {},
+      diff_peaks_num_in_struct_sum: 0,
       diff_peaks_num_in_chrs: {},
       diff_peaks_dist_to_TSS_distribution: {},
 
@@ -216,6 +214,7 @@ export default {
         this.perturbed_gene_frequency = res.perturbed_gene_frequency;
         this.cell_line_frequency = res.cell_line_frequency;
         this.diff_peaks_num_in_struct = res.diff_peaks_num_in_struct;
+        this.diff_peaks_num_in_struct_sum = res.diff_peaks_num_in_struct
         this.diff_peaks_num_in_chrs = res.diff_peaks_num_in_chrs;
         this.diff_peaks_dist_to_TSS_distribution = res.diff_peaks_dist_to_TSS_distribution;
         this.flag = true;
@@ -243,7 +242,7 @@ export default {
 .num-info {
   width: 95%;
   height: 100px;
-  background-color: #15a585;
+  background-color: #1d947e;
   margin-bottom: 2vh;
   padding: 0 3vw;
   font-size: 18px;
@@ -260,5 +259,9 @@ export default {
 }
 .col-md-4 {
   padding: 0 0 0 15px;
+}
+
+.statistic_diff_data {
+  font-size: 16px;
 }
 </style>

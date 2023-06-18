@@ -4,7 +4,7 @@
 </template>
   
 <script>
-import echarts from 'echarts'
+import * as echarts from 'echarts';
 
 export default {
     name: "piechart1",
@@ -47,7 +47,7 @@ export default {
                         avoidLabelOverlap: false,
                         top: '8%',
                         itemStyle: {
-                            borderRadius: 10,
+                            borderRadius: 5,
                             borderColor: '#fff',
                             borderWidth: 2
                         },
