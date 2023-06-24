@@ -7,40 +7,42 @@
         <el-collapse-item name="1">
           <!-- 展示面板title -->
           <template #title>
-            <el-icon><ChatDotRound /></el-icon>&nbsp; Contact us
+            <el-icon>
+              <ChatDotRound />
+            </el-icon>&nbsp; Contact us
           </template>
-          <el-descriptions title="Feel free to contac us if you have any questions or suggestions about ATACdb database.">
-          </el-descriptions>
-          <ul class="email">
-            <li>
-              <p><el-icon style="vertical-align: -15%;">
-                <Avatar />
-                </el-icon><b> Mr.Wei Shao</b></p>
+          <el-card class="box-card">
+            <el-descriptions
+              title="Feel free to contac us if you have any questions or suggestions about ATACdb database.">
+            </el-descriptions>
+            <ul class="email">
+              <li>
                 <p><el-icon style="vertical-align: -15%;">
-                  <Message />
-
-                </el-icon><b> Email：</b>upcsw2001@163.com</p>
-            </li>
-            <li>
-              <p><el-icon style="vertical-align: -15%;">
-                <Avatar />
-                </el-icon><b> Ms.Shuang Zhang</b></p>
+                    <Avatar />
+                  </el-icon><b> Mr.Wei Shao</b></p>
                 <p><el-icon style="vertical-align: -15%;">
-                  <Message />
-                </el-icon><b> Email：</b>2120210562@mail.nankai.edu.cn</p>
-            </li>
-            <li>
-              <p><el-icon style="vertical-align: -15%;">
-                <Avatar />
-                </el-icon><b> Dr.Wanwen Zeng</b></p>
+                    <Message />
+
+                  </el-icon><b> Email：</b>upcsw2001@163.com</p>
+              </li>
+              <li>
                 <p><el-icon style="vertical-align: -15%;">
-                  <Message />
-                </el-icon><b> Email：</b>wwzeng@nankai.edu.cn</p>
-            </li>
-
-
-          </ul>
-
+                    <Avatar />
+                  </el-icon><b> Ms.Shuang Zhang</b></p>
+                <p><el-icon style="vertical-align: -15%;">
+                    <Message />
+                  </el-icon><b> Email：</b>2120210562@mail.nankai.edu.cn</p>
+              </li>
+              <li>
+                <p><el-icon style="vertical-align: -15%;">
+                    <Avatar />
+                  </el-icon><b> Dr.Wanwen Zeng</b></p>
+                <p><el-icon style="vertical-align: -15%;">
+                    <Message />
+                  </el-icon><b> Email：</b>wwzeng@nankai.edu.cn</p>
+              </li>
+            </ul>
+          </el-card>
         </el-collapse-item>
       </el-collapse>
     </div>
@@ -57,8 +59,6 @@
             <div class="text item">2023-05 Provided a demo of ATAC-seq dataset analysis.</div>
             <div class="text item">2023-04 Version 1.0 of the database is launched.</div>
           </el-card>
-
-
         </el-collapse-item>
       </el-collapse>
     </div>
@@ -81,7 +81,8 @@ li {
 
 .item {
   padding: 18px 0;
-}</style>
+}
+</style>
 
 <script>
 

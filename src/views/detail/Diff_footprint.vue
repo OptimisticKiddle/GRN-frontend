@@ -447,7 +447,7 @@ export default {
     // 是否显示对应列的筛选滑块
     openRange(e) {
       this.showRange[e.currentTarget.dataset.id] = true
-      console.log(this.showRange);
+      // console.log(this.showRange);
     },
     // 滑动滑块后，重新过滤
     rangeFilter(val, min, max) {

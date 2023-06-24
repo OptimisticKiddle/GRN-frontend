@@ -19,6 +19,10 @@
   * 	Template Style 
   *
   * ======================================================= */
+
+html {
+  background: rgb(237, 247, 247);
+}
 body {
   /* font-family: "Raleway", Arial, sans-serif; */
   font-weight: 400;

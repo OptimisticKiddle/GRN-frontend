@@ -17,18 +17,18 @@ const routes = [
     children: [
       {
         path: '/home',
-        name: 'home',
+        name: 'Home',
         component: home
       },
       {
         path: '/statistics',
-        name: 'statistics',
+        name: 'Statistics',
         meta:{keepAlive: true}, // 是否缓存组件
         component: statistics
       },
       {
         path: '/search',
-        name: 'search',
+        name: 'Search',
         meta:{keepAlive: true}, // 是否缓存组件
         component: search,
         
@@ -78,22 +78,22 @@ const routes = [
       },
       {
         path: '/download',
-        name: 'download',
+        name: 'Download',
         component: () => import("@/views/download"),
       },
       {
         path: '/tutorial',
-        name: 'tutorial',
+        name: 'Tutorial',
         component: () => import("@/views/tutorial"),
       },
       {
         path: '/help',
-        name: 'help',
+        name: 'Help',
         component: () => import("@/views/help"),
       },
       {
         path: '/about',
-        name: 'about',
+        name: 'About',
         component: () => import("@/views/about"),
       }
     ]

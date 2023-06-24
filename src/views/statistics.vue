@@ -25,7 +25,7 @@
     </el-tabs>
 
     <!-- 2--第二部分 Statistics of diff data -->
-    <el-collapse v-model="activeNames" >
+    <el-collapse v-model="activeNames">
       <el-collapse-item name="1" style="margin: 1% 0;">
 
         <template #title>
@@ -33,22 +33,22 @@
             <Menu />
           </el-icon>&nbsp Statistics of diff data
         </template>
-          <el-descriptions  title="" :column="2" :size="size" border style="padding: 0 2vw;">
-            <el-descriptions-item label="diff peaks number :" width="5vw" label-align="left">
-              {{diff_data.diff_peaks_num }}
-            </el-descriptions-item>
-            <el-descriptions-item label="diff motif number :" width="5vw" label-align="left">{{
-              diff_data.diff_motif_num }}</el-descriptions-item>
-            <el-descriptions-item label="diff GO enrichment number :" width="5vw" label-align="left">{{
-              diff_data.diff_GO_enrich_num }}</el-descriptions-item>
-            <el-descriptions-item label="diff KEGG enrichment number :" width="5vw" label-align="left">{{
-              diff_data.diff_KEGG_enrich_num }}</el-descriptions-item>
-            <el-descriptions-item label="diff footprint number :" width="5vw" label-align="left">{{
-              diff_data.diff_footprint_num }}</el-descriptions-item>
-          </el-descriptions>
+        <el-descriptions title="" :column="2" :size="size" border style="padding: 0 2vw;">
+          <el-descriptions-item label="diff peaks number :" width="5vw" label-align="left">
+            {{ diff_data.diff_peaks_num }}
+          </el-descriptions-item>
+          <el-descriptions-item label="diff motif number :" width="5vw" label-align="left">{{
+            diff_data.diff_motif_num }}</el-descriptions-item>
+          <el-descriptions-item label="diff GO enrichment number :" width="5vw" label-align="left">{{
+            diff_data.diff_GO_enrich_num }}</el-descriptions-item>
+          <el-descriptions-item label="diff KEGG enrichment number :" width="5vw" label-align="left">{{
+            diff_data.diff_KEGG_enrich_num }}</el-descriptions-item>
+          <el-descriptions-item label="diff footprint number :" width="5vw" label-align="left">{{
+            diff_data.diff_footprint_num }}</el-descriptions-item>
+        </el-descriptions>
       </el-collapse-item>
-    
-    <!-- 3--中间的两个饼图 -->
+
+      <!-- 3--中间的两个饼图 -->
       <el-collapse-item name="2">
         <!-- 展示面板title -->
         <template #title>
@@ -85,70 +85,70 @@
 
 
       </el-collapse-item>
-   
-    <!-- 3--下面的3个图展示 -->
-    <div style="margin: 1% 0;">
-      
+
+      <!-- 3--下面的3个图展示 -->
+      <div style="margin: 1% 0;">
+
         <el-collapse-item name="3">
           <!-- 展示面板title -->
           <template #title>
             <el-icon>
               <Picture />
-            </el-icon>&nbsp; Diff peak site distribution 
+            </el-icon>&nbsp; Diff peak site distribution
           </template>
 
 
           <!-- 左饼图 -->
 
-          <section class="col-md-4  panel panel-tertiary"  data-portlet-item>
+          <section class="col-md-4  panel panel-tertiary" data-portlet-item>
             <header class="panel-heading" style="position: relative;">
               <span style="font-size: 16px;" class="panel-title">Regional distribution of diff peak</span>
               <sup><span data-html="true" data-toggle="tooltip" data-placement="right"
                   title="Regional distribution statistics of all differential peak sites in the data set"><i
                     class="ti-info-alt" style="font-size: 70%"> </i>
                 </span></sup>
-              
+
             </header>
             <div class="panel-body">
-            <piechart3 v-if="flag" :info="diff_peaks_num_in_struct"></piechart3>
-          </div>
+              <piechart3 v-if="flag" :info="diff_peaks_num_in_struct"></piechart3>
+            </div>
           </section>
-          
+
           <!-- 右直方图 -->
-          <section class="col-md-8  panel panel-tertiary"  data-portlet-item>
+          <section class="col-md-8  panel panel-tertiary" data-portlet-item>
             <header class="panel-heading" style="position: relative;">
               <span style="font-size: 16px;" class="panel-title">Distribution of distance between diff peak and TSS</span>
               <sup><span data-html="true" data-toggle="tooltip" data-placement="right"
                   title="The distance distribution of all differential peak sites from the nearest TSS in this dataset"><i
                     class="ti-info-alt" style="font-size: 70%"> </i>
                 </span></sup>
-              
+
             </header>
             <div class="panel-body">
-            <barchart1 v-if="flag" :info="diff_peaks_dist_to_TSS_distribution"></barchart1>
-          </div>
+              <barchart1 v-if="flag" :info="diff_peaks_dist_to_TSS_distribution"></barchart1>
+            </div>
           </section>
           <!-- 下直方图 -->
-          <section class="col-md-12  panel panel-tertiary"  data-portlet-item>
+          <section class="col-md-12  panel panel-tertiary" data-portlet-item>
             <header class="panel-heading" style="position: relative;">
               <span style="font-size: 16px;" class="panel-title">Distribution of diff peaks on chromosomes</span>
               <sup><span data-html="true" data-toggle="tooltip" data-placement="right"
                   title="The distribution of all differential peak sites on different chromosomes in this dataset"><i
                     class="ti-info-alt" style="font-size: 70%"> </i>
                 </span></sup>
-              
+
             </header>
             <div class="panel-body">
-            <barchart2 v-if="flag" :info="diff_peaks_num_in_chrs"></barchart2>
-          </div>
+              <barchart2 v-if="flag" :info="diff_peaks_num_in_chrs"></barchart2>
+            </div>
           </section>
-          
-          
+
+
 
         </el-collapse-item>
-      
-    </div>
-</el-collapse>
+
+      </div>
+    </el-collapse>
 
 
 
@@ -183,13 +183,13 @@ import barchart2 from "@/components/charts/barchart2.vue"
 export default {
   name: "statistics",
   components: {
-    piechart1,piechart2,piechart3,barchart1,barchart2
+    piechart1, piechart2, piechart3, barchart1, barchart2
 
   },
   data() {
     return {
       size: 'large',
-      activeNames: ['1', '2','3'],
+      activeNames: ['1', '2', '3'],
 
       statistics: {},
       diff_data: {},
@@ -207,6 +207,10 @@ export default {
   },
   methods: {
     load() {
+      const loadingInstance = this.$loading({
+        lock: true,
+        background: 'rgba(255,255,255,0.8)'
+      })
       request.get("/get_statistics_info").then(res => {
 
         this.statistics = res.statistics;
@@ -218,6 +222,7 @@ export default {
         this.diff_peaks_num_in_chrs = res.diff_peaks_num_in_chrs;
         this.diff_peaks_dist_to_TSS_distribution = res.diff_peaks_dist_to_TSS_distribution;
         this.flag = true;
+        loadingInstance.close()
       })
 
 
@@ -257,6 +262,7 @@ export default {
   margin: 0;
   margin-top: 15px;
 }
+
 .col-md-4 {
   padding: 0 0 0 15px;
 }

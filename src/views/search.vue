@@ -157,7 +157,10 @@ export default {
 
         },
         load() {
-
+            const loadingInstance = this.$loading({
+                lock: true,
+                background: 'rgba(255,255,255,0.8)'
+            })
             request.get("/get_datasource_enum",
             ).then(res => {
                 this.datasourceList = res.data;
@@ -168,13 +171,14 @@ export default {
             })
             request.post("/get_overall_data",
                 {
-
                     filter: this.filter,
                     paging: this.paging
 
                 }).then(res => {
                     this.tableData = res.data;
                     this.total = res.records_sum;
+                    loadingInstance.close()
+
                 })
 
         },
@@ -182,10 +186,7 @@ export default {
             request.post("/get_overall_data",
                 {
                     filter: this.filter,
-                    paging: {
-                        "start": 0, //起始数据点（分页）
-                        "length": 10
-                    }
+                    paging: this.paging
                 }).then(res => {
 
                     this.tableData = res.data;

@@ -1,6 +1,6 @@
 
 /* CSS实现隐藏滚动条但是可以滚动 ”WebKit” 即指代使用Webkit内核的浏览器(Safari、Chrome、iPhone、iPad、Android等)*/
-html, body {overflow:auto;margin: 0;}
+html, body {margin: 0;}
 body::-webkit-scrollbar {
   display:none
 }

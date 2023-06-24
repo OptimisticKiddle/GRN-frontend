@@ -3,17 +3,14 @@
   <div style="width: 95%;margin: 2% auto;">
     <!-- 展示面板 -->
     <div class="col-md-12" data-plugin-portlet>
-      <el-collapse v-model="activeNames">
+      <el-collapse v-model="activeNames" accordion>
         <el-collapse-item name="1">
           <!-- 展示面板title -->
           <template #title>
-            <i class="ti-layers"></i>&nbsp; The documentation of xxxxx <sup><span data-html="true" data-toggle="tooltip"
-                data-placement="right"
-                title="<div align='left'> The meaning of columns is explained in the HELP page.</div>"><i
-                  class="ti-info-alt" style="font-size: 70%"> </i></span></sup>
+            <i class="ti-layers"></i>&nbsp; The documentation of xxxxx 
           </template>
           <el-collapse v-model="activeName" accordion>
-            <el-collapse-item title="Home page" name="1">
+            <el-collapse-item class="sub-item" title="Home page" name="1">
               <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
               <div>在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</div>
             </el-collapse-item>
@@ -39,8 +36,8 @@
       </el-collapse>
     </div>
     <div class="col-md-12" data-plugin-portlet style="margin-top: 2%;">
-      <el-collapse v-model="activeNames">
-        <el-collapse-item name="1">
+      <el-collapse v-model="activeNames" accordion>
+        <el-collapse-item name="2">
           <!-- 展示面板title -->
           <template #title>
             <i class="ti-layers"></i>&nbsp; Results <sup><span data-html="true" data-toggle="tooltip"
@@ -92,18 +89,23 @@
   </el-backtop>
 </template>
 
-<style></style>
+
 
 <script>
-
 export default {
   name: "help",
   data() {
     return {
-      activeNames: ['1'],
+      activeNames: ['1','2'],
+      activeName: ['1'],
+
     }
   }
 }
-
-
 </script>
+<style scoped>
+.sub-item__header {
+  height: 2vh !important;
+  font-size: 16px !important;
+}
+</style>

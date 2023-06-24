@@ -88,8 +88,7 @@
 
                     <!-- 表格展示 -->
                     <el-table :data="tableData" border stripe table-layout="auto" highlight-current-row ref="multipleTable"
-                        @row-click="rowClick" header-cell-class-name="header-cell-class-name"
-                        style="color: black;margin-top: 20px;">
+                        header-cell-class-name="header-cell-class-name" style="color: black;margin-top: 20px;">
                         <!-- prop是表头属性名 label是展示的列名 宽度不写就是自适应-->
 
                         <el-table-column prop="id" label="ID" align="center" />
@@ -157,18 +156,34 @@ import downloadFile from "@/utils/download";
 
 export default {
     name: 'download',
-    components: {
+    data() {
+        return {
+
+            currentPage: 1,
+            total: 0,
+            pageSize: 10,
+            datasourceList: [],
+            methodList: [],
+            activeNames: ['1', '2'],
+            globalID: 1,
+            timer: '',
 
 
+            tableData: [],
+            filter: {},
+            paging: {
+                "start": 0, //起始数据点（分页）
+                "length": 10
+            }
+        };
     },
 
-
     methods: {
-        handleClick() {
-
-        },
         load() {
-
+            const loadingInstance = this.$loading({
+                lock: true,
+                background: 'rgba(255,255,255,0.8)'
+            })
             // 无需方法筛选
             request.get("/get_datasource_enum",
             ).then(res => {
@@ -178,8 +193,6 @@ export default {
             ).then(res => {
                 this.methodList = res.data;
             })
-
-
             request.post("/get_overall_data",
                 {
 
@@ -189,7 +202,7 @@ export default {
                 }).then(res => {
                     this.tableData = res.data;
                     this.total = res.records_sum;
-
+                    loadingInstance.close()
                 })
 
         },
@@ -197,12 +210,8 @@ export default {
             request.post("/get_overall_data",
                 {
                     filter: this.filter,
-                    paging: {
-                        "start": 0, //起始数据点（分页）
-                        "length": 10
-                    }
+                    paging: this.paging
                 }).then(res => {
-
                     this.tableData = res.data;
                     this.total = res.records_sum;
                 })
@@ -210,19 +219,15 @@ export default {
         onReset() {
             this.filter = {}
         },
-
-
         handleSizeChange(val) {   //改变当前每页的个数触发
             this.pageSize = val
             this.paging.length = val
             this.load();
         },
         handleCurrentChange(val) {   //改变当前页码触发
-
             this.currentPage = val
             this.paging.start = (val - 1) * this.paging.length
             this.load();
-
         },
 
         // 下载NarrowPeaks函数
@@ -252,37 +257,6 @@ export default {
             let fileName = `id-${id}_${pb_gene}_${celline}_diff_footprint.csv`
             downloadFile(href, fileName)
         },
-    },
-    watch: {
-       
-    },
-
-    data() {
-        return {
-
-            currentPage: 1,
-            total: 0,
-            pageSize: 10,
-            datasourceList: [],
-            methodList: [],
-            activeNames: ['1', '2'],
-            globalID: 1,
-            timer: '',
-
-
-            tableData: [],
-            filter: {},
-
-
-            paging: {
-                "start": 0, //起始数据点（分页）
-                "length": 10
-            }
-
-
-        };
-    },
-    computed: {
     },
     created() {
         this.load();
