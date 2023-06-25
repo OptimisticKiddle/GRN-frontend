@@ -18,7 +18,7 @@
                         <div class="formRow1">
 
                             <el-form-item label="ID :">
-                                <el-input v-model="filter.id" clearable
+                                <el-input v-model="filterId" clearable
                                     style="width: 86px;"></el-input>
                             </el-form-item>
                             <el-form-item label="Pb_gene :">
@@ -31,8 +31,8 @@
                             </el-form-item>
 
                             <el-form-item label="n_sample range :" style="margin-left: 2vw;">
-                                <el-input v-model="filter.n_sample_greater" style="width: 80px;"></el-input>&nbsp-&nbsp
-                                <el-input v-model="filter.n_sample_less" style="width: 80px;"></el-input>
+                                <el-input v-model="n_sample_greater" style="width: 80px;"></el-input>&nbsp-&nbsp
+                                <el-input v-model="n_sample_less" style="width: 80px;"></el-input>
                             </el-form-item>
                         </div>
                         <div class="formRow2">
@@ -150,7 +150,36 @@ export default {
         detail
 
     },
+    data() {
+        return {
+            currentPage: 1,
+            total: 0,
+            pageSize: 10,
 
+            datasourceList: [],
+            methodList: [],
+            activeNames: ['1', '2'],
+            timer: '',
+
+            // 页面传输参数
+            globalID: 1,
+            globalDataset:{
+                pb_gene: '',
+                cell_line: ''
+            },
+
+            tableData: [],
+            filter: {},
+            filterId: null,
+            n_sample_greater: null,
+            n_sample_less: null,
+
+            paging: {
+                "start": 0, //起始数据点（分页）
+                "length": 10
+            }
+        };
+    },
 
     methods: {
         handleClick() {
@@ -183,6 +212,10 @@ export default {
 
         },
         onSubmit() {
+            this.filter.id = !Number(this.filterId) ? null : Number(this.filterId);
+            this.filter.n_sample_greater = !Number(this.n_sample_greater) ? null : Number(this.n_sample_greater);
+            this.filter.n_sample_less = !Number(this.n_sample_less) ? null : Number(this.n_sample_less);
+
             request.post("/get_overall_data",
                 {
                     filter: this.filter,
@@ -216,19 +249,6 @@ export default {
             this.load();
 
         },
-        /*  跳转到detail页面的函数
-        goDetail(row) {
-             const id = row.id;
-             // setTimeout(() => {
-             //     bus.emit('ID', id)
- 
-             // }, 100)
-             sessionStorage.setItem('dbID', JSON.stringify(id))
-             // this.$router.push(`detail/${id}`)
-             this.$router.replace({ name: "detail" })
- 
- 
-         }, */
         //  选中表格某一行,对应id存储到globalID的函数
         rowClick(row, column) {
             this.globalID = row.id;
@@ -251,38 +271,6 @@ export default {
     }
   },
 
-    data() {
-        return {
-            currentPage: 1,
-            total: 0,
-            pageSize: 10,
-
-            datasourceList: [],
-            methodList: [],
-            activeNames: ['1', '2'],
-            timer: '',
-
-            // 页面传输参数
-            globalID: 1,
-            globalDataset:{
-                pb_gene: '',
-                cell_line: ''
-            },
-
-            tableData: [],
-            filter: {},
-
-
-            paging: {
-                "start": 0, //起始数据点（分页）
-                "length": 10
-            }
-
-
-        };
-    },
-    computed: {
-    },
     created() {
         this.load();
         // sessionStorage.setItem('dbID', ' ')

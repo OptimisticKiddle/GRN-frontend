@@ -146,7 +146,7 @@
 
           <el-table-column prop="gene_chr" label="Gene Chr" align="center" width="110px">
             <template #header>
-              Gene Chr<el-input v-model.trim="filter.gene_chr" size="small" @keyup="onSubmit"></el-input>
+              Gene Chr<el-input v-model.trim="genechr" size="small" @keyup="onSubmit"></el-input>
             </template>
           </el-table-column>
           <el-table-column prop="gene_start" label="Gene Start" :sortable="'custom'" align="center" width="120px">
@@ -262,6 +262,7 @@ export default {
 
       tableData: [],
       filter: {},
+      genechr: null,
 
       seq: {},
       paging: {
@@ -290,6 +291,7 @@ export default {
         })
     },
     onSubmit() {
+      this.filter.gene_chr = !Number(this.genechr) ? null : Number(this.genechr);
       request.post("/get_ctrl_peak_data",
         {
           id: this.dbID,
