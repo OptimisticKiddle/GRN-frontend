@@ -50,7 +50,7 @@
                   </template>
                   <div v-if="this.showRange.protection_score_ctrl" class="slider-demo-block">
                     <el-slider range :min="range.protection_score_ctrl_min" :max="range.protection_score_ctrl_max"
-                    :step="(range.protection_score_ctrl_max-range.protection_score_ctrl_min)/10"
+                    :step="(range.protection_score_ctrl_max-range.protection_score_ctrl_min)/100"
                       @change="rangeFilter($event, Object.keys(this.range)[2], Object.keys(this.range)[3])" />
                   </div>
                 </el-popover>
@@ -68,7 +68,7 @@
                   </template>
                   <div v-if="this.showRange.protection_score_treat" class="slider-demo-block">
                     <el-slider range :min="range.protection_score_treat_min" :max="range.protection_score_treat_max"
-                      :step="(range.protection_score_treat_max-range.protection_score_treat_min)/10"
+                      :step="(range.protection_score_treat_max-range.protection_score_treat_min)/100"
                       @change="rangeFilter($event, Object.keys(this.range)[4], Object.keys(this.range)[5])" />
                   </div>
                 </el-popover>
@@ -85,7 +85,7 @@
                   </template>
                   <div v-if="this.showRange.tc_ctrl" class="slider-demo-block">
                     <el-slider range :min="range.tc_ctrl_min" :max="range.tc_ctrl_max"
-                    :step="(range.tc_ctrl_max-range.tc_ctrl_min)/10"
+                    :step="(range.tc_ctrl_max-range.tc_ctrl_min)/100"
 
                       @change="rangeFilter($event, Object.keys(this.range)[6], Object.keys(this.range)[7])" />
                   </div>
@@ -103,7 +103,7 @@
                   </template>
                   <div v-if="this.showRange.tc_treat" class="slider-demo-block">
                     <el-slider range :min="range.tc_treat_min" :max="range.tc_treat_max"
-                    :step="(range.tc_treat_max-range.tc_treat_min)/10"
+                    :step="(range.tc_treat_max-range.tc_treat_min)/100"
 
                       @change="rangeFilter($event, Object.keys(this.range)[8], Object.keys(this.range)[9])" />
                   </div>
@@ -121,7 +121,7 @@
                   </template>
                   <div v-if="this.showRange.tf_activity" class="slider-demo-block">
                     <el-slider range :min="range.tf_activity_min" :max="range.tf_activity_max"
-                    :step="(range.tf_activity_max-range.tf_activity_min)/10"
+                    :step="(range.tf_activity_max-range.tf_activity_min)/100"
 
                       @change="rangeFilter($event, Object.keys(this.range)[10], Object.keys(this.range)[11])" />
                   </div>
@@ -139,7 +139,7 @@
                   </template>
                   <div v-if="this.showRange.z_score" class="slider-demo-block">
                     <el-slider range :min="range.z_score_min" :max="range.z_score_max"
-                    :step="(range.z_score_max-range.z_score_min)/10"
+                    :step="(range.z_score_max-range.z_score_min)/100"
 
                       @change="rangeFilter($event, Object.keys(this.range)[12], Object.keys(this.range)[13])" />
                   </div>
@@ -157,7 +157,7 @@
                   </template>
                   <div v-if="this.showRange.p_value" class="slider-demo-block">
                     <el-slider range :min="range.p_value_min" :max="range.p_value_max"
-                    :step="(range.p_value_max-range.p_value_min)/10"
+                    :step="(range.p_value_max-range.p_value_min)/100"
 
                       @change="rangeFilter($event, Object.keys(this.range)[14], Object.keys(this.range)[15])" />
                   </div>

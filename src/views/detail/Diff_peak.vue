@@ -137,7 +137,7 @@
                 </template>
                 <div v-if="this.showRange.p_value" class="slider-demo-block">
                   <el-slider range :min="range.p_value_min" :max="range.p_value_max"
-                  :step="(range.p_value_max-range.p_value_min)/10"
+                  :step="(range.p_value_max-range.p_value_min)/100"
                     @change="rangeFilter($event, Object.keys(this.range)[14], Object.keys(this.range)[15])" />
                 </div>
               </el-popover>
@@ -154,7 +154,7 @@
                 </template>
                 <div v-if="this.showRange.FDR" class="slider-demo-block">
                   <el-slider range :min="range.FDR_min" :max="range.FDR_max"
-                  :step="(range.FDR_max-range.FDR_min)/10"
+                  :step="(range.FDR_max-range.FDR_min)/100"
                     @change="rangeFilter($event, Object.keys(this.range)[16], Object.keys(this.range)[17])" />
                 </div>
               </el-popover>
