@@ -30,7 +30,7 @@
             <template #header>
               <el-popover placement="bottom" :width="100" trigger="hover">
                 <template #reference>
-                  <div @mouseenter="openRange" data-id="start">Start</div>
+                  <span @mouseenter="openRange" data-id="start">Start</span>
                 </template>
                 <div v-if="this.showRange.start" class="slider-demo-block">
                   <el-slider range :min="range.start_min" :max="range.start_max"
@@ -43,7 +43,7 @@
             <template #header>
               <el-popover placement="bottom" :width="120" trigger="hover">
                 <template #reference>
-                  <div @mouseenter="openRange" data-id="end">End</div>
+                  <span @mouseenter="openRange" data-id="end">End</span>
                 </template>
                 <div v-if="this.showRange.end" class="slider-demo-block">
                   <el-slider range :min="range.end_min" :max="range.end_max"
@@ -56,7 +56,7 @@
             <template #header>
               <el-popover placement="bottom" :width="120" trigger="hover">
                 <template #reference>
-                  <div @mouseenter="openRange" data-id="width">Width</div>
+                  <span @mouseenter="openRange" data-id="width">Width</span>
                 </template>
                 <div v-if="this.showRange.width" class="slider-demo-block">
                   <el-slider range :min="range.width_min" :max="range.width_max"
@@ -69,7 +69,7 @@
             <template #header>
               <el-popover placement="bottom" :width="120" trigger="hover">
                 <template #reference>
-                  <div @mouseenter="openRange" data-id="conc">Conc</div>
+                  <span @mouseenter="openRange" data-id="conc">Conc</span>
                 </template>
                 <div v-if="this.showRange.conc" class="slider-demo-block">
                   <el-slider range :min="range.conc_min" :max="range.conc_max"
@@ -85,7 +85,7 @@
             <template #header>
               <el-popover placement="bottom" :width="120" trigger="hover">
                 <template #reference>
-                  <div @mouseenter="openRange" data-id="conc_ctrl">Conc Ctrl</div>
+                  <span @mouseenter="openRange" data-id="conc_ctrl">Conc Ctrl</span>
                 </template>
                 <div v-if="this.showRange.conc_ctrl" class="slider-demo-block">
                   <el-slider range :min="range.conc_ctrl_min" :max="range.conc_ctrl_max"
@@ -101,7 +101,7 @@
             <template #header>
               <el-popover placement="bottom" :width="120" trigger="hover">
                 <template #reference>
-                  <div @mouseenter="openRange" data-id="conc_treat">Conc Treat</div>
+                  <span @mouseenter="openRange" data-id="conc_treat">Conc Treat</span>
                 </template>
                 <div v-if="this.showRange.conc_treat" class="slider-demo-block">
                   <el-slider range :min="range.conc_treat_min" :max="range.conc_treat_max"
@@ -117,7 +117,7 @@
             <template #header>
               <el-popover placement="bottom" :width="120" trigger="hover">
                 <template #reference>
-                  <div @mouseenter="openRange" data-id="fold">Fold</div>
+                  <span @mouseenter="openRange" data-id="fold">Fold</span>
                 </template>
                 <div v-if="this.showRange.fold" class="slider-demo-block">
                   <el-slider range :min="range.fold_min" :max="range.fold_max"
@@ -133,7 +133,7 @@
             <template #header>
               <el-popover placement="bottom" :width="120" trigger="hover">
                 <template #reference>
-                  <div @mouseenter="openRange" data-id="p_value">P.Value</div>
+                  <span @mouseenter="openRange" data-id="p_value">P.Value</span>
                 </template>
                 <div v-if="this.showRange.p_value" class="slider-demo-block">
                   <el-slider range :min="range.p_value_min" :max="range.p_value_max"
@@ -150,7 +150,7 @@
             <template #header>
               <el-popover placement="bottom" :width="120" trigger="hover">
                 <template #reference>
-                  <div @mouseenter="openRange" data-id="FDR">FDR</div>
+                  <span @mouseenter="openRange" data-id="FDR">FDR</span>
                 </template>
                 <div v-if="this.showRange.FDR" class="slider-demo-block">
                   <el-slider range :min="range.FDR_min" :max="range.FDR_max"
@@ -179,7 +179,7 @@
             <template #header>
               <el-popover placement="bottom" :width="120" trigger="hover">
                 <template #reference>
-                  <div @mouseenter="openRange" data-id="gene_start">Gene Start</div>
+                  <span @mouseenter="openRange" data-id="gene_start">Gene Start</span>
                 </template>
                 <div v-if="this.showRange.gene_start" class="slider-demo-block">
                   <el-slider range :min="range.gene_start_min" :max="range.gene_start_max"
@@ -192,7 +192,7 @@
             <template #header>
               <el-popover placement="bottom" :width="120" trigger="hover">
                 <template #reference>
-                  <div @mouseenter="openRange" data-id="gene_end">Gene End</div>
+                  <span @mouseenter="openRange" data-id="gene_end">Gene End</span>
                 </template>
                 <div v-if="this.showRange.gene_end" class="slider-demo-block">
                   <el-slider range :min="range.gene_end_min" :max="range.gene_end_max"
@@ -201,11 +201,11 @@
               </el-popover>
             </template>
           </el-table-column>
-          <el-table-column prop="gene_len" label="Gene Length" :sortable="'custom'" align="center" width="120px">
+          <el-table-column prop="gene_len" label="Gene Length" :sortable="'custom'" align="center" width="140px">
             <template #header>
               <el-popover placement="bottom" :width="120" trigger="hover">
                 <template #reference>
-                  <div @mouseenter="openRange" data-id="gene_len">Gene Length</div>
+                  <span @mouseenter="openRange" data-id="gene_len">Gene Length</span>
                 </template>
                 <div v-if="this.showRange.gene_len" class="slider-demo-block">
                   <el-slider range :min="range.gene_len_min" :max="range.gene_len_max"
@@ -237,7 +237,7 @@
             <template #header>
               <el-popover placement="bottom" :width="120" trigger="hover">
                 <template #reference>
-                  <div @mouseenter="openRange" data-id="distance_to_tss">Dis to TSS</div>
+                  <span @mouseenter="openRange" data-id="distance_to_tss">Dis to TSS</span>
                 </template>
                 <div v-if="this.showRange.distance_to_tss" class="slider-demo-block">
                   <el-slider range :min="range.distance_to_tss_min" :max="range.distance_to_tss_max"

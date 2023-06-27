@@ -32,7 +32,7 @@
               <template #header>
                 <el-popover placement="bottom" :width="100" trigger="hover">
                   <template #reference>
-                    <div @mouseenter="openRange" data-id="num">Num</div>
+                    <span @mouseenter="openRange" data-id="num">Num</span>
                   </template>
                   <div v-if="this.showRange.num" class="slider-demo-block">
                     <el-slider range :min="range.num_min" :max="range.num_max"
@@ -42,11 +42,11 @@
               </template>
             </el-table-column>
             <el-table-column prop="protection_score_ctrl" label="Protection Score Ctrl" :sortable="'custom'"
-              align="center" width="160px">
+              align="center" width="180px">
               <template #header>
                 <el-popover placement="bottom" :width="120" trigger="hover">
                   <template #reference>
-                    <div @mouseenter="openRange" data-id="protection_score_ctrl">Protection Score Ctrl</div>
+                    <span @mouseenter="openRange" data-id="protection_score_ctrl">Protection Score Ctrl</span>
                   </template>
                   <div v-if="this.showRange.protection_score_ctrl" class="slider-demo-block">
                     <el-slider range :min="range.protection_score_ctrl_min" :max="range.protection_score_ctrl_max"
@@ -60,11 +60,11 @@
               </template>
             </el-table-column>
             <el-table-column prop="protection_score_treat" label="Protection Score Treat" :sortable="'custom'"
-              align="center" width="160px">
+              align="center" width="180px">
               <template #header>
                 <el-popover placement="bottom" :width="120" trigger="hover">
                   <template #reference>
-                    <div @mouseenter="openRange" data-id="protection_score_treat">Protection Score Treat</div>
+                    <span @mouseenter="openRange" data-id="protection_score_treat">Protection Score Treat</span>
                   </template>
                   <div v-if="this.showRange.protection_score_treat" class="slider-demo-block">
                     <el-slider range :min="range.protection_score_treat_min" :max="range.protection_score_treat_max"
@@ -81,7 +81,7 @@
               <template #header>
                 <el-popover placement="bottom" :width="120" trigger="hover">
                   <template #reference>
-                    <div @mouseenter="openRange" data-id="tc_ctrl">TC Ctrl</div>
+                    <span @mouseenter="openRange" data-id="tc_ctrl">TC Ctrl</span>
                   </template>
                   <div v-if="this.showRange.tc_ctrl" class="slider-demo-block">
                     <el-slider range :min="range.tc_ctrl_min" :max="range.tc_ctrl_max"
@@ -99,7 +99,7 @@
               <template #header>
                 <el-popover placement="bottom" :width="120" trigger="hover">
                   <template #reference>
-                    <div @mouseenter="openRange" data-id="tc_treat">TC Treat</div>
+                    <span @mouseenter="openRange" data-id="tc_treat">TC Treat</span>
                   </template>
                   <div v-if="this.showRange.tc_treat" class="slider-demo-block">
                     <el-slider range :min="range.tc_treat_min" :max="range.tc_treat_max"
@@ -113,11 +113,11 @@
                 {{ scope.row.tc_treat > 0 ? scope.row.tc_treat.toFixed(4) : 0 }}
               </template>
             </el-table-column>
-            <el-table-column prop="tf_activity" label="TF Activity" :sortable="'custom'" align="center" width="100px">
+            <el-table-column prop="tf_activity" label="TF Activity" :sortable="'custom'" align="center" width="120px">
               <template #header>
                 <el-popover placement="bottom" :width="120" trigger="hover">
                   <template #reference>
-                    <div @mouseenter="openRange" data-id="tf_activity">TF Activity</div>
+                    <span @mouseenter="openRange" data-id="tf_activity">TF Activity</span>
                   </template>
                   <div v-if="this.showRange.tf_activity" class="slider-demo-block">
                     <el-slider range :min="range.tf_activity_min" :max="range.tf_activity_max"
@@ -135,7 +135,7 @@
               <template #header>
                 <el-popover placement="bottom" :width="120" trigger="hover">
                   <template #reference>
-                    <div @mouseenter="openRange" data-id="z_score">z.score</div>
+                    <span @mouseenter="openRange" data-id="z_score">z.score</span>
                   </template>
                   <div v-if="this.showRange.z_score" class="slider-demo-block">
                     <el-slider range :min="range.z_score_min" :max="range.z_score_max"
@@ -153,7 +153,7 @@
               <template #header>
                 <el-popover placement="bottom" :width="120" trigger="hover">
                   <template #reference>
-                    <div @mouseenter="openRange" data-id="p_value">p.value</div>
+                    <span @mouseenter="openRange" data-id="p_value">p.value</span>
                   </template>
                   <div v-if="this.showRange.p_value" class="slider-demo-block">
                     <el-slider range :min="range.p_value_min" :max="range.p_value_max"
