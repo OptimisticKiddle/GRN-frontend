@@ -1,4 +1,24 @@
 import axios from 'axios'
+import streamSaver from "streamsaver"
+
+export function fileDownloadHandle(url,name){
+  fetch(url).then(res=>{
+      const fileStream=streamSaver.createWriteStream(name,{
+          size:res.headers.get("content-length")
+      })
+      const readableStream=res.body;
+      if(window.WritableStream&&readableStream.pipeTo){
+          return readableStream.pipeTo(fileStream).then(()=> {
+
+          })
+      }
+      window.writer=fileStream.getWriter();
+      const reader=res.body.getReader();
+      const pump=()=>reader.read().then(res=>res.done? window.writer.close():window.writer.write(res.value).then(pump))
+      pump();
+  })
+}
+
 const downloadFile = (url, filename) =>
   axios
     .get(url, {

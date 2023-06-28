@@ -152,6 +152,7 @@
 
 import request from "@/utils/request";
 import downloadFile from "@/utils/download";
+import {fileDownloadHandle} from "@/utils/download";
 
 
 export default {
@@ -237,7 +238,7 @@ export default {
             let celline = row.celline;
             let href = `http://43.143.155.140/atac_db/${id}/narrowPeak/narrowPeaks.tar.gz`;
             let fileName = `id-${id}_${pb_gene}_${celline}_narrowPeaks.tar.gz`
-            downloadFile(href, fileName)
+            fileDownloadHandle(href, fileName)
         },
         // 下载DBA Obj函数
         dlDBA(row) {
@@ -246,7 +247,7 @@ export default {
             let celline = row.celline;
             let href = `http://43.143.155.140/atac_db/${id}/DBA/DBA_obj.tar.gz`;
             let fileName = `id-${id}_${pb_gene}_${celline}_DBA_obj.tar.gz`
-            downloadFile(href, fileName)
+            fileDownloadHandle(href, fileName)
         },
         // 下载Diff Footprint函数
         dlDiff(row) {
@@ -255,7 +256,7 @@ export default {
             let celline = row.celline;
             let href = `http://43.143.155.140/atac_db/${id}/csv/id-${id}_${pb_gene}_${celline}_diff_footprint.csv`;
             let fileName = `id-${id}_${pb_gene}_${celline}_diff_footprint.csv`
-            downloadFile(href, fileName)
+            fileDownloadHandle(href, fileName)
         },
     },
     created() {
