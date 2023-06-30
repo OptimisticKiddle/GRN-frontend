@@ -15,11 +15,7 @@
                     <div class="panel-body">
                         <!-- 第一个面板 body 文字 -->
                         <p >
-                            ATAC-seq, a high-throughput sequencing approach targeting open chromatin, provides an effective
-                            way to characterize the epigenetic landscape and identify potential cis-regulatory modules.
-                            Compared with other techniques, ATAC-seq has the advantages of small sample size, short sample
-                            preparation time, and high reliability. With its unparalleled advantages, ATAC-seq has rapidly
-                            become an effective method for studying open regulatory regions.
+                            In this tutorial, using ATAC-seq data with SMARCA4 gene knockdown in the BT869 cell line as an example, we show some downstream analysis of ATAC-seq data obtained from the GP-ATACdb pipeline. These include peaks annotation, differential peaks analysis, differential footprint analysis, etc.
                         </p>
                         <p >
                             The demo used in this tutorial can be downloaded from the <a href="http://43.143.155.140/atac_db/tutorial_demo.ipynb">IPython</a> notebook.

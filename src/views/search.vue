@@ -18,7 +18,7 @@
                         <div class="formRow1">
 
                             <el-form-item label="ID :">
-                                <el-input v-model="filterId" clearable
+                                <el-input v-model="filter.id" clearable
                                     style="width: 86px;"></el-input>
                             </el-form-item>
                             <el-form-item label="Pb_gene :">
@@ -31,8 +31,8 @@
                             </el-form-item>
 
                             <el-form-item label="n_sample range :" style="margin-left: 2vw;">
-                                <el-input v-model="n_sample_greater" style="width: 80px;"></el-input>&nbsp-&nbsp
-                                <el-input v-model="n_sample_less" style="width: 80px;"></el-input>
+                                <el-input v-model="filter.n_sample_greater" style="width: 80px;"></el-input>&nbsp-&nbsp
+                                <el-input v-model="filter.n_sample_less" style="width: 80px;"></el-input>
                             </el-form-item>
                         </div>
                         <div class="formRow2">
@@ -57,7 +57,8 @@
                         </div>
                         <div class="formRow3">
                             <el-form-item style="margin-left: -120px;">
-                                <el-button type="success" @click="onSubmit" style="width: 100px;font-weight: 700;">Submit</el-button>
+                                <el-button type="warning" @click="onExample" style="width: 100px;font-weight: 700;">Example</el-button>
+                                <el-button type="success" @click="onSubmit" style="margin-left: 100px;width: 100px;font-weight: 700;">Submit</el-button>
                                 <el-button @click="onReset" style="margin-left: 100px;width: 100px;font-weight: 700;">Reset</el-button>
                             </el-form-item>
                         </div>
@@ -211,10 +212,18 @@ export default {
                 })
 
         },
+        onExample() {
+            this.filter.pb_gene = 'SIK3';
+            this.filter.n_sample_greater = 4;
+            this.filter.n_sample_less = 12;
+            this.filter.method = 'shRNA';
+            this.filter.datasource = 'SRA';
+
+        },
         onSubmit() {
-            this.filter.id = !Number(this.filterId) ? null : Number(this.filterId);
-            this.filter.n_sample_greater = !Number(this.n_sample_greater) ? null : Number(this.n_sample_greater);
-            this.filter.n_sample_less = !Number(this.n_sample_less) ? null : Number(this.n_sample_less);
+            this.filter.id = !Number(this.filter.id) ? null : Number(this.filter.id);
+            this.filter.n_sample_greater = !Number(this.filter.n_sample_greater) ? null : Number(this.filter.n_sample_greater);
+            this.filter.n_sample_less = !Number(this.filter.n_sample_less) ? null : Number(this.filter.n_sample_less);
 
             request.post("/get_overall_data",
                 {

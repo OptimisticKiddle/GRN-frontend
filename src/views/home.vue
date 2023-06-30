@@ -10,7 +10,7 @@
 						<div class="gtco-container" style="display: flex;">
 
 							<div class="animate-box welcome-text" style="margin-top: 3rem;">
-								<h2 style='padding-left:50px; font-weight:bold;'>Welcome to ATACdb</h2>
+								<h2 style='padding-left:50px; font-weight:bold;'>Welcome to GP-ATACdb</h2>
 								<h4 style='padding-left:50px'>A database exploring the effects of genetic inheritance </h4>
 								<h4 style='padding-left:50px'>perturbations on human chromatin accessibility</h4>
 							</div>
@@ -50,12 +50,12 @@
 								<p>
 									To help investigate the effects of genetic perturbations on human chromatin
 									accessibility and related transcription factor regulatory networks, we have established
-									ATACdb, a comprehensive ATAC-seq database. Our goal is to provide researchers with a
+									GP-ATACdb, a comprehensive ATAC-seq database. Our goal is to provide researchers with a
 									publicly available resource on human chromatin accessibility and other data in the
 									context of different genetic genetic perturbations, helping to investigate the potential
 									effects of genetic perturbations on tissues or cells with different functions.
 								</p>
-								ATACdb has the following main functions:
+								GP-ATACdb has the following main functions:
 
 								<ol>
 									<li>To explore differential chromatin accessibility under different genetic
@@ -127,28 +127,27 @@
 							</el-icon>&nbsp;Reference articles
 						</template>
 						<section class="panel-body eq-height">
-
-
-
 							<blockquote style="font-size: 16px;">
-								<a target='_blank' href="https://doi.org/10.1093/nar/gkac1066">GPSAdb: a comprehensive web
-									resource for interactive exploration of genetic perturbation RNA-seq datasets.</a>
-								<small>Guo Shipeng,Xu Zhougeng,Dong Xiangjun, et al.<cite>Nucleic acids research.
-									</cite>2022;xxxxxxx606(7912):188-96.</small>
+								<a target='_blank' href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6329648/">Coupled single-cell CRISPR screening and epigenomic profiling reveals causal gene regulatory networks.</a>
+								<small>Rubin A J, Parker K R, Satpathy A T, et al.<cite>Cell,
+									</cite>2019, 176(1-2): 361-376. e17.</small>
 							</blockquote>
 
 							<blockquote style="font-size: 16px;">
-								<a target='_blank' href="https://doi.org/10.1093/nar/gkac859">HiChIPdb: a comprehensive
-									database of HiChIP regulatory interactions.</a>
-								<small>Zeng Wanwen,Liu Qiao,Yin Qijin, et al. <cite>Nucleic acids research.
-									</cite>2022;xxxxxx22(8):511-28.</small>
+								<a target='_blank' href="https://www.nature.com/articles/s41467-021-23213-w">High-throughput single-cell chromatin accessibility CRISPR screens enable unbiased identification of regulatory networks in cancer.</a>
+								<small>Pierce S E, Granja J M, Greenleaf W J. <cite>Nature Communications,
+									</cite>2021, 12(1): 2969.</small>
 							</blockquote>
 
 							<blockquote style="font-size: 16px;">
-								<a target='_blank' href="https://doi.org/10.1093/nar/gkaa943">ATACdb: a comprehensive human
-									chromatin accessibility database</a>
-								<small>Fan Wang, Xuefeng Bai, Yuezhu Wang, et al. <cite>Nucleic acids research.
-									</cite>2020;xxxxx597(7878):726-31.</small>
+								<a target='_blank' href="https://www.nature.com/articles/s43586-021-00093-4">High-content CRISPR screening.</a>
+								<small>Bock C, Datlinger P, Chardon F, et al.  <cite>Nature Reviews Methods Primers,
+									</cite>2022, 2(1): 8.</small>
+							</blockquote>
+							<blockquote style="font-size: 16px;">
+								<a target='_blank' href="https://www.nature.com/articles/s41587-021-00902-x">Profiling the genetic determinants of chromatin accessibility with scalable single-cell CRISPR screens.</a>
+								<small> Liscovitch-Brauer N, Montalbano A, Deng J, et al.<cite>Nature biotechnology,
+									</cite>2021, 39(10): 1270-1277.</small>
 							</blockquote>
 						</section>
 					</el-collapse-item>
@@ -179,13 +178,14 @@
 											</div>
 											<div class="timeline-panel">
 												<div class="timeline-heading">
-													<h4 style="font-size: 15px;" class="timeline-title">Add the gene and
-														GWAS
-														catalog annotation at different scales.</h4>
+													<h4 style="font-size: 15px;" class="timeline-title">Provided a
+														<router-link to="/tutorial">demo</router-link> 
+														of ATAC-seq dataset
+														analysis.</h4>
 													<small class="text-light"><el-icon>
 															<Clock />
 														</el-icon>
-														19 June
+														May
 														2023</small>
 												</div>
 											</div>
@@ -196,16 +196,12 @@
 											</div>
 											<div class="timeline-panel">
 												<div class="timeline-heading">
-													<h4 style="font-size: 15px;" class="timeline-title">Provided a
-														<router-link to="/tutorial">demo</router-link> 
-														<!-- <a href @click="toTutorial">demo</a> -->
-														of ATAC-seq dataset
-														analysis.
+													<h4 style="font-size: 15px;" class="timeline-title">Add the Statistics and Download module pages.
 													</h4>
 													<small class="text-light"><el-icon>
 															<Clock />
 														</el-icon>
-														May
+														April
 														2023</small>
 												</div>
 											</div>
