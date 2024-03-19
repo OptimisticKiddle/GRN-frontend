@@ -11,9 +11,9 @@
       <el-menu-item index="Home"><el-icon>
           <HomeFilled />
         </el-icon>Home</el-menu-item>
-      <el-menu-item index="Statistics"><el-icon>
+      <!-- <el-menu-item index="Statistics"><el-icon>
           <PieChart />
-        </el-icon>Statistics</el-menu-item>
+        </el-icon>Statistics</el-menu-item> -->
       <el-menu-item index="Search"><el-icon>
           <Search />
         </el-icon>Search</el-menu-item>
@@ -23,9 +23,9 @@
       <el-menu-item index="Tutorial"><el-icon>
           <Memo />
         </el-icon>Tutorial</el-menu-item>
-      <el-menu-item index="Help"><el-icon>
+      <!-- <el-menu-item index="Help"><el-icon>
           <QuestionFilled />
-        </el-icon>Help</el-menu-item>
+        </el-icon>Help</el-menu-item> -->
       <el-menu-item index="About"><el-icon>
           <Avatar />
         </el-icon>About</el-menu-item>

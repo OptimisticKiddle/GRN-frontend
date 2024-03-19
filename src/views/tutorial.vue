@@ -9,7 +9,7 @@
                     <template #title>
                         <i class="ti-layers"></i>&nbsp; A demo of ATAC-seq data analysis <sup><span data-html="true"
                                 data-toggle="tooltip" data-placement="right"
-                                title="<div align='left'> The meaning of columns is explained in the HELP page.</div>"><i
+                                title="The meaning of columns is explained in the HELP page.</div>"><i
                                     class="ti-info-alt" style="font-size: 70%"> </i></span></sup>
                     </template>
                     <div class="panel-body">

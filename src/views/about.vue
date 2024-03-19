@@ -56,9 +56,9 @@
             </el-icon>&nbsp;News and updates
           </template>
           <el-card class="box-card">
-            <div class="text item">2023-05 Provided a demo of ATAC-seq dataset analysis.</div>
-            <div class="text item">2023-04 Add the Statistics and Download module pages.</div>
-            <div class="text item">2023-04 Version 1.0 of the database is launched.</div>
+            <div class="text item">2023-02 Provided a demo of scATAC-seq dataset analysis.</div>
+            <div class="text item">2023-12 Add the Download module page.</div>
+            <div class="text item">2023-10 Version 1.0 of the database is launched.</div>
           </el-card>
         </el-collapse-item>
       </el-collapse>
