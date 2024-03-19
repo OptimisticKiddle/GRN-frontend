@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-bottom: 2%; overflow: hidden;">
+  <div style="margin-bottom: 2%;">
 
     <el-collapse v-model="activeNames">
       <el-collapse-item name="1">
@@ -10,7 +10,7 @@
                 style="font-size: 70%"> </i></span></sup>
         </template>
 
-        <div class="col-md-8" data-plugin-portlet>
+        <div class="col-md-12" data-plugin-portlet>
           <!-- 表格展示 -->
           <el-table :data="tableData" border stripe table-layout="auto" :cell-style="{ padding: '0px' }"
             ref="multipleTable" highlight-current-row header-cell-class-name="header-cell-class-name"
@@ -169,7 +169,7 @@
             </el-table-column>
 
           </el-table>
-          <div style="margin: 3vh auto;">
+          <div class="table-foot" style="margin: 3vh auto;">
             <!-- 下载 -->
             <el-button type="primary" plain @click="onDownload"><el-icon>
                 <Download />
@@ -183,33 +183,52 @@
           </div>
         </div>
         <!-- 第一张图 -->
-        <section class="col-md-4  panel panel-tertiary" id="tutorial-panel-1" data-portlet-item>
-          <header class="panel-heading" style="position: relative;">
-            <span style="font-size: 16px;" class="panel-title">Footprint Line Plot</span>
-            <sup><span data-html="true" data-toggle="tooltip" data-placement="right"
-                title="Comparison of activity difference between control group and experimental group under the same footprint"><i
-                  class="ti-info-alt" style="font-size: 70%"> </i>
-              </span></sup>
-            <a :href="`http://43.143.155.140/atac_db/${this.dbID}/footprint_lineplots/${this.motif_id}.png`"
-              :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_diff_footprint——${this.motif}.png`"
-              target="_blank" style="position: absolute;right: 2vw;"><el-button type="warning" size="small"
-                circle><el-icon>
-                  <Download />
-                </el-icon></el-button></a>
-          </header>
-          <div class="panel-body">
-
-            <img :src="`http://43.143.155.140/atac_db/${this.dbID}/footprint_lineplots/${this.motif_id}.png`" alt="">
-          </div>
-        </section>
+       
       </el-collapse-item>
     </el-collapse>
 
   </div>
-  <!-- 2--中间的两个点图 -->
+  <!-- 2--中间的一张图 -->
 
   <el-collapse v-model="activeNames">
     <el-collapse-item name="2">
+      <!-- 展示面板title -->
+      <template #title>
+        <el-icon>
+          <Picture />
+        </el-icon>&nbsp; Diff activity scores of TF
+      </template>
+
+
+      <!-- 两个点图展示 -->
+      <section class="col-md-12  panel panel-tertiary" data-portlet-item>
+        <header class="panel-heading" style="position: relative;">
+          <span style="font-size: 16px;" class="panel-title">Scatter Plot</span>
+          <sup><span data-html="true" data-toggle="tooltip" data-placement="right"
+              title="TF kinetic activity was shown between the two types of cells (ctrl, treat)"><i class="ti-info-alt"
+                style="font-size: 70%"> </i>
+            </span></sup>
+
+          <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`"
+            :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_differential_statistics.png`"
+            target="_blank" style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
+                <Download />
+              </el-icon></el-button></a>
+        </header>
+        <div class="panel-body twoimg">
+
+          <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" alt="">
+        </div>
+      </section>
+    
+
+
+    </el-collapse-item>
+  </el-collapse>
+  <div style="margin-bottom: 2%; overflow: hidden;"></div>
+  <!-- 3--下面的2张图展示 -->
+  <el-collapse v-model="activeNames">
+    <el-collapse-item name="3">
       <!-- 展示面板title -->
       <template #title>
         <el-icon>
@@ -261,86 +280,6 @@
 
     </el-collapse-item>
   </el-collapse>
-
-  <!-- 3--下面的3个图展示 -->
-  <div style="margin: 2% 0;">
-    <el-collapse v-model="activeNames">
-      <el-collapse-item name="3">
-        <!-- 展示面板title -->
-        <template #title>
-          <el-icon>
-            <Picture />
-          </el-icon>&nbsp; PPI Net
-        </template>
-
-
-        <!-- 下面三个图 -->
-
-        <section class="col-md-4  panel panel-tertiary" id="tutorial-panel-1" data-portlet-item>
-          <header class="panel-heading" style="position: relative;">
-            <span style="font-size: 16px;" class="panel-title">PPIN (STRINGdb)</span>
-            <sup><span data-html="true" data-toggle="tooltip" data-placement="right"
-                title="Draw a STRING network image of footprint related proteins."><i class="ti-info-alt"
-                  style="font-size: 70%"> </i>
-              </span></sup>
-            <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/PPIN.png`"
-              :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_PPIN.png`"
-              target="_blank" style="position: absolute;right: 2vw;"><el-button type="warning" size="small"
-                circle><el-icon>
-                  <Download />
-                </el-icon></el-button></a>
-          </header>
-          <div class="panel-body">
-
-            <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/PPIN.png`" alt="">
-          </div>
-        </section>
-        <section class="col-md-4  panel panel-tertiary" id="tutorial-panel-1" data-portlet-item>
-          <header class="panel-heading" style="position: relative;">
-            <span style="font-size: 16px;" class="panel-title">PPIN (DIY)</span>
-            <sup><span data-html="true" data-toggle="tooltip" data-placement="right"
-                title="Draw an interaction network diagram of footprint related proteins (DIY version)."><i
-                  class="ti-info-alt" style="font-size: 70%"> </i>
-              </span></sup>
-            <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/PPIN_diy.png`"
-              :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_PPIN_diy.png`"
-              target="_blank" style="position: absolute;right: 2vw;"><el-button type="warning" size="small"
-                circle><el-icon>
-                  <Download />
-                </el-icon></el-button></a>
-          </header>
-          <div class="panel-body">
-
-            <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/PPIN_diy.png`" alt="">
-          </div>
-        </section>
-        <div class="col-md-4">
-          <el-tabs type="border-card" class="demo-tabs ">
-            <el-tab-pane label="cluster1">
-              <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/PPIN_cluster1.png`" alt="">
-            </el-tab-pane>
-            <el-tab-pane label="cluster2">
-              <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/PPIN_cluster2.png`" alt="">
-            </el-tab-pane>
-            <el-tab-pane label="cluster3">
-              <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/PPIN_cluster3.png`" alt="">
-            </el-tab-pane>
-            <el-tab-pane label="cluster4">
-              <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/PPIN_cluster4.png`" alt="">
-            </el-tab-pane>
-            <el-tab-pane label="cluster5">
-              <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/PPIN_cluster5.png`" alt="">
-            </el-tab-pane>
-            <el-tab-pane label="cluster6">
-              <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/PPIN_cluster6.png`" alt="">
-            </el-tab-pane>
-
-          </el-tabs>
-        </div>
-
-      </el-collapse-item>
-    </el-collapse>
-  </div>
 </template>
 
 

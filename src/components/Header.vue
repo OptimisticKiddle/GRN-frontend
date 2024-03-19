@@ -65,6 +65,11 @@ export default {
   color: #fff !important;
   padding: 0 10px;
   /* font-size: larger; */
+  /* 文字不能被選中 */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 
 img {

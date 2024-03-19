@@ -42,17 +42,17 @@ const routes = [
               {
                 path: '/Total',
                 name: 'Total',
-                component: () => import("@/views/detail/Total.vue"),
+                component: () => import("@/views/detail/QC.vue"),
               },
               {
                 path: '/Diff_peak',
                 name: 'Diff_peak',
-                component: () => import("@/views/detail/Diff_peak.vue"),
+                component: () => import("@/views/detail/KO_gene_activity.vue"),
               },
               {
                 path: '/Diff_enrichment',
                 name: 'Diff_enrichment',
-                component: () => import("@/views/detail/Diff_enrichment.vue"),
+                component: () => import("@/views/detail/Gene_activity.vue"),
               },
               {
                 path: '/Diff_motif',
@@ -62,7 +62,7 @@ const routes = [
               {
                 path: '/Diff_footprint',
                 name: 'Diff_footprint',
-                component: () => import("@/views/detail/Diff_footprint.vue"),
+                component: () => import("@/views/detail/Dim_reduction_clustering.vue"),
               },
               {
                 path: '/Ctrl',

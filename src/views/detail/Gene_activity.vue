@@ -5,8 +5,8 @@
     <el-tabs type="border-card" class="demo-tabs ">
 
       <!--  GO_enrich  tab  -->
-      <el-tab-pane label="GO Enrich" class="">
-        <div class="col-md-8" data-plugin-portlet>
+      <el-tab-pane label="Control" class="">
+        <div class="col-md-12" data-plugin-portlet>
           <el-collapse v-model="activeNames">
             <el-collapse-item name="1">
               <!-- 展示面板title -->
@@ -53,7 +53,7 @@
                 <el-table-column prop="count" label="Count" :sortable="'custom'" align="center" width="100px" />
 
               </el-table>
-              <div style="margin: 3vh auto;">
+              <div class="table-foot" style="margin: 3vh auto;">
                 <!-- 下载 -->
                 <el-button type="primary" plain @click="onDownload1"><el-icon>
                     <Download />
@@ -72,7 +72,7 @@
         <!-- <div class="col-md-4">
             <img src="@/assets\plots\⑤_GO_enrich.png" alt="">
           </div> -->
-        <section class="col-md-4  panel panel-tertiary" id="tutorial-panel-1" data-portlet-item>
+        <!-- <section class="col-md-4  panel panel-tertiary" id="tutorial-panel-1" data-portlet-item>
           <header class="panel-heading" style="position: relative;">
             <span style="font-size: 16px;" class="panel-title">Enrich Plot</span>
             <sup><span data-html="true" data-toggle="tooltip" data-placement="right"
@@ -89,12 +89,12 @@
 
             <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/GO_enrichment.png`" alt="">
           </div>
-        </section>
+        </section> -->
 
       </el-tab-pane>
       <!--  KEGG_enrich  tab  -->
-      <el-tab-pane label="KEGG Enrich" class="">
-        <div class="col-md-8" data-plugin-portlet>
+      <el-tab-pane label="Treat" class="">
+        <div class="col-md-12" data-plugin-portlet>
           <el-collapse v-model="activeNames">
             <el-collapse-item name="1">
               <!-- 展示面板title -->
@@ -140,7 +140,7 @@
                 <el-table-column prop="count" label="Count" :sortable="'custom'" align="center" width="100px" />
 
               </el-table>
-              <div style="margin: 3vh auto;">
+              <div class="table-foot" style="margin: 3vh auto;">
                 
                 <!-- 下载 -->
                 <el-button type="primary" plain @click="onDownload2"><el-icon>
@@ -160,7 +160,7 @@
         <!-- <div class="col-md-4">
             <img src="@/assets\plots\⑤_KEGG_enrich.png" alt="">
           </div> -->
-        <section class="col-md-4  panel panel-tertiary" id="tutorial-panel-1" data-portlet-item>
+        <!-- <section class="col-md-4  panel panel-tertiary" id="tutorial-panel-1" data-portlet-item>
           <header class="panel-heading" style="position: relative;">
             <span style="font-size: 16px;" class="panel-title">Enrich Plot</span>
             <sup><span data-html="true" data-toggle="tooltip" data-placement="right"
@@ -177,7 +177,7 @@
 
             <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/KEGG_enrichment.png`" alt="">
           </div>
-        </section>
+        </section> -->
 
       </el-tab-pane>
 
