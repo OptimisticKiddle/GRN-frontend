@@ -13,7 +13,7 @@
           </template>
           <el-card class="box-card">
             <el-descriptions
-              title="Feel free to contac us if you have any questions or suggestions about GP-ATACdb database.">
+              title="Feel free to contac us if you have any questions or suggestions about GP-scATACdb database.">
             </el-descriptions>
             <ul class="email">
               <li>

@@ -10,7 +10,7 @@
 						<div class="gtco-container" style="display: flex;">
 
 							<div class="animate-box welcome-text" style="margin-top: 3rem;">
-								<h2 style='padding-left:50px; font-weight:bold;'>Welcome to GP-ATACdb</h2>
+								<h2 style='padding-left:50px; font-weight:bold;'>Welcome to GP-scATACdb</h2>
 								<h4 style='padding-left:50px'>A database exploring the effects of genetic inheritance </h4>
 								<h4 style='padding-left:50px'>perturbations on human chromatin accessibility</h4>
 							</div>
@@ -40,64 +40,27 @@
 							<div class="panel-body overview-introduction">
 								<!-- 第一个面板 body 文字 -->
 								<p style="margin-top: 0px;">
-									ATAC-seq, a high-throughput sequencing approach targeting open chromatin, provides an
-									effective way to characterize the epigenetic landscape and identify potential
-									cis-regulatory modules. Compared with other techniques, ATAC-seq has the advantages of
-									small sample size, short sample preparation time, and high reliability. With its
-									unparalleled advantages, ATAC-seq has rapidly become an effective method for studying
-									open regulatory regions.
+									scATAC-seq (Single-cell Assay for Transposase Accessible Chromatin with high-throughput sequencing) is an advanced single-cell epigenetics technique designed to identify and map open chromatin regions within individual cells. It combines the strengths of ATAC-seq (Assay for Transposase Accessible Chromatin) with single-cell sequencing capabilities to unravel fine-grained changes in chromatin structure across individual cells, thereby investigating cellular heterogeneity and the complexity of transcriptional regulation.
 								</p>
 								<p>
 									To help investigate the effects of genetic perturbations on human chromatin
-									accessibility and related transcription factor regulatory networks, we have established
-									GP-ATACdb, a comprehensive ATAC-seq database. Our goal is to provide researchers with a
-									publicly available resource on human chromatin accessibility and other data in the
-									context of different genetic genetic perturbations, helping to investigate the potential
+									accessibility and related gene regulatory networks, we have established
+									GP-scATACdb, a comprehensive scATAC-seq database. Our goal is to provide researchers with a
+									publicly available resource on human single-cell chromatin accessibility and other data in the
+									context of genetic genetic perturbations, helping to investigate the potential
 									effects of genetic perturbations on tissues or cells with different functions.
 								</p>
-								GP-ATACdb has the following main functions:
+								GP-scATACdb has the following main functions:
 
 								<ol>
-									<li>To explore differential chromatin accessibility under different genetic
-										perturbations
+									<li>To explore differential chromatin accessibility  in single cells under different genetic perturbations
 									</li>
-									<li>GO/KEGG enrichment analysis of differential chromatin accessibility</li>
-									<li>Motif enrichment analysis of differential chromatin accessibility</li>
-									<li>Footprint analysis of differential chromatin accessibility and transcription factor
-										regulatory network diagram</li>
+									<li>...............</li>
+									<li>............................</li>
+									<li>...............................</li>
 								</ol>
 
-								<!-- HiChIPdb has the following main features:
 								
-									<ol>
-										<li>Hierarchical categorization of whole genome HiChIP interactions across different
-											organs, tissues, and cell types.</li>
-										<li>Unified pipeline using GRCh37(hg19) as reference genome to obtain comprehensive
-											resolution (<a target='_blank'
-												href="browse.php?method=fithichip_1k&chip=H3K27ac">1kb</a>, <a
-												target='_blank' href="browse.php?method=fithichip_5k&chip=H3K27ac">5kb</a>,
-											<a target='_blank' href="browse.php?method=fithichip_10k&chip=H3K27ac">10kb</a>
-											,<a target='_blank' href="browse.php?method=fithichip_50k&chip=H3K27ac">50kb</a>
-											and <a target='_blank' href="browse.php?method=hichipper&chip=H3K27ac">variable
-												length</a><sup><span data-html="true" data-toggle="tooltip"
-													data-placement="right"
-													title="<div align='left' style='font-size:110%'>The resolutions of 1kb, 5kb, 10kb, and 50kb are obtained by FitHiChIP, and the variable length resolution is obtained by hichipper.</div>"><i
-														class="ti-info-alt" style="font-size: 80%"></i></span></sup>) of
-											HiChIP
-											interactions with regulatory genes, potential GWAS SNP annotations.
-										</li>
-										<li><a target='_blank' href="detail.php?ID='20056696'&method='fithichip_5k'">
-												Extensive
-												annotation and IGV visualization</a> of regulatory genes and GWAS catalog
-											SNPs
-											for each HiChIP interaction.
-										</li>
-
-										<li><a target='_blank' href="search.php?demo"> Specific gene/region/SNP
-												searching</a>.
-										</li>
-									</ol>
-								 -->
 								<!-- 第一个面板 body 轮播图 -->
 
 								<div style="width: 75vw; margin: 3vh auto;">
@@ -180,13 +143,13 @@
 												<div class="timeline-heading">
 													<h4 style="font-size: 15px;" class="timeline-title">Provided a
 														<router-link to="/tutorial">demo</router-link> 
-														of ATAC-seq dataset
+														of scATAC-seq dataset
 														analysis.</h4>
 													<small class="text-light"><el-icon>
 															<Clock />
 														</el-icon>
-														May
-														2023</small>
+														February
+														2024</small>
 												</div>
 											</div>
 										</li>
@@ -196,12 +159,12 @@
 											</div>
 											<div class="timeline-panel">
 												<div class="timeline-heading">
-													<h4 style="font-size: 15px;" class="timeline-title">Add the Statistics and Download module pages.
+													<h4 style="font-size: 15px;" class="timeline-title">Add the Download module page.
 													</h4>
 													<small class="text-light"><el-icon>
 															<Clock />
 														</el-icon>
-														April
+														December
 														2023</small>
 												</div>
 											</div>
@@ -218,7 +181,7 @@
 													<small class="text-light"><el-icon>
 															<Clock />
 														</el-icon>
-														April
+														October
 														2023</small>
 												</div>
 											</div>

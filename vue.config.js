@@ -14,5 +14,13 @@ module.exports = {
             }
         }
     },
-    publicPath: './'
+    publicPath: './',
+    chainWebpack: config => {
+        config
+          .plugin('html')
+          .tap(args => {
+            args[0].title= 'GP-scATACdb'
+            return args
+          })
+      }
 }

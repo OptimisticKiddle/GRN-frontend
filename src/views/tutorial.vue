@@ -15,7 +15,7 @@
                     <div class="panel-body">
                         <!-- 第一个面板 body 文字 -->
                         <p >
-                            In this tutorial, using ATAC-seq data with SMARCA4 gene knockdown in the BT869 cell line as an example, we show some downstream analysis of ATAC-seq data obtained from the GP-ATACdb pipeline. These include peaks annotation, differential peaks analysis, differential footprint analysis, etc.
+                            In this tutorial, using ATAC-seq data with SMARCA4 gene knockdown in the BT869 cell line as an example, we show some downstream analysis of ATAC-seq data obtained from the GP-scATACdb pipeline. These include peaks annotation, differential peaks analysis, differential footprint analysis, etc.
                         </p>
                         <p >
                             The demo used in this tutorial can be downloaded from the <a href="http://43.143.155.140/atac_db/tutorial_demo.ipynb">IPython</a> notebook.
