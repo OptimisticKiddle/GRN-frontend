@@ -11,7 +11,7 @@
             <el-collapse-item name="1">
               <!-- 展示面板title -->
               <template #title>
-                <i class="ti-layers"></i>&nbsp; Diff Peaks GO Enrich <sup><span data-html="true" data-toggle="tooltip"
+                <i class="ti-layers"></i>&nbsp; Gene-Cluster activity matrix <sup><span data-html="true" data-toggle="tooltip"
                     data-placement="right" title="The meaning of columns is explained in the Help page."><i
                       class="ti-info-alt" style="font-size: 70%"> </i></span></sup>
               </template>
@@ -99,7 +99,7 @@
             <el-collapse-item name="1">
               <!-- 展示面板title -->
               <template #title>
-                <i class="ti-layers"></i>&nbsp; Diff Peaks KEGG Enrich <sup><span data-html="true" data-toggle="tooltip"
+                <i class="ti-layers"></i>&nbsp; Gene-Cluster activity matrix <sup><span data-html="true" data-toggle="tooltip"
                     data-placement="right" title="The meaning of columns is explained in the Help page."><i
                       class="ti-info-alt" style="font-size: 70%"> </i></span></sup>
               </template>

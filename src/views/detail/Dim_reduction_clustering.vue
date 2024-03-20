@@ -5,7 +5,7 @@
       <el-collapse-item name="1">
         <!-- 展示面板title -->
         <template #title>
-          <i class="ti-layers"></i>&nbsp; Diff Footprint <sup><span data-html="true" data-toggle="tooltip"
+          <i class="ti-layers"></i>&nbsp; Cell meta data <sup><span data-html="true" data-toggle="tooltip"
               data-placement="right" title="The meaning of columns is explained in the Help page."><i class="ti-info-alt"
                 style="font-size: 70%"> </i></span></sup>
         </template>
@@ -15,24 +15,64 @@
           <el-table :data="tableData" border stripe table-layout="auto" :cell-style="{ padding: '0px' }"
             ref="multipleTable" highlight-current-row header-cell-class-name="header-cell-class-name"
             style="color: black;margin-top: 20px;font-size: 10px;" @row-click="rowClick" @sort-change="sortChange">
-            <!-- Motif、TF、Num、Protection Score Ctrl、Protection Score Treat、TC Ctrl、TC Treat、TF Activity、z.score、p.value-->
-            <el-table-column prop="motif" label="Motif" align="center" width="130px">
+            <!-- barcode、nCount_peaks、nFeature_peaks、nucleosome_signal、nucleosome_percentile、tss_enrichment、tss_percentile、high_tss、seurat_clusters、sample_type,nCount_RNA,nFeature_RNA-->
+            <el-table-column prop="barcode" label="Motif" align="center" width="130px">
               <template #header>
-                <div>Motif</div>
+                <div>barcode</div>
                 <el-input v-model.trim="filter.motif" size="small" @keyup="onSubmit"></el-input>
               </template>
             </el-table-column>
-            <el-table-column prop="tf" label="TF" align="center" width="80px">
-              <template #header>
-                <div>TF</div>
-                <el-input v-model.trim="filter.tf" size="small" @keyup="onSubmit"></el-input>
-              </template>
-            </el-table-column>
-            <el-table-column prop="num" label="Num" :sortable="'custom'" align="center" width="80px">
+
+            <el-table-column prop="nCount_peaks" label="Num" :sortable="'custom'" align="center" width="80px">
               <template #header>
                 <el-popover placement="bottom" :width="100" trigger="hover">
                   <template #reference>
-                    <span @mouseenter="openRange" data-id="num">Num</span>
+                    <span @mouseenter="openRange" data-id="num">nCount_peaks</span>
+                  </template>
+                  <div v-if="this.showRange.num" class="slider-demo-block">
+                    <el-slider range :min="range.num_min" :max="range.num_max"
+                      @change="rangeFilter($event, Object.keys(this.range)[0], Object.keys(this.range)[1])" />
+                  </div>
+                </el-popover>
+              </template>
+            </el-table-column> 
+
+            <el-table-column prop="nFeature_peaks" label="Num" :sortable="'custom'" align="center" width="80px">
+              <template #header>
+                <el-popover placement="bottom" :width="100" trigger="hover">
+                  <template #reference>
+                    <span @mouseenter="openRange" data-id="num">nFeature_peaks</span>
+                  </template>
+                  <div v-if="this.showRange.num" class="slider-demo-block">
+                    <el-slider range :min="range.num_min" :max="range.num_max"
+                      @change="rangeFilter($event, Object.keys(this.range)[2], Object.keys(this.range)[3])" />
+                  </div>
+                </el-popover>
+              </template>
+            </el-table-column> 
+
+            <el-table-column prop="nucleosome_signal" label="Num" :sortable="'custom'" align="center" width="80px">
+              <template #header>
+                <el-popover placement="bottom" :width="100" trigger="hover">
+                  <template #reference>
+                    <span @mouseenter="openRange" data-id="num">nucleosome_signal</span>
+                  </template>
+                  <div v-if="this.showRange.num" class="slider-demo-block">
+                    <el-slider range :min="range.num_min" :max="range.num_max"
+                      @change="rangeFilter($event, Object.keys(this.range)[4], Object.keys(this.range)[5])" />
+                  </div>
+                </el-popover>
+              </template>
+              <template v-slot="scope">
+                {{ scope.row.nucleosome_signal > 0 ? scope.row.nucleosome_signal.toFixed(4) : 0 }}
+              </template>
+            </el-table-column>
+
+            <el-table-column prop="nucleosome_percentile" label="Num" :sortable="'custom'" align="center" width="80px">
+              <template #header>
+                <el-popover placement="bottom" :width="100" trigger="hover">
+                  <template #reference>
+                    <span @mouseenter="openRange" data-id="num">nucleosome_percentile</span>
                   </template>
                   <div v-if="this.showRange.num" class="slider-demo-block">
                     <el-slider range :min="range.num_min" :max="range.num_max"
@@ -41,12 +81,13 @@
                 </el-popover>
               </template>
             </el-table-column>
-            <el-table-column prop="protection_score_ctrl" label="Protection Score Ctrl" :sortable="'custom'"
+            
+            <el-table-column prop="tss_enrichment" label="Protection Score Ctrl" :sortable="'custom'"
               align="center" width="180px">
               <template #header>
                 <el-popover placement="bottom" :width="120" trigger="hover">
                   <template #reference>
-                    <span @mouseenter="openRange" data-id="protection_score_ctrl">Protection Score Ctrl</span>
+                    <span @mouseenter="openRange" data-id="protection_score_ctrl">tss_enrichment</span>
                   </template>
                   <div v-if="this.showRange.protection_score_ctrl" class="slider-demo-block">
                     <el-slider range :min="range.protection_score_ctrl_min" :max="range.protection_score_ctrl_max"
@@ -56,15 +97,16 @@
                 </el-popover>
               </template>
               <template v-slot="scope">
-                {{ scope.row.protection_score_ctrl > 0 ? scope.row.protection_score_ctrl.toFixed(4) : 0 }}
+                {{ scope.row.tss_enrichment > 0 ? scope.row.tss_enrichment.toFixed(4) : 0 }}
               </template>
             </el-table-column>
-            <el-table-column prop="protection_score_treat" label="Protection Score Treat" :sortable="'custom'"
+
+            <el-table-column prop="tss_percentile" label="Protection Score Treat" :sortable="'custom'"
               align="center" width="180px">
               <template #header>
                 <el-popover placement="bottom" :width="120" trigger="hover">
                   <template #reference>
-                    <span @mouseenter="openRange" data-id="protection_score_treat">Protection Score Treat</span>
+                    <span @mouseenter="openRange" data-id="protection_score_treat">tss_percentile</span>
                   </template>
                   <div v-if="this.showRange.protection_score_treat" class="slider-demo-block">
                     <el-slider range :min="range.protection_score_treat_min" :max="range.protection_score_treat_max"
@@ -73,15 +115,20 @@
                   </div>
                 </el-popover>
               </template>
-              <template v-slot="scope">
-                {{ scope.row.protection_score_treat > 0 ? scope.row.protection_score_treat.toFixed(4) : 0 }}
+            </el-table-column>
+
+            <el-table-column prop="seurat_clusters" label="Motif" align="center" width="130px">
+              <template #header>
+                <div>high_tss</div>
+                <el-input v-model.trim="filter.motif" size="small" @keyup="onSubmit"></el-input>
               </template>
             </el-table-column>
-            <el-table-column prop="tc_ctrl" label="TC Ctrl" :sortable="'custom'" align="center" width="100px">
+
+            <el-table-column prop="tc_seurat_clustersctrl" label="TC Ctrl" :sortable="'custom'" align="center" width="100px">
               <template #header>
                 <el-popover placement="bottom" :width="120" trigger="hover">
                   <template #reference>
-                    <span @mouseenter="openRange" data-id="tc_ctrl">TC Ctrl</span>
+                    <span @mouseenter="openRange" data-id="tc_ctrl">seurat_clusters</span>
                   </template>
                   <div v-if="this.showRange.tc_ctrl" class="slider-demo-block">
                     <el-slider range :min="range.tc_ctrl_min" :max="range.tc_ctrl_max"
@@ -91,33 +138,35 @@
                   </div>
                 </el-popover>
               </template>
-              <template v-slot="scope">
-                {{ scope.row.tc_ctrl > 0 ? scope.row.tc_ctrl.toFixed(4) : 0 }}
+            </el-table-column>
+
+            <el-table-column prop="sample_type" label="Motif" align="center" width="130px">
+              <template #header>
+                <div>sample_type</div>
+                <el-input v-model.trim="filter.motif" size="small" @keyup="onSubmit"></el-input>
               </template>
             </el-table-column>
-            <el-table-column prop="tc_treat" label="TC Treat" :sortable="'custom'" align="center" width="100px">
+
+            <el-table-column prop="nCount_RNA" label="TC Treat" :sortable="'custom'" align="center" width="100px">
               <template #header>
                 <el-popover placement="bottom" :width="120" trigger="hover">
                   <template #reference>
-                    <span @mouseenter="openRange" data-id="tc_treat">TC Treat</span>
+                    <span @mouseenter="openRange" data-id="tc_treat">nCount_RNA</span>
                   </template>
                   <div v-if="this.showRange.tc_treat" class="slider-demo-block">
                     <el-slider range :min="range.tc_treat_min" :max="range.tc_treat_max"
                     :step="(range.tc_treat_max-range.tc_treat_min)/100"
-
                       @change="rangeFilter($event, Object.keys(this.range)[8], Object.keys(this.range)[9])" />
                   </div>
                 </el-popover>
               </template>
-              <template v-slot="scope">
-                {{ scope.row.tc_treat > 0 ? scope.row.tc_treat.toFixed(4) : 0 }}
-              </template>
             </el-table-column>
-            <el-table-column prop="tf_activity" label="TF Activity" :sortable="'custom'" align="center" width="120px">
+
+            <el-table-column prop="nFeature_RNA" label="TF Activity" :sortable="'custom'" align="center" width="120px">
               <template #header>
                 <el-popover placement="bottom" :width="120" trigger="hover">
                   <template #reference>
-                    <span @mouseenter="openRange" data-id="tf_activity">TF Activity</span>
+                    <span @mouseenter="openRange" data-id="tf_activity">nFeature_RNA</span>
                   </template>
                   <div v-if="this.showRange.tf_activity" class="slider-demo-block">
                     <el-slider range :min="range.tf_activity_min" :max="range.tf_activity_max"
@@ -127,47 +176,7 @@
                   </div>
                 </el-popover>
               </template>
-              <template v-slot="scope">
-                {{ scope.row.tf_activity > 0 ? scope.row.tf_activity.toFixed(4) : 0 }}
-              </template>
             </el-table-column>
-            <el-table-column prop="z_score" label="z.score" :sortable="'custom'" align="center" width="100px">
-              <template #header>
-                <el-popover placement="bottom" :width="120" trigger="hover">
-                  <template #reference>
-                    <span @mouseenter="openRange" data-id="z_score">z.score</span>
-                  </template>
-                  <div v-if="this.showRange.z_score" class="slider-demo-block">
-                    <el-slider range :min="range.z_score_min" :max="range.z_score_max"
-                    :step="(range.z_score_max-range.z_score_min)/100"
-
-                      @change="rangeFilter($event, Object.keys(this.range)[12], Object.keys(this.range)[13])" />
-                  </div>
-                </el-popover>
-              </template>
-              <template v-slot="scope">
-                {{ scope.row.z_score > 0 ? scope.row.z_score.toFixed(4) : 0 }}
-              </template>
-            </el-table-column>
-            <el-table-column prop="p_value" label="p.value" :sortable="'custom'" align="center" width="120px">
-              <template #header>
-                <el-popover placement="bottom" :width="120" trigger="hover">
-                  <template #reference>
-                    <span @mouseenter="openRange" data-id="p_value">p.value</span>
-                  </template>
-                  <div v-if="this.showRange.p_value" class="slider-demo-block">
-                    <el-slider range :min="range.p_value_min" :max="range.p_value_max"
-                    :step="(range.p_value_max-range.p_value_min)/100"
-
-                      @change="rangeFilter($event, Object.keys(this.range)[14], Object.keys(this.range)[15])" />
-                  </div>
-                </el-popover>
-              </template>
-              <template v-slot="scope">
-                {{ formatFour(scope.row.p_value) }}
-              </template>
-            </el-table-column>
-
           </el-table>
           <div class="table-foot" style="margin: 3vh auto;">
             <!-- 下载 -->
@@ -182,34 +191,25 @@
             </el-pagination>
           </div>
         </div>
-        <!-- 第一张图 -->
-       
+
       </el-collapse-item>
     </el-collapse>
 
   </div>
   <!-- 2--中间的一张图 -->
-
-  <el-collapse v-model="activeNames">
-    <el-collapse-item name="2">
-      <!-- 展示面板title -->
-      <template #title>
-        <el-icon>
-          <Picture />
-        </el-icon>&nbsp; Diff activity scores of TF
-      </template>
-
-
-      <!-- 两个点图展示 -->
+     <!-- 降维 -->
+     <h2 >Dimensionality reduction</h2>
+      <hr style="margin: 0  20px 20px 20px;" color='green'>
       <section class="col-md-12  panel panel-tertiary" data-portlet-item>
         <header class="panel-heading" style="position: relative;">
-          <span style="font-size: 16px;" class="panel-title">Scatter Plot</span>
+          <span style="font-size: 16px;" class="panel-title">Correlation between depth and reduced dimension components</span>
           <sup><span data-html="true" data-toggle="tooltip" data-placement="right"
               title="TF kinetic activity was shown between the two types of cells (ctrl, treat)"><i class="ti-info-alt"
                 style="font-size: 70%"> </i>
             </span></sup>
 
-          <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`"
+          <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" -->
+          <a :href="`http://43.143.155.140/scATACdb/GSE195882/dim_reduce&cluster/dim_reduce_lsi.png`"
             :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_differential_statistics.png`"
             target="_blank" style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                 <Download />
@@ -217,36 +217,27 @@
         </header>
         <div class="panel-body twoimg">
 
-          <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" alt="">
+          <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" alt=""> -->
+          <img :src="`http://43.143.155.140/scATACdb/GSE195882/dim_reduce&cluster/dim_reduce_lsi.png`" alt="">
         </div>
       </section>
-    
-
-
-    </el-collapse-item>
-  </el-collapse>
+ 
   <div style="margin-bottom: 2%; overflow: hidden;"></div>
-  <!-- 3--下面的2张图展示 -->
-  <el-collapse v-model="activeNames">
-    <el-collapse-item name="3">
-      <!-- 展示面板title -->
-      <template #title>
-        <el-icon>
-          <Picture />
-        </el-icon>&nbsp; Diff activity scores of TF
-      </template>
+    <!-- 3--下面的2张图展示 -->
 
-
-      <!-- 两个点图展示 -->
+  <h2 >Clustering</h2>
+      <hr style="margin: 0  20px 20px 20px;" color='green'>
+      <!-- 两个图展示 -->
       <section class="col-md-6  panel panel-tertiary" data-portlet-item>
         <header class="panel-heading" style="position: relative;">
-          <span style="font-size: 16px;" class="panel-title">Scatter Plot</span>
+          <span style="font-size: 16px;" class="panel-title">Clustering results of the merged data</span>
           <sup><span data-html="true" data-toggle="tooltip" data-placement="right"
               title="TF kinetic activity was shown between the two types of cells (ctrl, treat)"><i class="ti-info-alt"
                 style="font-size: 70%"> </i>
             </span></sup>
 
-          <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`"
+          <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" -->
+          <a :href="`http://43.143.155.140/scATACdb/GSE195882/dim_reduce&cluster/merge_cluster.png`"
             :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_differential_statistics.png`"
             target="_blank" style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                 <Download />
@@ -254,32 +245,31 @@
         </header>
         <div class="panel-body twoimg">
 
-          <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" alt="">
+          <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" alt=""> -->
+          <img :src="`http://43.143.155.140/scATACdb/GSE195882/dim_reduce&cluster/merge_cluster.png`" alt="">
         </div>
       </section>
       <section class="col-md-6  panel panel-tertiary" data-portlet-item>
         <header class="panel-heading" style="position: relative;">
-          <span style="font-size: 16px;" class="panel-title">Volcano Plot</span>
+          <span style="font-size: 16px;" class="panel-title">Label WT and KO on the clustering results</span>
           <sup><span data-html="true" data-toggle="tooltip" data-placement="right"
               title="Marked tf with significant change in activity score (p < 0.05)"><i class="ti-info-alt"
                 style="font-size: 70%"> </i>
             </span></sup>
 
-          <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_log2foldChange.png`"
+          <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_log2foldChange.png`" -->
+          <a :href="`http://43.143.155.140/scATACdb/GSE195882/dim_reduce&cluster/merge_cluster_WT&KO.png`"
             :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_differential_log2foldChange.png`"
             target="_blank" style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
                 <Download />
               </el-icon></el-button></a>
         </header>
         <div class="panel-body twoimg">
-
-          <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_log2foldChange.png`" alt="">
+          <img :src="`http://43.143.155.140/scATACdb/GSE195882/dim_reduce&cluster/merge_cluster_WT&KO.png`" alt="">
+          <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_log2foldChange.png`" alt=""> -->
         </div>
       </section>
 
-
-    </el-collapse-item>
-  </el-collapse>
 </template>
 
 
@@ -321,7 +311,8 @@ export default {
 
   methods: {
     load() {
-      request.post("/get_diff_footprint_data",
+      // request.post("/get_diff_footprint_data",
+      request.post("/get_barcodes_meta_data",
         {
           id: this.dbID,
           filter: this.filter,
@@ -337,7 +328,7 @@ export default {
 
     },
     onSubmit() {
-      request.post("/get_diff_footprint_data",
+      request.post("/get_barcodes_meta_data",
         {
           id: this.dbID,
           filter: this.filter,
@@ -390,11 +381,11 @@ export default {
       // 调后端接口，把后端需要的参数传递给后端，就可以实现排序
       this.load()
     },
-    //  选中表格某一行,截取对应的motif和motif_id
-    rowClick(row) {
-      this.motif = row.motif
-      this.motif_id = row.motif.slice(0, 8);
-    },
+    // //  选中表格某一行,截取对应的motif和motif_id
+    // rowClick(row) {
+    //   this.motif = row.motif
+    //   this.motif_id = row.motif.slice(0, 8);
+    // },
     // 是否显示对应列的筛选滑块
     openRange(e) {
       this.showRange[e.currentTarget.dataset.id] = true
@@ -487,7 +478,12 @@ img {
   display: flex;
   align-items: center;
 }
-
+h2 {
+  margin-left: 20px;
+  color: #0e876d;
+  font-weight: 700;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 .slider-demo-block .el-slider {
   margin: 0 12px;
 }

@@ -1,21 +1,47 @@
 <template>
+  <div style="margin-bottom: 2%;">
+    <h2 >Perturbed gene activity shifts</h2>
+      <hr style="margin: 0  20px 20px 20px;" color='green'>
+      <section class="col-md-12  panel panel-tertiary" id="tutorial-panel-1" data-portlet-item>
+        <header class="panel-heading" style="position: relative;">
+          <span style="font-size: 16px;" class="panel-title">Gene activity of perturbed gene in treat and control data</span>
+          <sup><span data-html="true" data-toggle="tooltip" data-placement="right"
+              title="The distance from the peak (binding site) to the TSS of the nearest gene"><i class="ti-info-alt"
+                style="font-size: 70%"> </i>
+            </span></sup>
+          <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" -->
+          <a :href="`http://43.143.155.140/scATACdb/GSE195882/KO_gene_activity/KO_gene_in_cluster.png`"
+            :download="`id-${this.dbID}_${this.dataSet.pb_gene}_${this.dataSet.celline}_plotDistToTSS.png`"
+            target="_blank" style="position: absolute;right: 2vw;"><el-button type="warning" size="small"
+              circle><el-icon>
+                <Download />
+              </el-icon></el-button></a>
+        </header>
+        <div class="panel-body">
+          <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" alt=""> -->
+          <img :src="`http://43.143.155.140/scATACdb/GSE195882/KO_gene_activity/KO_gene_in_cluster.png`" alt="">
+        </div>
+      </section>
 
+</div>
+<div style="margin-bottom: 2%; overflow: hidden;"></div>
   <!-- tab -->
 
 
-  <el-tabs type="border-card" class="demo-tabs ">
+  <el-tabs type="border-card" class="demo-tabs" style="margin-bottom: 2%; overflow: hidden;">
 
 
     <el-tab-pane label="Control" class="TSS_distribution">
 
-      <section class="col-md-8  panel panel-tertiary" id="tutorial-panel-1" data-portlet-item>
+      <section class="col-md-12  panel panel-tertiary" id="tutorial-panel-1" data-portlet-item>
         <header class="panel-heading" style="position: relative;">
-          <span style="font-size: 16px;" class="panel-title">Dist To TSS</span>
+          <span style="font-size: 16px;" class="panel-title">The mapping between the peaks location, the perturbed gene and the normalized signal on each cluster</span>
           <sup><span data-html="true" data-toggle="tooltip" data-placement="right"
               title="The distance from the peak (binding site) to the TSS of the nearest gene"><i class="ti-info-alt"
                 style="font-size: 70%"> </i>
             </span></sup>
-          <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`"
+          <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" -->
+          <a :href="`http://43.143.155.140/scATACdb/GSE195882/KO_gene_activity/WT-KO_gene_in_genome.png`"
             :download="`id-${this.dbID}_${this.dataSet.pb_gene}_${this.dataSet.celline}_plotDistToTSS.png`"
             target="_blank" style="position: absolute;right: 2vw;"><el-button type="warning" size="small"
               circle><el-icon>
@@ -23,75 +49,36 @@
               </el-icon></el-button></a>
         </header>
         <div class="panel-body">
-          <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" alt="">
+          <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" alt=""> -->
+          <img :src="`http://43.143.155.140/scATACdb/GSE195882/KO_gene_activity/WT-KO_gene_in_genome.png`" alt="">
         </div>
       </section>
-      <section class="col-md-8  panel panel-tertiary" id="tutorial-panel-1" data-portlet-item>
-        <header class="panel-heading" style="position: relative;">
-          <span style="font-size: 16px;" class="panel-title">Heat Map</span>
-          <sup><span data-html="true" data-toggle="tooltip" data-placement="right"
-              title="Plot the heatmap of peaks align to flank sequences of TSS"><i class="ti-info-alt"
-                style="font-size: 70%"> </i>
-            </span></sup>
-          <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/peakHeatmap.png`"
-            :download="`id-${this.dbID}_${this.dataSet.pb_gene}_${this.dataSet.celline}_peakHeatmap.png`"
-            target="_blank" style="position: absolute;right: 2vw;"><el-button type="warning" size="small"
-              circle><el-icon>
-                <Download />
-              </el-icon></el-button></a>
-        </header>
-        <div class="panel-body">
-
-          <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/peakHeatmap.png`" alt="">
-        </div>
-      </section>
-
-
 
     </el-tab-pane>
     <el-tab-pane label="Treat" class="TSS_distribution">
 
-      <section class="col-md-8  panel panel-tertiary" id="tutorial-panel-1" data-portlet-item>
-        <header class="panel-heading" style="position: relative;">
-          <span style="font-size: 16px;" class="panel-title">Dist To TSS</span>
-          <sup><span data-html="true" data-toggle="tooltip" data-placement="right"
-              title="The distance from the peak (binding site) to the TSS of the nearest gene"><i class="ti-info-alt"
-                style="font-size: 70%"> </i>
-            </span></sup>
-          <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`"
-            :download="`id-${this.dbID}_${this.dataSet.pb_gene}_${this.dataSet.celline}_plotDistToTSS.png`"
-            target="_blank" style="position: absolute;right: 2vw;"><el-button type="warning" size="small"
-              circle><el-icon>
-                <Download />
-              </el-icon></el-button></a>
-        </header>
-        <div class="panel-body">
-          <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" alt="">
-        </div>
-      </section>
-      <section class="col-md-8  panel panel-tertiary" id="tutorial-panel-1" data-portlet-item>
-        <header class="panel-heading" style="position: relative;">
-          <span style="font-size: 16px;" class="panel-title">Heat Map</span>
-          <sup><span data-html="true" data-toggle="tooltip" data-placement="right"
-              title="Plot the heatmap of peaks align to flank sequences of TSS"><i class="ti-info-alt"
-                style="font-size: 70%"> </i>
-            </span></sup>
-          <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/peakHeatmap.png`"
-            :download="`id-${this.dbID}_${this.dataSet.pb_gene}_${this.dataSet.celline}_peakHeatmap.png`"
-            target="_blank" style="position: absolute;right: 2vw;"><el-button type="warning" size="small"
-              circle><el-icon>
-                <Download />
-              </el-icon></el-button></a>
-        </header>
-        <div class="panel-body">
+<section class="col-md-12  panel panel-tertiary" id="tutorial-panel-1" data-portlet-item>
+  <header class="panel-heading" style="position: relative;">
+    <span style="font-size: 16px;" class="panel-title">The mapping between the peaks location, the perturbed gene and the normalized signal on each cluster</span>
+    <sup><span data-html="true" data-toggle="tooltip" data-placement="right"
+        title="The distance from the peak (binding site) to the TSS of the nearest gene"><i class="ti-info-alt"
+          style="font-size: 70%"> </i>
+      </span></sup>
+    <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" -->
+    <a :href="`http://43.143.155.140/scATACdb/GSE195882/KO_gene_activity/KO-KO_gene_in_genome.png`"
+      :download="`id-${this.dbID}_${this.dataSet.pb_gene}_${this.dataSet.celline}_plotDistToTSS.png`"
+      target="_blank" style="position: absolute;right: 2vw;"><el-button type="warning" size="small"
+        circle><el-icon>
+          <Download />
+        </el-icon></el-button></a>
+  </header>
+  <div class="panel-body">
+    <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" alt=""> -->
+    <img :src="`http://43.143.155.140/scATACdb/GSE195882/KO_gene_activity/KO-KO_gene_in_genome.png`" alt="">
+  </div>
+</section>
 
-          <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/peakHeatmap.png`" alt="">
-        </div>
-      </section>
-
-
-
-    </el-tab-pane>
+</el-tab-pane>
 
   </el-tabs>
 
@@ -183,7 +170,12 @@ export default {
   width: 40vw;
 
 }
-
+h2 {
+  margin-left: 20px;
+  color: #0e876d;
+  font-weight: 700;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 img {
   width: 100%;
 

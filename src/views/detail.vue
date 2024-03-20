@@ -12,7 +12,7 @@
         <el-tab-pane label="Gene activity">
       <Gene_activity :dbID="globalID" :globalDataset="globalDataset"></Gene_activity>
     </el-tab-pane>
-    <el-tab-pane label="KO gene activity">
+    <el-tab-pane label="Perturbed gene activity">
       <KO_gene_activity :dbID="globalID" :globalDataset="globalDataset"></KO_gene_activity>
     </el-tab-pane>
 

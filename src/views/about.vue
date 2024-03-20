@@ -16,6 +16,15 @@
               title="Feel free to contac us if you have any questions or suggestions about GP-scATACdb database.">
             </el-descriptions>
             <ul class="email">
+             
+              <li>
+                <p><el-icon style="vertical-align: -15%;">
+                    <Avatar />
+                  </el-icon><b> Ms.Shuang Zhang</b></p>
+                <p><el-icon style="vertical-align: -15%;">
+                    <Message />
+                  </el-icon><b> Email：</b>2120210562@mail.nankai.edu.cn</p>
+              </li>
               <li>
                 <p><el-icon style="vertical-align: -15%;">
                     <Avatar />
@@ -24,14 +33,6 @@
                     <Message />
 
                   </el-icon><b> Email：</b>upcsw2001@163.com</p>
-              </li>
-              <li>
-                <p><el-icon style="vertical-align: -15%;">
-                    <Avatar />
-                  </el-icon><b> Ms.Shuang Zhang</b></p>
-                <p><el-icon style="vertical-align: -15%;">
-                    <Message />
-                  </el-icon><b> Email：</b>2120210562@mail.nankai.edu.cn</p>
               </li>
               <li>
                 <p><el-icon style="vertical-align: -15%;">
