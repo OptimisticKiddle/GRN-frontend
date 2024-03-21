@@ -101,10 +101,7 @@
                                 <div v-html="scope.row.accession"></div>
                             </template>
                         </el-table-column>
-                        <!-- <el-table-column prop="pb_ensembl" label="NarrowPeaks" align="center" />
-                        <el-table-column prop="n_sample" label="DBA Obj" align="center" />
-                        <el-table-column prop="datasource" label="Diff Footprint" align="center" /> -->
-                        <el-table-column label="NarrowPeaks" align="center">
+                        <el-table-column label="Gene-Cluster activity matrix" align="center">
                             <template v-slot="scope">
                                 <a href="javascript:;" @click="dlNarrowPeaks(scope.row)">
                                     <el-icon style="text-align: middle; vertical-align: -15%;">
@@ -112,23 +109,14 @@
                                     </el-icon>[tar]</a>
                             </template>
                         </el-table-column>
-                        <el-table-column label="DBA Obj" align="center">
+                        <el-table-column label="Gene-Cell activity matrix" align="center">
                             <template v-slot="scope">
                                 <a href="javascript:;" @click="dlDBA(scope.row)">
                                     <el-icon style="text-align: middle; vertical-align: -15%;">
                                         <Download />
-                                    </el-icon>[RData]</a>
+                                    </el-icon>[tar]</a>
                             </template>
                         </el-table-column>
-                        <el-table-column label="Diff Footprint" align="center">
-                            <template v-slot="scope">
-                                <a href="javascript:;" @click="dlDiff(scope.row)">
-                                    <el-icon style="text-align: middle; vertical-align: -15%;">
-                                        <Download />
-                                    </el-icon>[csv]</a>
-                            </template>
-                        </el-table-column>
-
                     </el-table>
                     <div class="table-foot" style="margin: 3vh auto;">
                         <div></div>
@@ -231,33 +219,25 @@ export default {
             this.load();
         },
 
-        // 下载NarrowPeaks函数
+        // 下载gene_activity_by_cluster函数
         dlNarrowPeaks(row) {
             let id = row.id;
             let pb_gene = row.pb_gene;
             let celline = row.celline;
-            let href = `http://43.143.155.140/atac_db/${id}/narrowPeak/narrowPeaks.tar.gz`;
-            let fileName = `id-${id}_${pb_gene}_${celline}_narrowPeaks.tar.gz`
+            let href = `http://43.143.155.140/scATACdb/GSE195882/download_files/norm_gene_activity_by_cluster.tar.gz`;
+            let fileName = `GSE195882_Prmt5_spleen_gene_activity_by_cluster.tar.gz`
             fileDownloadHandle(href, fileName)
         },
-        // 下载DBA Obj函数
+        // 下载gene_activity_by_cell函数
         dlDBA(row) {
             let id = row.id;
             let pb_gene = row.pb_gene;
             let celline = row.celline;
-            let href = `http://43.143.155.140/atac_db/${id}/DBA/DBA_obj.tar.gz`;
+            let href = `http://43.143.155.140/scATACdb/GSE195882/download_files/norm_gene_activity_by_cell.tar.gz`;
             let fileName = `id-${id}_${pb_gene}_${celline}_DBA_obj.tar.gz`
             fileDownloadHandle(href, fileName)
         },
-        // 下载Diff Footprint函数
-        dlDiff(row) {
-            let id = row.id;
-            let pb_gene = row.pb_gene;
-            let celline = row.celline;
-            let href = `http://43.143.155.140/atac_db/${id}/csv/id-${id}_${pb_gene}_${celline}_diff_footprint.csv`;
-            let fileName = `id-${id}_${pb_gene}_${celline}_diff_footprint.csv`
-            fileDownloadHandle(href, fileName)
-        },
+       
     },
     created() {
         this.load();

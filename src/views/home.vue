@@ -15,7 +15,7 @@
 								<h4 style='padding-left:50px'>perturbations on human chromatin accessibility</h4>
 							</div>
 							<div class="header-img animate-box">
-								<img src="@/assets/images/GP-ATACdb/GP-ATACdb_logo.png" alt="" width="350" style='margin-top:55px'>
+								<img src="new_logo.png" alt="" width="500" style='margin-top:55px'>
 							</div>
 
 						</div>
@@ -55,9 +55,9 @@
 								<ol>
 									<li>To explore differential chromatin accessibility  in single cells under different genetic perturbations
 									</li>
-									<li>...............</li>
-									<li>............................</li>
-									<li>...............................</li>
+									<li>QC, downscaling and clustering of scATAC-seq downstream data</li>
+									<li>Calculate the gene activity matrices before and after the perturbation</li>
+									<li>Provide a code tutorial for inferring GRNs from gene activity matrices</li>
 								</ol>
 
 								
@@ -233,10 +233,10 @@ export default {
 		return {
 			activeNames: ['1', '2', '3'],
 			pics: [
-				{ url: require("../assets/images/GP-ATACdb/rotograph_1.png") },
-				{ url: require("../assets/images/GP-ATACdb/rotograph_2.png") },
-				{ url: require("../assets/images/GP-ATACdb/rotograph_3.png") },
-				{ url: require("../assets/images/GP-ATACdb/rotograph_4.png") },
+				{ url: require("../assets/images/scATAC-db/home-1.png") },
+				{ url: require("../assets/images/scATAC-db/home-2.png") },
+				{ url: require("../assets/images/scATAC-db/home-3.png") },
+				{ url: require("../assets/images/scATAC-db/home-4.png") },
 			]
 
 		};

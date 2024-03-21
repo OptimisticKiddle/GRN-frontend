@@ -4,7 +4,7 @@
     <!-- tab -->
     <el-tabs type="border-card" class="demo-tabs ">
 
-      <!--  GO_enrich  tab  -->
+      <!--  Control  tab  -->
       <el-tab-pane label="Control" class="">
         <div class="col-md-12" data-plugin-portlet>
           <el-collapse v-model="activeNames">
@@ -22,37 +22,54 @@
                 @sort-change="sortChange1" header-cell-class-name="header-cell-class-name"
                 style="color: black;margin-top: 20px;font-size: 10px;">
                 <!-- Gene Ratio、Bg Ratio、p.value、p.adjust、q.value、Gene IDs、Count-->
-                <el-table-column prop="GO_id" label="GO ID" align="center" width="100px" />
-                <el-table-column prop="description" label="Description" align="center"
-                  :width="flexColumnWidth('description', tableData1)" />
-                <el-table-column prop="gene_ratio" label="Gene Ratio" align="center" width="120px" />
-                <el-table-column prop="bg_ratio" label="Bg Ratio" align="center" width="120px" />
-                <el-table-column prop="p_value" label="p.value" :sortable="'custom'" align="center" width="120px">
+                <el-table-column prop="gene_symbol" label="gene_symbol" align="center" />
+                <el-table-column prop="cluster_0" label="cluster_0" :sortable="'custom'" align="center" width="120px">
                   <template v-slot="scope">
-                {{ formatFour(scope.row.p_value) }}
+                {{ formatFour(scope.row.cluster_0) }}
               </template>
               </el-table-column>
-                <el-table-column prop="p_adjust" label="p.adjust" :sortable="'custom'" align="center" width="120px">
+                <el-table-column prop="cluster_1" label="cluster_1" :sortable="'custom'" align="center" width="120px">
                   <template v-slot="scope">
-                {{ formatFour(scope.row.p_adjust) }}
+                {{ formatFour(scope.row.cluster_1) }}
               </template>
               </el-table-column>
-                <el-table-column prop="q_value" label="q.value" :sortable="'custom'" align="center" width="120px">
+                <el-table-column prop="cluster_2" label="cluster_2" :sortable="'custom'" align="center" width="120px">
                   <template v-slot="scope">
-                {{ formatFour(scope.row.q_value) }}
+                {{ formatFour(scope.row.cluster_2) }}
               </template>
               </el-table-column>
-                <el-table-column prop="gene_ids" label="Gene IDs" align="center" :width="flexColumnWidth('gene_ids', tableData1)">
-                  <template #header>
-                    <span>gene_ids</span>
-                    <el-tooltip class="item" effect="dark" content="The gene ID type is Entrez ID" placement="top">
-                      <el-icon><QuestionFilled /></el-icon>
-                    </el-tooltip>
-                  </template>
-                </el-table-column>
-                <el-table-column prop="count" label="Count" :sortable="'custom'" align="center" width="100px" />
 
+              <el-table-column prop="cluster_3" label="cluster_3" :sortable="'custom'" align="center" width="120px">
+                  <template v-slot="scope">
+                {{ formatFour(scope.row.cluster_3) }}
+              </template>
+              </el-table-column>
+
+              <el-table-column prop="cluster_4" label="cluster_4" :sortable="'custom'" align="center" width="120px">
+                  <template v-slot="scope">
+                {{ formatFour(scope.row.cluster_4) }}
+              </template>
+              </el-table-column>
+
+              <el-table-column prop="cluster_5" label="cluster_5" :sortable="'custom'" align="center" width="120px">
+                  <template v-slot="scope">
+                {{ formatFour(scope.row.cluster_5) }}
+              </template>
+              </el-table-column>
+
+              <el-table-column prop="cluster_6" label="cluster_6" :sortable="'custom'" align="center" width="120px">
+                  <template v-slot="scope">
+                {{ formatFour(scope.row.cluster_6) }}
+              </template>
+              </el-table-column>
+
+              <el-table-column prop="cluster_7" label="cluster_7" :sortable="'custom'" align="center" width="120px">
+                  <template v-slot="scope">
+                {{ formatFour(scope.row.cluster_7) }}
+              </template>
+              </el-table-column>
               </el-table>
+              
               <div class="table-foot" style="margin: 3vh auto;">
                 <!-- 下载 -->
                 <el-button type="primary" plain @click="onDownload1"><el-icon>
@@ -92,7 +109,7 @@
         </section> -->
 
       </el-tab-pane>
-      <!--  KEGG_enrich  tab  -->
+      <!--  Treat  tab  -->
       <el-tab-pane label="Treat" class="">
         <div class="col-md-12" data-plugin-portlet>
           <el-collapse v-model="activeNames">
@@ -107,38 +124,53 @@
               <el-table :data="tableData2" border stripe table-layout="auto" :cell-style="{ padding: '0px' }"
                 @sort-change="sortChange2" header-cell-class-name="header-cell-class-name"
                 style="color: black;margin-top: 20px;font-size: 10px;">
-                <!-- KEGG ID、Description、Gene Ratio、Bg Ratio、p.value、p.adjust、q.value、Gene IDs、Count-->
-
-                <el-table-column prop="KEGG_id" label="KEGG ID" align="center" width="120px" />
-                <el-table-column prop="description" label="Description" align="center"
-                  :width="flexColumnWidth('description', tableData2)" />
-                <el-table-column prop="gene_ratio" label="Gene Ratio" align="center" width="120px" />
-                <el-table-column prop="bg_ratio" label="Bg Ratio" align="center" width="120px" />
-                <el-table-column prop="p_value" label="p.value" :sortable="'custom'" align="center" width="120px">
+                <!-- Gene Ratio、Bg Ratio、p.value、p.adjust、q.value、Gene IDs、Count-->
+                <el-table-column prop="gene_symbol" label="gene_symbol" align="center" />
+                <el-table-column prop="cluster_0" label="cluster_0" :sortable="'custom'" align="center">
                   <template v-slot="scope">
-                {{ formatFour(scope.row.p_value) }}
-              </template>
-                </el-table-column>
-                <el-table-column prop="p_adjust" label="p.adjust" :sortable="'custom'" align="center" width="120px">
-                  <template v-slot="scope">
-                {{ formatFour(scope.row.p_adjust) }}
+                {{ formatFour(scope.row.cluster_0) }}
               </template>
               </el-table-column>
-                <el-table-column prop="q_value" label="q.value" :sortable="'custom'" align="center" width="120px">
+                <el-table-column prop="cluster_1" label="cluster_1" :sortable="'custom'" align="center">
                   <template v-slot="scope">
-                {{ formatFour(scope.row.q_value) }}
+                {{ formatFour(scope.row.cluster_1) }}
               </template>
               </el-table-column>
-                <el-table-column prop="gene_ids" label="Gene IDs" align="center" :width="flexColumnWidth('gene_ids', tableData2)">
-                  <template #header>
-                    <span>gene_ids</span>
-                    <el-tooltip class="item" effect="dark" content="The gene ID type is Entrez ID" placement="top">
-                      <el-icon><QuestionFilled /></el-icon>
-                    </el-tooltip>
-                  </template>
-                </el-table-column>
-                <el-table-column prop="count" label="Count" :sortable="'custom'" align="center" width="100px" />
+                <el-table-column prop="cluster_2" label="cluster_2" :sortable="'custom'" align="center">
+                  <template v-slot="scope">
+                {{ formatFour(scope.row.cluster_2) }}
+              </template>
+              </el-table-column>
 
+              <el-table-column prop="cluster_3" label="cluster_3" :sortable="'custom'" align="center">
+                  <template v-slot="scope">
+                {{ formatFour(scope.row.cluster_3) }}
+              </template>
+              </el-table-column>
+
+              <el-table-column prop="cluster_4" label="cluster_4" :sortable="'custom'" align="center">
+                  <template v-slot="scope">
+                {{ formatFour(scope.row.cluster_4) }}
+              </template>
+              </el-table-column>
+
+              <el-table-column prop="cluster_5" label="cluster_5" :sortable="'custom'" align="center">
+                  <template v-slot="scope">
+                {{ formatFour(scope.row.cluster_5) }}
+              </template>
+              </el-table-column>
+
+              <el-table-column prop="cluster_6" label="cluster_6" :sortable="'custom'" align="center">
+                  <template v-slot="scope">
+                {{ formatFour(scope.row.cluster_6) }}
+              </template>
+              </el-table-column>
+
+              <el-table-column prop="cluster_7" label="cluster_7" :sortable="'custom'" align="center">
+                  <template v-slot="scope">
+                {{ formatFour(scope.row.cluster_7) }}
+              </template>
+              </el-table-column>
               </el-table>
               <div class="table-foot" style="margin: 3vh auto;">
                 
@@ -233,7 +265,7 @@ export default {
   methods: {
 
     load() {
-      request.post("get_diff_GO_enrichment_data",
+      request.post("/get_WT_gene_activity",
         {
           id: this.dbID,
           seq: this.seq1,
@@ -243,7 +275,7 @@ export default {
           this.tableData1 = res.data;
           this.total1 = res.records_sum;
         });
-      request.post("/get_diff_KEGG_enrichment_data",
+      request.post("/get_KO_gene_activity",
         {
           id: this.dbID,
           seq: this.seq2,
