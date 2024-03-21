@@ -117,14 +117,14 @@
               </template>
             </el-table-column>
 
-            <el-table-column prop="seurat_clusters" label="Motif" align="center" width="130px">
+            <el-table-column prop="high_tss" label="Motif" align="center" width="130px">
               <template #header>
                 <div>high_tss</div>
                 <el-input v-model.trim="filter.motif" size="small" @keyup="onSubmit"></el-input>
               </template>
             </el-table-column>
 
-            <el-table-column prop="tc_seurat_clustersctrl" label="TC Ctrl" :sortable="'custom'" align="center" width="100px">
+            <el-table-column prop="seurat_clusters" label="TC Ctrl" :sortable="'custom'" align="center" width="100px">
               <template #header>
                 <el-popover placement="bottom" :width="120" trigger="hover">
                   <template #reference>
