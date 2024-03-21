@@ -54,26 +54,13 @@ const routes = [
                 name: 'Diff_enrichment',
                 component: () => import("@/views/detail/Gene_activity.vue"),
               },
-              {
-                path: '/Diff_motif',
-                name: 'Diff_motif',
-                component: () => import("@/views/detail/Diff_motif.vue"),
-              },
+            
               {
                 path: '/Diff_footprint',
                 name: 'Diff_footprint',
                 component: () => import("@/views/detail/Dim_reduction_clustering.vue"),
               },
-              {
-                path: '/Ctrl',
-                name: 'Ctrl',
-                component: () => import("@/views/detail/Ctrl.vue"),
-              },
-              {
-                path: '/Treat',
-                name: 'Treat',
-                component: () => import("@/views/detail/Treat.vue"),
-              },
+             
             ]
       },
       {
