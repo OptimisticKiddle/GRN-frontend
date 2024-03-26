@@ -14,16 +14,16 @@
           <!-- 表格展示 -->
           <el-table :data="tableData" border stripe table-layout="auto" :cell-style="{ padding: '0px' }"
             ref="multipleTable" highlight-current-row header-cell-class-name="header-cell-class-name"
-            style="color: black;margin-top: 20px;font-size: 10px;" @row-click="rowClick" @sort-change="sortChange">
+            style="color: black;margin-top: 20px;font-size: 15px;" @row-click="rowClick" @sort-change="sortChange">
             <!-- barcode、nCount_peaks、nFeature_peaks、nucleosome_signal、nucleosome_percentile、tss_enrichment、tss_percentile、high_tss、seurat_clusters、sample_type,nCount_RNA,nFeature_RNA-->
-            <el-table-column prop="barcode" label="Motif" align="center" width="130px">
+            <el-table-column prop="barcode" label="Motif" align="center" >
               <template #header>
                 <div>barcode</div>
                 <el-input v-model.trim="filter.motif" size="small" @keyup="onSubmit"></el-input>
               </template>
             </el-table-column>
 
-            <el-table-column prop="nCount_peaks" label="Num" :sortable="'custom'" align="center" width="80px">
+            <el-table-column prop="nCount_peaks" label="Num" :sortable="'custom'" align="center">
               <template #header>
                 <el-popover placement="bottom" :width="100" trigger="hover">
                   <template #reference>
@@ -37,7 +37,7 @@
               </template>
             </el-table-column> 
 
-            <el-table-column prop="nFeature_peaks" label="Num" :sortable="'custom'" align="center" width="80px">
+            <el-table-column prop="nFeature_peaks" label="Num" :sortable="'custom'" align="center">
               <template #header>
                 <el-popover placement="bottom" :width="100" trigger="hover">
                   <template #reference>
@@ -51,7 +51,7 @@
               </template>
             </el-table-column> 
 
-            <el-table-column prop="nucleosome_signal" label="Num" :sortable="'custom'" align="center" width="80px">
+            <el-table-column prop="nucleosome_signal" label="Num" :sortable="'custom'" align="center">
               <template #header>
                 <el-popover placement="bottom" :width="100" trigger="hover">
                   <template #reference>
@@ -68,7 +68,7 @@
               </template>
             </el-table-column>
 
-            <el-table-column prop="nucleosome_percentile" label="Num" :sortable="'custom'" align="center" width="80px">
+            <el-table-column prop="nucleosome_percentile" label="Num" :sortable="'custom'" align="center">
               <template #header>
                 <el-popover placement="bottom" :width="100" trigger="hover">
                   <template #reference>
@@ -120,11 +120,11 @@
             <el-table-column prop="high_tss" label="Motif" align="center" width="130px">
               <template #header>
                 <div>high_tss</div>
-                <el-input v-model.trim="filter.motif" size="small" @keyup="onSubmit"></el-input>
+                
               </template>
             </el-table-column>
 
-            <el-table-column prop="seurat_clusters" label="TC Ctrl" :sortable="'custom'" align="center" width="100px">
+            <el-table-column prop="seurat_clusters" label="TC Ctrl" :sortable="'custom'" align="center">
               <template #header>
                 <el-popover placement="bottom" :width="120" trigger="hover">
                   <template #reference>
@@ -147,7 +147,7 @@
               </template>
             </el-table-column>
 
-            <el-table-column prop="nCount_RNA" label="TC Treat" :sortable="'custom'" align="center" width="100px">
+            <el-table-column prop="nCount_RNA" label="TC Treat" :sortable="'custom'" align="center">
               <template #header>
                 <el-popover placement="bottom" :width="120" trigger="hover">
                   <template #reference>
@@ -162,7 +162,7 @@
               </template>
             </el-table-column>
 
-            <el-table-column prop="nFeature_RNA" label="TF Activity" :sortable="'custom'" align="center" width="120px">
+            <el-table-column prop="nFeature_RNA" label="TF Activity" :sortable="'custom'" align="center">
               <template #header>
                 <el-popover placement="bottom" :width="120" trigger="hover">
                   <template #reference>
@@ -200,7 +200,8 @@
      <!-- 降维 -->
      <h2 >Dimensionality reduction</h2>
       <hr style="margin: 0  20px 20px 20px;" color='green'>
-      <section class="col-md-12  panel panel-tertiary" data-portlet-item>
+      <div class="col-md-12 center-panel">
+        <section class="col-md-8  panel panel-tertiary " data-portlet-item>
         <header class="panel-heading" style="position: relative;">
           <span style="font-size: 16px;" class="panel-title">Correlation between depth and reduced dimension components</span>
           <sup><span data-html="true" data-toggle="tooltip" data-placement="right"
@@ -221,6 +222,8 @@
           <img :src="`http://43.143.155.140/scATACdb/GSE195882/dim_reduce&cluster/dim_reduce_lsi.png`" alt="">
         </div>
       </section>
+      </div>
+      
  
   <div style="margin-bottom: 2%; overflow: hidden;"></div>
     <!-- 3--下面的2张图展示 -->
@@ -472,6 +475,12 @@ export default {
 img {
   width: 100%;
 
+}
+
+.center-panel{
+  display: flex;
+  align-items: center;
+  justify-content: center
 }
 
 .slider-demo-block {
