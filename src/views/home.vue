@@ -15,7 +15,7 @@
 								<h4 style='padding-left:50px'>perturbations on human chromatin accessibility</h4>
 							</div>
 							<div class="header-img animate-box">
-								<img src="new_logo.png" alt="" width="500" style='margin-top:55px'>
+								<img src="new_logo.png" alt=""  style='width:100%;'>
 							</div>
 
 						</div>
@@ -253,6 +253,11 @@ export default {
 <style scoped>
 .panel-body {
 	border: none;
+}
+.header-img {
+	margin-top:6%;
+	margin-right:3%;
+	width: 35%;
 }
 
 .el-footer {

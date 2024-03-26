@@ -20,50 +20,50 @@
               <!-- 表格展示 -->
               <el-table :data="tableData1" border stripe table-layout="auto" :cell-style="{ padding: '0px' }"
                 @sort-change="sortChange1" header-cell-class-name="header-cell-class-name"
-                style="color: black;margin-top: 20px;font-size: 10px;">
+                style="color: black;margin-top: 20px;font-size: 15px;">
                 <!-- Gene Ratio、Bg Ratio、p.value、p.adjust、q.value、Gene IDs、Count-->
                 <el-table-column prop="gene_symbol" label="gene_symbol" align="center" />
-                <el-table-column prop="cluster_0" label="cluster_0" :sortable="'custom'" align="center" width="120px">
+                <el-table-column prop="cluster_0" label="cluster_0" :sortable="'custom'" align="center" >
                   <template v-slot="scope">
                 {{ formatFour(scope.row.cluster_0) }}
               </template>
               </el-table-column>
-                <el-table-column prop="cluster_1" label="cluster_1" :sortable="'custom'" align="center" width="120px">
+                <el-table-column prop="cluster_1" label="cluster_1" :sortable="'custom'" align="center" >
                   <template v-slot="scope">
                 {{ formatFour(scope.row.cluster_1) }}
               </template>
               </el-table-column>
-                <el-table-column prop="cluster_2" label="cluster_2" :sortable="'custom'" align="center" width="120px">
+                <el-table-column prop="cluster_2" label="cluster_2" :sortable="'custom'" align="center" >
                   <template v-slot="scope">
                 {{ formatFour(scope.row.cluster_2) }}
               </template>
               </el-table-column>
 
-              <el-table-column prop="cluster_3" label="cluster_3" :sortable="'custom'" align="center" width="120px">
+              <el-table-column prop="cluster_3" label="cluster_3" :sortable="'custom'" align="center" >
                   <template v-slot="scope">
                 {{ formatFour(scope.row.cluster_3) }}
               </template>
               </el-table-column>
 
-              <el-table-column prop="cluster_4" label="cluster_4" :sortable="'custom'" align="center" width="120px">
+              <el-table-column prop="cluster_4" label="cluster_4" :sortable="'custom'" align="center" >
                   <template v-slot="scope">
                 {{ formatFour(scope.row.cluster_4) }}
               </template>
               </el-table-column>
 
-              <el-table-column prop="cluster_5" label="cluster_5" :sortable="'custom'" align="center" width="120px">
+              <el-table-column prop="cluster_5" label="cluster_5" :sortable="'custom'" align="center" >
                   <template v-slot="scope">
                 {{ formatFour(scope.row.cluster_5) }}
               </template>
               </el-table-column>
 
-              <el-table-column prop="cluster_6" label="cluster_6" :sortable="'custom'" align="center" width="120px">
+              <el-table-column prop="cluster_6" label="cluster_6" :sortable="'custom'" align="center" >
                   <template v-slot="scope">
                 {{ formatFour(scope.row.cluster_6) }}
               </template>
               </el-table-column>
 
-              <el-table-column prop="cluster_7" label="cluster_7" :sortable="'custom'" align="center" width="120px">
+              <el-table-column prop="cluster_7" label="cluster_7" :sortable="'custom'" align="center" >
                   <template v-slot="scope">
                 {{ formatFour(scope.row.cluster_7) }}
               </template>
@@ -123,7 +123,7 @@
               <!-- 表格展示 -->
               <el-table :data="tableData2" border stripe table-layout="auto" :cell-style="{ padding: '0px' }"
                 @sort-change="sortChange2" header-cell-class-name="header-cell-class-name"
-                style="color: black;margin-top: 20px;font-size: 10px;">
+                style="color: black;margin-top: 20px;font-size: 15px;">
                 <!-- Gene Ratio、Bg Ratio、p.value、p.adjust、q.value、Gene IDs、Count-->
                 <el-table-column prop="gene_symbol" label="gene_symbol" align="center" />
                 <el-table-column prop="cluster_0" label="cluster_0" :sortable="'custom'" align="center">
