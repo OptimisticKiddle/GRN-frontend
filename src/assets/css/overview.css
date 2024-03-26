@@ -430,27 +430,3 @@ img.organ-act:hover{
         height: 26px;
     }
 }
-.switch-section .switch-icon i.human-icon{
-    background-image: url('../images/human_dark.png');
-    background-size: 100% 100%
-}
-.switch-section .switch-icon.active i.human-icon{
-    background-image: url('../images/human.png');
-    background-size: 100% 100%
-}
-.switch-section .switch-icon i.mouse-icon{
-    background-image: url('../images/mouse_dark.png');
-    background-size: 100% 100%
-}
-.switch-section .switch-icon.active i.mouse-icon{
-    background-image: url('../images/mouse.png');
-    background-size: 100% 100%
-}
-.switch-section .switch-icon i.drosophila-icon{
-    background-image: url('../images/drosophila_dark.png');
-    background-size: 100% 100%
-}
-.switch-section .switch-icon i.others-icon{
-    background-image: url('../images/others_dark.png');
-    background-size: 100% 100%
-}

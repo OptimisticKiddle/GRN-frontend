@@ -233,10 +233,10 @@ export default {
 		return {
 			activeNames: ['1', '2', '3'],
 			pics: [
-				{ url: require("../assets/images/scATAC-db/home-1.png") },
-				{ url: require("../assets/images/scATAC-db/home-2.png") },
-				{ url: require("../assets/images/scATAC-db/home-3.png") },
-				{ url: require("../assets/images/scATAC-db/home-4.png") },
+				{ url: require("../assets/images/scATAC-db/home-1.jpg") },
+				{ url: require("../assets/images/scATAC-db/home-2.jpg") },
+				{ url: require("../assets/images/scATAC-db/home-3.jpg") },
+				{ url: require("../assets/images/scATAC-db/home-4.jpg") },
 			]
 
 		};
