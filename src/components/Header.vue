@@ -2,9 +2,19 @@
 
 
 <template>
-  <el-menu :default-active="activeIndex" class="el-menu-demo gtco-nav" mode="horizontal" @select="handleSelect" router :ellipsis="false">
+  <el-menu
+    :default-active="activeIndex"
+    class="el-menu-demo gtco-nav"
+    mode="horizontal"
+    @select="handleSelect"
+    router
+    :ellipsis="false"
+  >
     <div style="margin:10px 10% 0 ">
-      <a href="Home"><img src="new_logo.png" width="210"></a>
+      <a href="Home"><img
+          src="new_logo.png"
+          width="210"
+        ></a>
     </div>
     <div class="flex-grow"></div>
     <div class="menu-item">
@@ -37,17 +47,17 @@
 <script>
 
 export default {
-  data() {
+  data () {
     return {
       activeIndex: '',
     }
   },
   methods: {
-			handleSelect(keyPath) {
-				sessionStorage.setItem('keyPath', keyPath);
-			}
-		},
-  mounted() {
+    handleSelect (keyPath) {
+      sessionStorage.setItem('keyPath', keyPath);
+    }
+  },
+  mounted () {
     this.activeIndex = sessionStorage.getItem('keyPath') || 'Home';  // 保证刷新后依然保持选中
   },
 
@@ -82,7 +92,6 @@ img {
   padding-right: 10%;
   justify-content: space-around;
 }
-
 
 .el-menu-item:hover {
   outline: 0 !important;

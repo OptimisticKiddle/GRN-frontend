@@ -7,10 +7,10 @@
   <!-- 内容区域 -->
   <!-- 缓存页面组件 -->
   <router-view v-slot="{ Component }">
-      <keep-alive>
-        <component :is="Component" />
-      </keep-alive>
-    </router-view>
+    <keep-alive>
+      <component :is="Component" />
+    </keep-alive>
+  </router-view>
 
 </template>
   
