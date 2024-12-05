@@ -5,6 +5,7 @@ import Layout from '../layout/Layout.vue'
 // import statistics from '../views/statistics.vue'
 import detail from '../views/detail.vue'
 import App from '../App.vue'
+import { compile } from 'vue'
 
 
 const routes = [
@@ -31,38 +32,20 @@ const routes = [
         name: 'Search',
         meta:{keepAlive: true}, // 是否缓存组件
         component: search,
-        
       },
-      {
-        path: '/detail',
-            name: 'detail',
-            component: detail,
-            redirect: "/Total",
-            children: [
-              {
-                path: '/Total',
-                name: 'Total',
-                component: () => import("@/views/detail/QC.vue"),
-              },
-              {
-                path: '/Diff_peak',
-                name: 'Diff_peak',
-                component: () => import("@/views/detail/KO_gene_activity.vue"),
-              },
-              {
-                path: '/Diff_enrichment',
-                name: 'Diff_enrichment',
-                component: () => import("@/views/detail/Gene_activity.vue"),
-              },
-            
-              {
-                path: '/Diff_footprint',
-                name: 'Diff_footprint',
-                component: () => import("@/views/detail/Dim_reduction_clustering.vue"),
-              },
-             
-            ]
-      },
+	  {
+		path:'/Detail',
+		name:'Detail',
+        meta:{keepAlive: true}, // 是否缓存组件
+		component:()=>import('@/views/visualize.vue')
+	  },
+	  {
+		path:'/Refine',
+		name:'Refine',
+        meta:{keepAlive: false}, // 是否缓存组件
+
+		component:()=>import('@/views/refine.vue')
+	  },
       {
         path: '/download',
         name: 'Download',

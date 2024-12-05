@@ -10,13 +10,17 @@
   </keep-alive>
   <router-view v-if="!$route.meta.keepAlive"></router-view> -->
   <!-- 需要缓存的组件 -->
-  <keep-alive :include = [statistics,search]>
+  <keep-alive :include=[statistics,search]>
     <router-view :key="$route.path"></router-view>
   </keep-alive>
 
 </template>
   
-<style></style>
+<style>
+input[type='file'] {
+  display: none !important;
+}
+</style>
   
 <script>
 import Header from "@/components/Header.vue";

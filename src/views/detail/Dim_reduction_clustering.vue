@@ -1,9 +1,8 @@
 <template>
   <div style="margin-bottom: 2%;">
 
-    <el-collapse v-model="activeNames">
+    <!-- <el-collapse v-model="activeNames">
       <el-collapse-item name="1">
-        <!-- 展示面板title -->
         <template #title>
           <i class="ti-layers"></i>&nbsp; Cell meta data <sup><span data-html="true" data-toggle="tooltip"
               data-placement="right" title="The meaning of columns is explained in the Help page."><i class="ti-info-alt"
@@ -11,11 +10,9 @@
         </template>
 
         <div class="col-md-12" data-plugin-portlet>
-          <!-- 表格展示 -->
           <el-table :data="tableData" border stripe table-layout="auto" :cell-style="{ padding: '0px' }"
             ref="multipleTable" highlight-current-row header-cell-class-name="header-cell-class-name"
             style="color: black;margin-top: 20px;font-size: 15px;" @row-click="rowClick" @sort-change="sortChange">
-            <!-- barcode、nCount_peaks、nFeature_peaks、nucleosome_signal、nucleosome_percentile、tss_enrichment、tss_percentile、high_tss、seurat_clusters、sample_type,nCount_RNA,nFeature_RNA-->
             <el-table-column prop="barcode" label="Motif" align="center" >
               <template #header>
                 <div>barcode</div>
@@ -179,12 +176,11 @@
             </el-table-column>
           </el-table>
           <div class="table-foot" style="margin: 3vh auto;">
-            <!-- 下载 -->
+       
             <el-button type="primary" plain @click="onDownload"><el-icon>
                 <Download />
               </el-icon>CSV</el-button>
 
-            <!-- 分页 -->
             <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
               :current-page="currentPage" :page-sizes="[5, 10, 20]" :page-size="pageSize"
               layout="total, sizes, prev, pager, next, jumper" :total="total">
@@ -193,85 +189,165 @@
         </div>
 
       </el-collapse-item>
-    </el-collapse>
+    </el-collapse> -->
 
   </div>
   <!-- 2--中间的一张图 -->
-     <!-- 降维 -->
-     <h2 >Dimensionality reduction</h2>
-      <hr style="margin: 0  20px 20px 20px;" color='green'>
-      <div class="col-md-12 center-panel">
-        <section class="col-md-8  panel panel-tertiary " data-portlet-item>
-        <header class="panel-heading" style="position: relative;">
-          <span style="font-size: 16px;" class="panel-title">Correlation between depth and reduced dimension components</span>
-          <sup><span data-html="true" data-toggle="tooltip" data-placement="right"
-              title="TF kinetic activity was shown between the two types of cells (ctrl, treat)"><i class="ti-info-alt"
-                style="font-size: 70%"> </i>
-            </span></sup>
+  <!-- 降维 -->
+  <h2>Dimensionality reduction</h2>
+  <hr
+    style="margin: 0  20px 20px 20px;"
+    color='green'
+  >
+  <div class="col-md-12 center-panel">
+    <section
+      class="col-md-8  panel panel-tertiary "
+      data-portlet-item
+    >
+      <header
+        class="panel-heading"
+        style="position: relative;"
+      >
+        <span
+          style="font-size: 16px;"
+          class="panel-title"
+        >Correlation between depth and reduced dimension components</span>
+        <sup><span
+            data-html="true"
+            data-toggle="tooltip"
+            data-placement="right"
+            title="TF kinetic activity was shown between the two types of cells (ctrl, treat)"
+          ><i
+              class="ti-info-alt"
+              style="font-size: 70%"
+            > </i>
+          </span></sup>
 
-          <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" -->
-          <a :href="`http://43.143.155.140/scATACdb/GSE195882/dim_reduce&cluster/dim_reduce_lsi.png`"
-            :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_differential_statistics.png`"
-            target="_blank" style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
-                <Download />
-              </el-icon></el-button></a>
-        </header>
-        <div class="panel-body twoimg">
+        <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" -->
+        <a
+          :href="`http://43.143.155.140/scATACdb/GSE195882/dim_reduce&cluster/dim_reduce_lsi.png`"
+          :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_differential_statistics.png`"
+          target="_blank"
+          style="position: absolute;right: 2vw;"
+        ><el-button
+            type="warning"
+            size="small"
+            circle
+          ><el-icon>
+              <Download />
+            </el-icon></el-button></a>
+      </header>
+      <div class="panel-body twoimg">
 
-          <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" alt=""> -->
-          <img :src="`http://43.143.155.140/scATACdb/GSE195882/dim_reduce&cluster/dim_reduce_lsi.png`" alt="">
-        </div>
-      </section>
+        <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" alt=""> -->
+        <img
+          :src="`http://43.143.155.140/scATACdb/GSE195882/dim_reduce&cluster/dim_reduce_lsi.png`"
+          alt=""
+        >
       </div>
-      
- 
+    </section>
+  </div>
+
   <div style="margin-bottom: 2%; overflow: hidden;"></div>
-    <!-- 3--下面的2张图展示 -->
+  <!-- 3--下面的2张图展示 -->
 
-  <h2 >Clustering</h2>
-      <hr style="margin: 0  20px 20px 20px;" color='green'>
-      <!-- 两个图展示 -->
-      <section class="col-md-6  panel panel-tertiary" data-portlet-item>
-        <header class="panel-heading" style="position: relative;">
-          <span style="font-size: 16px;" class="panel-title">Clustering results of the merged data</span>
-          <sup><span data-html="true" data-toggle="tooltip" data-placement="right"
-              title="TF kinetic activity was shown between the two types of cells (ctrl, treat)"><i class="ti-info-alt"
-                style="font-size: 70%"> </i>
-            </span></sup>
+  <h2>Clustering</h2>
+  <hr
+    style="margin: 0  20px 20px 20px;"
+    color='green'
+  >
+  <!-- 两个图展示 -->
+  <section
+    class="col-md-6  panel panel-tertiary"
+    data-portlet-item
+  >
+    <header
+      class="panel-heading"
+      style="position: relative;"
+    >
+      <span
+        style="font-size: 16px;"
+        class="panel-title"
+      >Clustering results of the merged data</span>
+      <sup><span
+          data-html="true"
+          data-toggle="tooltip"
+          data-placement="right"
+          title="TF kinetic activity was shown between the two types of cells (ctrl, treat)"
+        ><i
+            class="ti-info-alt"
+            style="font-size: 70%"
+          > </i>
+        </span></sup>
 
-          <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" -->
-          <a :href="`http://43.143.155.140/scATACdb/GSE195882/dim_reduce&cluster/merge_cluster.png`"
-            :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_differential_statistics.png`"
-            target="_blank" style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
-                <Download />
-              </el-icon></el-button></a>
-        </header>
-        <div class="panel-body twoimg">
+      <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" -->
+      <a
+        :href="`http://43.143.155.140/scATACdb/GSE195882/dim_reduce&cluster/merge_cluster.png`"
+        :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_differential_statistics.png`"
+        target="_blank"
+        style="position: absolute;right: 2vw;"
+      ><el-button
+          type="warning"
+          size="small"
+          circle
+        ><el-icon>
+            <Download />
+          </el-icon></el-button></a>
+    </header>
+    <div class="panel-body twoimg">
 
-          <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" alt=""> -->
-          <img :src="`http://43.143.155.140/scATACdb/GSE195882/dim_reduce&cluster/merge_cluster.png`" alt="">
-        </div>
-      </section>
-      <section class="col-md-6  panel panel-tertiary" data-portlet-item>
-        <header class="panel-heading" style="position: relative;">
-          <span style="font-size: 16px;" class="panel-title">Label WT and KO on the clustering results</span>
-          <sup><span data-html="true" data-toggle="tooltip" data-placement="right"
-              title="Marked tf with significant change in activity score (p < 0.05)"><i class="ti-info-alt"
-                style="font-size: 70%"> </i>
-            </span></sup>
+      <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" alt=""> -->
+      <img
+        :src="`http://43.143.155.140/scATACdb/GSE195882/dim_reduce&cluster/merge_cluster.png`"
+        alt=""
+      >
+    </div>
+  </section>
+  <section
+    class="col-md-6  panel panel-tertiary"
+    data-portlet-item
+  >
+    <header
+      class="panel-heading"
+      style="position: relative;"
+    >
+      <span
+        style="font-size: 16px;"
+        class="panel-title"
+      >Label WT and KO on the clustering results</span>
+      <sup><span
+          data-html="true"
+          data-toggle="tooltip"
+          data-placement="right"
+          title="Marked tf with significant change in activity score (p < 0.05)"
+        ><i
+            class="ti-info-alt"
+            style="font-size: 70%"
+          > </i>
+        </span></sup>
 
-          <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_log2foldChange.png`" -->
-          <a :href="`http://43.143.155.140/scATACdb/GSE195882/dim_reduce&cluster/merge_cluster_WT&KO.png`"
-            :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_differential_log2foldChange.png`"
-            target="_blank" style="position: absolute;right: 2vw;"><el-button type="warning" size="small" circle><el-icon>
-                <Download />
-              </el-icon></el-button></a>
-        </header>
-        <div class="panel-body twoimg">
-          <img :src="`http://43.143.155.140/scATACdb/GSE195882/dim_reduce&cluster/merge_cluster_WT&KO.png`" alt="">
-          <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_log2foldChange.png`" alt=""> -->
-        </div>
-      </section>
+      <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_log2foldChange.png`" -->
+      <a
+        :href="`http://43.143.155.140/scATACdb/GSE195882/dim_reduce&cluster/merge_cluster_WT&KO.png`"
+        :download="`id-${this.dbID}_${this.globalDataset.pb_gene}_${this.globalDataset.cell_line}_differential_log2foldChange.png`"
+        target="_blank"
+        style="position: absolute;right: 2vw;"
+      ><el-button
+          type="warning"
+          size="small"
+          circle
+        ><el-icon>
+            <Download />
+          </el-icon></el-button></a>
+    </header>
+    <div class="panel-body twoimg">
+      <img
+        :src="`http://43.143.155.140/scATACdb/GSE195882/dim_reduce&cluster/merge_cluster_WT&KO.png`"
+        alt=""
+      >
+      <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_log2foldChange.png`" alt=""> -->
+    </div>
+  </section>
 
 </template>
 
@@ -286,7 +362,7 @@ export default {
     dbID: Number,
     globalDataset: Object
   },
-  data() {
+  data () {
     return {
       pb_gene: '',
       celline: '',
@@ -313,7 +389,7 @@ export default {
   },
 
   methods: {
-    load() {
+    load () {
       // request.post("/get_diff_footprint_data",
       request.post("/get_barcodes_meta_data",
         {
@@ -330,7 +406,7 @@ export default {
 
 
     },
-    onSubmit() {
+    onSubmit () {
       request.post("/get_barcodes_meta_data",
         {
           id: this.dbID,
@@ -343,7 +419,7 @@ export default {
           this.currentPage = 1;
         })
     },
-    onDownload() {
+    onDownload () {
       this.pb_gene = sessionStorage.getItem('pb_gene');
       this.celline = sessionStorage.getItem('celline');
 
@@ -354,19 +430,19 @@ export default {
       link.click();
     },
 
-    handleSizeChange(val) {   //改变当前每页的个数触发
+    handleSizeChange (val) {   //改变当前每页的个数触发
       this.pageSize = val
       this.paging.length = val
       this.load();
     },
-    handleCurrentChange(val) {   //改变当前页码触发
+    handleCurrentChange (val) {   //改变当前页码触发
 
       this.currentPage = val
       this.paging.start = (val - 1) * this.paging.length
       this.load();
 
     },
-    sortChange(column) {  // 表格排序条件发生变化触发
+    sortChange (column) {  // 表格排序条件发生变化触发
       // 当前列的排序  ascending 升序 descending 降序 
       if (column.order == "ascending") {
         this.tabSort = 1
@@ -390,12 +466,12 @@ export default {
     //   this.motif_id = row.motif.slice(0, 8);
     // },
     // 是否显示对应列的筛选滑块
-    openRange(e) {
+    openRange (e) {
       this.showRange[e.currentTarget.dataset.id] = true
       // console.log(this.showRange);
     },
     // 滑动滑块后，重新过滤
-    rangeFilter(val, min, max) {
+    rangeFilter (val, min, max) {
       this.filter[min] = val[0]
       this.filter[max] = val[1]
       console.log("filter:");
@@ -403,7 +479,7 @@ export default {
       this.load();
     },
     // 带e的小数保留四位小数
-    formatFour(val) {
+    formatFour (val) {
       let number = (String(val).indexOf('e') >= 0) ? String(val).replace(/^(.*\..{4})[0-9]*(e-[0-9]*)$/, "$1" + "$2") : val.toPrecision(4);
       return Number(number);
     },
@@ -418,7 +494,7 @@ export default {
     }
   },
 
-  created() {
+  created () {
     this.load();
     request.post("/get_diff_footprint_data_range",
       {
@@ -467,20 +543,17 @@ export default {
 }
 
 .showimg {
-
   height: 100%;
-
 }
 
 img {
   width: 100%;
-
 }
 
-.center-panel{
+.center-panel {
   display: flex;
   align-items: center;
-  justify-content: center
+  justify-content: center;
 }
 
 .slider-demo-block {

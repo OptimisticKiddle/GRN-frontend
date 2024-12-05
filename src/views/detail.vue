@@ -1,22 +1,31 @@
 <template>
   <!-- 主体 -->
   <div>
-    
-    <el-tabs type="border-card">
-    <el-tab-pane label="QC">
-      <QC :dbID="globalID"></QC>
-    </el-tab-pane>
-    <el-tab-pane label="Dim reduction & clustering">
-      <Dim_reduction_clustering :dbID="globalID" :globalDataset="globalDataset"></Dim_reduction_clustering>
-    </el-tab-pane>
-        <el-tab-pane label="Gene activity">
-      <Gene_activity :dbID="globalID" :globalDataset="globalDataset"></Gene_activity>
-    </el-tab-pane>
-    <el-tab-pane label="Perturbed gene activity">
-      <KO_gene_activity :dbID="globalID" :globalDataset="globalDataset"></KO_gene_activity>
-    </el-tab-pane>
 
-    <!-- <el-tab-pane label="Diff Motif">
+    <el-tabs type="border-card">
+      <el-tab-pane label="QC">
+        <QC :dbID="globalID"></QC>
+      </el-tab-pane>
+      <el-tab-pane label="Dim reduction & clustering">
+        <Dim_reduction_clustering
+          :dbID="globalID"
+          :globalDataset="globalDataset"
+        ></Dim_reduction_clustering>
+      </el-tab-pane>
+      <!-- <el-tab-pane label="Gene activity">
+        <Gene_activity
+          :dbID="globalID"
+          :globalDataset="globalDataset"
+        ></Gene_activity>
+      </el-tab-pane> -->
+      <el-tab-pane label="Perturbed gene activity">
+        <KO_gene_activity
+          :dbID="globalID"
+          :globalDataset="globalDataset"
+        ></KO_gene_activity>
+      </el-tab-pane>
+
+      <!-- <el-tab-pane label="Diff Motif">
       <Diff_motif :dbID="globalID" :globalDataset="globalDataset"></Diff_motif>
     </el-tab-pane>
 
@@ -26,10 +35,10 @@
     <el-tab-pane label="Treat Peaks">
       <Treat :dbID="globalID" :globalDataset="globalDataset"></Treat>
     </el-tab-pane> -->
-  </el-tabs>
+    </el-tabs>
 
   </div>
-  
+
 </template>
 
 <style></style>
@@ -49,22 +58,23 @@ import bus from 'vue3-eventbus'
 export default {
   name: "detail",
   components: {
-    QC,KO_gene_activity,Gene_activity,Dim_reduction_clustering
+    QC, KO_gene_activity, Gene_activity, Dim_reduction_clustering
 
   },
- props: {
-  globalID:Number,
-  globalDataset: Object
- },
- data () {
-      return {
-        dbID:0,
-        
-      }
-    },
- 
-  
-    
+  props: {
+    globalID: Number,
+    globalDataset: Object,
+    choose: Boolean,
+  },
+  data () {
+    return {
+      dbID: 0,
+
+    }
+  },
+
+
+
 }
 
 </script>
