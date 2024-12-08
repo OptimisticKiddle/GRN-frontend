@@ -495,13 +495,13 @@ export default {
   },
 
   created () {
-    this.load();
-    request.post("/get_diff_footprint_data_range",
-      {
-        id: this.dbID,
-      }).then(res => {
-        this.range = res;
-      });
+    // this.load();
+    // request.post("/get_diff_footprint_data_range",
+    //   {
+    //     id: this.dbID,
+    //   }).then(res => {
+    //     this.range = res;
+    //   });
 
   },
 

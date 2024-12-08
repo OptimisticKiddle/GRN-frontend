@@ -3,11 +3,10 @@
 
 <template>
   <el-menu
-    :default-active="activeIndex"
+    :default-active="route.path"
     class="el-menu-demo gtco-nav"
     mode="horizontal"
     @select="handleSelect"
-    router
     :ellipsis="false"
   >
     <div style="margin:10px 10% 0 ">
@@ -44,25 +43,33 @@
   </el-menu>
 </template>
 
-<script>
+<script setup>
+import { useRouter, useRoute } from 'vue-router';
 
-export default {
-  data () {
-    return {
-      activeIndex: '',
-    }
-  },
-  methods: {
-    handleSelect (keyPath) {
-      sessionStorage.setItem('keyPath', keyPath);
-    }
-  },
-  mounted () {
-    this.activeIndex = sessionStorage.getItem('keyPath') || 'Home';  // 保证刷新后依然保持选中
-  },
-
-
+const router = useRouter();
+const route = useRoute();
+console.log(route.path, 123)
+const handleSelect = (path) => {
+  router.push(`/${path}`)
 }
+
+// export default {
+//   data () {
+//     return {
+//       activeIndex: '',
+//     }
+//   },
+//   methods: {
+//     handleSelect (keyPath) {
+//       sessionStorage.setItem('keyPath', keyPath);
+//     }
+//   },
+//   mounted () {
+//     this.activeIndex = sessionStorage.getItem('keyPath') || 'Home';  // 保证刷新后依然保持选中
+//   },
+
+
+// }
 </script>
 <style scoped>
 .flex-grow {

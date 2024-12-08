@@ -30,20 +30,11 @@ const routes = [
       {
         path: '/search',
         name: 'Search',
-        meta:{keepAlive: true}, // 是否缓存组件
         component: search,
       },
 	  {
-		path:'/Detail',
-		name:'Detail',
-        meta:{keepAlive: true}, // 是否缓存组件
-		component:()=>import('@/views/visualize.vue')
-	  },
-	  {
-		path:'/Refine',
+		path:'/Refine/:gse/:gsm',
 		name:'Refine',
-        meta:{keepAlive: false}, // 是否缓存组件
-
 		component:()=>import('@/views/refine.vue')
 	  },
       {

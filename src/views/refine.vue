@@ -22,6 +22,8 @@
               :globalDataset="{pb_gene: '',cell_line: ''}"
               :key="''"
               :choose="false"
+              :gse="params.gse"
+              :gsm="params.gsm"
             ></detail>
           </div>
 
@@ -111,12 +113,16 @@
 </template>
 
 <script setup>
-import { onActivated, onMounted, ref } from "vue";
+import { onActivated, onMounted, ref, toRefs } from "vue";
 import detail from "@/views/detail.vue";
-
+import { useRoute } from "vue-router";
+const route = useRoute();
 const activeNames = ref(['1', '2']);
 const trigger = ref(false);
-
+const { params } = toRefs(route)
+console.log(params.gse)
+console.log(params.gsm)
+console.log('wtf')
 onActivated(() => {
   console.log(111)
   trigger.value = false;

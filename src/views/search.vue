@@ -139,7 +139,10 @@
               align="center"
             >
               <template v-slot="scope">
-                <div v-html="scope.row.gsm"></div>
+                <a
+                  :href="`https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=${scope.row.gsm}`"
+                  target=_blank
+                >{{scope.row.gsm}}</a>
               </template>
             </el-table-column>
 
@@ -167,7 +170,7 @@
               label="Analysis"
               align="center"
             >
-              <template #default>
+              <template v-slot="scope">
                 <!-- <el-button
                   link
                   type="primary"
@@ -181,7 +184,7 @@
                   link
                   type="primary"
                   size="big"
-                  @click="this.$router.push('/refine')"
+                  @click="this.$router.push(`/refine/${scope.row.gse.substring(3)}/${scope.row.gsm.substring(3)}`)"
                 >
                   Detail
                 </el-button>
@@ -286,22 +289,20 @@ export default {
   },
 
   methods: {
-    handleClick () {
-      this.$router.push('/detail')
-    },
+
     load () {
       const loadingInstance = this.$loading({
         lock: true,
         background: 'rgba(255,255,255,0.8)'
       })
-      request.get("/get_datasource_enum",
-      ).then(res => {
-        this.datasourceList = res.data;
-      })
-      request.get("/get_method_enum",
-      ).then(res => {
-        this.methodList = res.data;
-      })
+      //   request.get("/get_datasource_enum",
+      //   ).then(res => {
+      //     this.datasourceList = res.data;
+      //   })
+      //   request.get("/get_method_enum",
+      //   ).then(res => {
+      //     this.methodList = res.data;
+      //   })
       request.post("/get_overall_data",
         {
           filter: this.filter,

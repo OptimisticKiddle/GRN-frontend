@@ -5,8 +5,8 @@
     <el-tabs type="border-card">
       <el-tab-pane label="QC">
         <QC
-          :gse="'221686'"
-          :gsm="'6893080'"
+          :gse="gse"
+          :gsm="gsm"
         ></QC>
       </el-tab-pane>
       <el-tab-pane label="Dim reduction & clustering">
@@ -63,6 +63,8 @@ export default {
     globalID: Number,
     globalDataset: Object,
     choose: Boolean,
+    gse: String,
+    gsm: String,
   },
   data () {
     return {
