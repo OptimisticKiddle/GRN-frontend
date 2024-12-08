@@ -28,7 +28,7 @@
               >
                 <el-input
                   v-model="filter.cell_type"
-                  placeholder=""
+                  placeholder="e.g. Blood cells"
                   clearable
                   style="width: 100%;"
                 ></el-input>
@@ -39,7 +39,7 @@
               >
                 <el-input
                   v-model="filter.tissue"
-                  placeholder=""
+                  placeholder="e.g. Blood"
                   clearable
                   style="width: 100%;"
                 ></el-input>
