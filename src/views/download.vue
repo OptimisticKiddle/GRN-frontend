@@ -128,24 +128,25 @@
               label="ID"
               align="center"
             />
-            <el-table-column
-              prop="gse"
-              label="GSE"
-              align="center"
-            >
-              <template v-slot="scope">
-                <div v-html="scope.row.gse"></div>
-              </template>
-            </el-table-column>
+
             <el-table-column
               prop="gsm"
-              label="GSM"
+              label="Accession"
               align="center"
             >
               <template v-slot="scope">
                 <div v-html="scope.row.gsm"></div>
               </template>
             </el-table-column>
+            <el-table-column
+              prop="cell_type"
+              label="Cell Type"
+              align="center"
+            /> <el-table-column
+              prop="tissue"
+              label="Tissue"
+              align="center"
+            />
 
             <el-table-column
               prop="sample_source"
@@ -192,7 +193,7 @@
             >
               <template v-slot="scope">
                 <a
-                  :href="`http://127.0.0.1:8000/download/${scope.row.id}_GRN.mm`"
+                  :href="`http://127.0.0.1:8000/download/${scope.row.id}_GRN.hg`"
                   download
                 >
                   <el-icon style="text-align: middle; vertical-align: -15%;">

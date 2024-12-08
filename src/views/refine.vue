@@ -5,6 +5,33 @@
     <div
       class="col-md-12"
       data-plugin-portlet
+      style="margin-top: 20px;"
+    >
+      <el-collapse v-model="activeNames">
+        <el-collapse-item name="2">
+          <!-- 展示面板title -->
+          <template #title>
+            <el-icon>
+              <Search />
+            </el-icon>&nbsp; Visualization
+          </template>
+
+          <div>
+            <detail
+              :globalID="1"
+              :globalDataset="{pb_gene: '',cell_line: ''}"
+              :key="''"
+              :choose="false"
+            ></detail>
+          </div>
+
+        </el-collapse-item>
+
+      </el-collapse>
+    </div>
+    <div
+      class="col-md-12"
+      data-plugin-portlet
     >
       <el-collapse v-model="activeNames">
         <el-collapse-item name="1">
@@ -74,34 +101,6 @@
               </div>
 
             </el-form>
-          </div>
-
-        </el-collapse-item>
-
-      </el-collapse>
-    </div>
-
-    <div
-      class="col-md-12"
-      data-plugin-portlet
-      style="margin-top: 20px;"
-    >
-      <el-collapse v-model="activeNames">
-        <el-collapse-item name="2">
-          <!-- 展示面板title -->
-          <template #title>
-            <el-icon>
-              <Search />
-            </el-icon>&nbsp; Visualization
-          </template>
-
-          <div>
-            <detail
-              :globalID="1"
-              :globalDataset="{pb_gene: '',cell_line: ''}"
-              :key="''"
-              :choose="false"
-            ></detail>
           </div>
 
         </el-collapse-item>

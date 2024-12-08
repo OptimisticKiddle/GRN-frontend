@@ -4,7 +4,10 @@
 
     <el-tabs type="border-card">
       <el-tab-pane label="QC">
-        <QC :dbID="globalID"></QC>
+        <QC
+          :gse="'221686'"
+          :gsm="'6893080'"
+        ></QC>
       </el-tab-pane>
       <el-tab-pane label="Dim reduction & clustering">
         <Dim_reduction_clustering
@@ -12,18 +15,13 @@
           :globalDataset="globalDataset"
         ></Dim_reduction_clustering>
       </el-tab-pane>
-      <!-- <el-tab-pane label="Gene activity">
-        <Gene_activity
-          :dbID="globalID"
-          :globalDataset="globalDataset"
-        ></Gene_activity>
-      </el-tab-pane> -->
-      <el-tab-pane label="Perturbed gene activity">
+
+      <!-- <el-tab-pane label="Perturbed gene activity">
         <KO_gene_activity
           :dbID="globalID"
           :globalDataset="globalDataset"
         ></KO_gene_activity>
-      </el-tab-pane>
+      </el-tab-pane> -->
 
       <!-- <el-tab-pane label="Diff Motif">
       <Diff_motif :dbID="globalID" :globalDataset="globalDataset"></Diff_motif>

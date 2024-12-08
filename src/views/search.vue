@@ -23,23 +23,23 @@
           >
             <div class="formRow1">
               <el-form-item
-                label="GSE :"
+                label="Cell Type :"
                 style="margin-left: 10px"
               >
                 <el-input
-                  v-model="filter.gse"
-                  placeholder="e.g. GSE200767"
+                  v-model="filter.cell_type"
+                  placeholder=""
                   clearable
                   style="width: 100%;"
                 ></el-input>
               </el-form-item>
               <el-form-item
-                label="GSM :"
+                label="Tissue :"
                 style="margin-left: 10px"
               >
                 <el-input
-                  v-model="filter.gsm"
-                  placeholder="e.g. GSM6893080"
+                  v-model="filter.tissue"
+                  placeholder=""
                   clearable
                   style="width: 100%;"
                 ></el-input>
@@ -134,17 +134,8 @@
               align="center"
             />
             <el-table-column
-              prop="gse"
-              label="GSE"
-              align="center"
-            >
-              <template v-slot="scope">
-                <div v-html="scope.row.gse"></div>
-              </template>
-            </el-table-column>
-            <el-table-column
               prop="gsm"
-              label="GSM"
+              label="Accession"
               align="center"
             >
               <template v-slot="scope">
@@ -153,11 +144,14 @@
             </el-table-column>
 
             <el-table-column
-              prop="organism"
-              label="Organism"
+              prop="cell_type"
+              label="Cell Type"
+              align="center"
+            /> <el-table-column
+              prop="tissue"
+              label="Tissue"
               align="center"
             />
-
             <el-table-column
               prop="sample_source"
               label="Sample Source"
