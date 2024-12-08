@@ -1,11 +1,7 @@
 import { createRouter, createWebHistory,createWebHashHistory } from 'vue-router'
 import home from '../views/home.vue'
 import search from '../views/search.vue'
-import Layout from '../layout/Layout.vue'
-// import statistics from '../views/statistics.vue'
-import detail from '../views/detail.vue'
-import App from '../App.vue'
-import { compile } from 'vue'
+
 
 
 const routes = [
@@ -17,18 +13,12 @@ const routes = [
     redirect: "/home",
     children: [
       {
-        path: '/home',
+        path: '/Home',
         name: 'Home',
         component: home
       },
-      // {
-      //   path: '/statistics',
-      //   name: 'Statistics',
-      //   meta:{keepAlive: true}, // 是否缓存组件
-      //   component: statistics
-      // },
       {
-        path: '/search',
+        path: '/Search',
         name: 'Search',
         component: search,
       },
@@ -38,22 +28,18 @@ const routes = [
 		component:()=>import('@/views/refine.vue')
 	  },
       {
-        path: '/download',
+        path: '/Download',
         name: 'Download',
         component: () => import("@/views/download"),
       },
       {
-        path: '/tutorial',
+        path: '/Tutorial',
         name: 'Tutorial',
         component: () => import("@/views/tutorial"),
       },
-      // {
-      //   path: '/help',
-      //   name: 'Help',
-      //   component: () => import("@/views/help"),
-      // },
+
       {
-        path: '/about',
+        path: '/About',
         name: 'About',
         component: () => import("@/views/about"),
       }
