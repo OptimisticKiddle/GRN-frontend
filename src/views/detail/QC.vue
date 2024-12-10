@@ -40,7 +40,7 @@
           <!-- 下载链接改了  但是命名还没改 -->
           <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" -->
           <a
-            :href="`http://127.0.0.1:8000/api/download/${gse}/${gsm}/QC_Peaks_DensityScatter.svg`"
+            :href="baseUrl + `/api/download/${gse}/${gsm}/QC_Peaks_DensityScatter.svg`"
             download
             style="position: absolute;right: 2vw;"
           ><el-button
@@ -54,7 +54,7 @@
         <div class="panel-body">
           <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" alt=""> -->
           <img
-            :src="`http://127.0.0.1:8000/static/GSE${gse}/GSM${gsm}/QC_Peaks_DensityScatter.svg`"
+            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/QC_Peaks_DensityScatter.svg`"
             alt=""
           >
         </div>
@@ -84,7 +84,7 @@
             </span></sup>
           <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/peakHeatmap.png`" -->
           <a
-            :href="`http://127.0.0.1:8000/api/download/${gse}/${gsm}/QC_FragmentHistogram.svg`"
+            :href="baseUrl + `/api/download/${gse}/${gsm}/QC_FragmentHistogram.svg`"
             download
             style="position: absolute;right: 2vw;"
           ><el-button
@@ -99,7 +99,7 @@
 
           <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/peakHeatmap.png`" alt=""> -->
           <img
-            :src="`http://127.0.0.1:8000/static/GSE${gse}/GSM${gsm}/QC_FragmentHistogram.svg`"
+            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/QC_FragmentHistogram.svg`"
             alt=""
           >
         </div>
@@ -137,7 +137,7 @@
             </span></sup>
           <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" -->
           <a
-            :href="`http://127.0.0.1:8000/api/download/${gse}/${gsm}/QC_TSS_DensityScatter.svg`"
+            :href="baseUrl + `/api/download/${gse}/${gsm}/QC_TSS_DensityScatter.svg`"
             download
             style="position: absolute;right: 2vw;"
           ><el-button
@@ -151,7 +151,7 @@
         <div class="panel-body">
           <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" alt=""> -->
           <img
-            :src="`http://127.0.0.1:8000/static/GSE${gse}/GSM${gsm}/QC_TSS_DensityScatter.svg`"
+            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/QC_TSS_DensityScatter.svg`"
             alt=""
           >
         </div>
@@ -181,7 +181,7 @@
             </span></sup>
           <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/peakHeatmap.png`" -->
           <a
-            :href="`http://127.0.0.1:8000/api/download/${gse}/${gsm}/QC_TSSPlot.svg`"
+            :href="baseUrl + `/api/download/${gse}/${gsm}/QC_TSSPlot.svg`"
             download
             style="position: absolute;right: 2vw;"
           ><el-button
@@ -194,7 +194,7 @@
         </header>
         <div class="panel-body">
           <img
-            :src="`http://127.0.0.1:8000/static/GSE${gse}/GSM${gsm}/QC_TSSPlot.svg`"
+            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/QC_TSSPlot.svg`"
             alt=""
           >
           <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/peakHeatmap.png`" alt=""> -->
@@ -233,7 +233,7 @@
             </span></sup>
           <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" -->
           <a
-            :href="`http://127.0.0.1:8000/api/download/${gse}/${gsm}/QC_hist.svg`"
+            :href="baseUrl + `/api/download/${gse}/${gsm}/QC_hist.svg`"
             download
             style="position: absolute;right: 2vw;"
           ><el-button
@@ -247,7 +247,7 @@
         <div class="panel-body">
           <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" alt=""> -->
           <img
-            :src="`http://127.0.0.1:8000/static/GSE${gse}/GSM${gsm}/QC_hist.svg`"
+            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/QC_hist.svg`"
             alt=""
           >
 
@@ -278,7 +278,7 @@
             </span></sup>
           <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/peakHeatmap.png`" -->
           <a
-            :href="`http://127.0.0.1:8000/api/download/${gse}/${gsm}/QC_VlnPlot.svg`"
+            :href="baseUrl + `/api/download/${gse}/${gsm}/QC_VlnPlot.svg`"
             download
             style="position: absolute;right: 2vw;"
           ><el-button
@@ -291,7 +291,7 @@
         </header>
         <div class="panel-body">
           <img
-            :src="`http://127.0.0.1:8000/static/GSE${gse}/GSM${gsm}/QC_VlnPlot.svg`"
+            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/QC_VlnPlot.svg`"
             alt=""
           >
 
@@ -321,7 +321,7 @@ export default {
     return {
       size: 'large',
       activeNames: ['1'],
-
+      baseUrl: process.env.VUE_APP_BASE_URL,
       dataSet: {},
 
     }

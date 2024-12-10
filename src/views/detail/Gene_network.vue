@@ -23,7 +23,7 @@
 
         <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" -->
         <a
-          :href="`http://127.0.0.1:8000/api/download/${gse}/${gsm}/string_network.png`"
+          :href="baseUrl + `/api/download/${gse}/${gsm}/string_network.png`"
           download
           style="position: absolute;right: 2vw;"
         ><el-button
@@ -38,7 +38,7 @@
 
         <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" alt=""> -->
         <img
-          :src="`http://127.0.0.1:8000/static/GSE${gse}/GSM${gsm}/string_network.png`"
+          :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/string_network.png`"
           alt=""
         >
       </div>
@@ -66,7 +66,7 @@ export default {
     return {
       size: 'large',
       activeNames: ['1'],
-
+      baseUrl: process.env.VUE_APP_BASE_URL,
       dataSet: {},
 
     }

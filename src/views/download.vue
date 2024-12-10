@@ -210,7 +210,7 @@
             >
               <template v-slot="scope">
                 <a
-                  :href="`http://127.0.0.1:8000/download/${scope.row.gse.substring(3)}/${scope.row.gsm.substring(3)}/GRN.hg`"
+                  :href="baseUrl + `/api/download/${scope.row.gse.substring(3)}/${scope.row.gsm.substring(3)}/GRN.hg`"
                   download
                 >
                   <el-icon style="text-align: middle; vertical-align: -15%;">
@@ -258,7 +258,7 @@ export default {
   name: 'download',
   data () {
     return {
-
+      baseUrl: process.env.VUE_APP_BASE_URL,
       currentPage: 1,
       total: 0,
       pageSize: 10,
