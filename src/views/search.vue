@@ -22,6 +22,7 @@
             label-width="130px"
           >
             <div class="formRow1">
+
               <el-form-item
                 label="Cell Type :"
                 style="margin-left: 10px"
@@ -44,10 +45,7 @@
                   style="width: 100%;"
                 ></el-input>
               </el-form-item>
-              <el-form-item
-                label="Sample Source :"
-                style="margin-left: 10px"
-              >
+              <el-form-item label="Sample Source :">
                 <el-select
                   v-model="filter.sample_source"
                   placeholder="Please select Sample Source"
@@ -418,11 +416,11 @@ export default {
 
 .formRow1 {
   display: grid;
-  grid-template-columns: 4fr 4fr 4fr 4fr;
+  grid-template-columns: repeat(4, 3fr);
   justify-content: space-between;
 
   margin-top: 20px;
-  /* margin-right: 20px; */
+  margin-right: 20px;
 }
 
 .formRow2 {

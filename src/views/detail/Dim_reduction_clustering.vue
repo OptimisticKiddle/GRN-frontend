@@ -33,7 +33,7 @@
 
         <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" -->
         <a
-          :href="`http://127.0.0.1:8000/download/${gse}/${gsm}/Dim_reduction_DepthCor.svg`"
+          :href="`http://127.0.0.1:8000/api/download/${gse}/${gsm}/Dim_reduction_DepthCor.svg`"
           download
           style="position: absolute;right: 2vw;"
         ><el-button
@@ -89,7 +89,7 @@
 
         <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" -->
         <a
-          :href="`http://127.0.0.1:8000/download/${gse}/${gsm}/Cluster_DimPlot.svg`"
+          :href="`http://127.0.0.1:8000/api/download/${gse}/${gsm}/Cluster_DimPlot.svg`"
           download
           style="position: absolute;right: 2vw;"
         ><el-button

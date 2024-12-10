@@ -23,7 +23,7 @@
 
         <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" -->
         <a
-          :href="`http://127.0.0.1:8000/download/${gse}/${gsm}/string_network.png`"
+          :href="`http://127.0.0.1:8000/api/download/${gse}/${gsm}/string_network.png`"
           download
           style="position: absolute;right: 2vw;"
         ><el-button

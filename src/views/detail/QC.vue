@@ -40,7 +40,7 @@
           <!-- 下载链接改了  但是命名还没改 -->
           <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" -->
           <a
-            :href="`http://127.0.0.1:8000/download/${gse}/${gsm}/QC_Peaks_DensityScatter.svg`"
+            :href="`http://127.0.0.1:8000/api/download/${gse}/${gsm}/QC_Peaks_DensityScatter.svg`"
             download
             style="position: absolute;right: 2vw;"
           ><el-button
@@ -84,7 +84,7 @@
             </span></sup>
           <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/peakHeatmap.png`" -->
           <a
-            :href="`http://127.0.0.1:8000/download/${gse}/${gsm}/QC_FragmentHistogram.svg`"
+            :href="`http://127.0.0.1:8000/api/download/${gse}/${gsm}/QC_FragmentHistogram.svg`"
             download
             style="position: absolute;right: 2vw;"
           ><el-button
@@ -137,7 +137,7 @@
             </span></sup>
           <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" -->
           <a
-            :href="`http://127.0.0.1:8000/download/${gse}/${gsm}/QC_TSS_DensityScatter.svg`"
+            :href="`http://127.0.0.1:8000/api/download/${gse}/${gsm}/QC_TSS_DensityScatter.svg`"
             download
             style="position: absolute;right: 2vw;"
           ><el-button
@@ -181,7 +181,7 @@
             </span></sup>
           <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/peakHeatmap.png`" -->
           <a
-            :href="`http://127.0.0.1:8000/download/${gse}/${gsm}/QC_TSSPlot.svg`"
+            :href="`http://127.0.0.1:8000/api/download/${gse}/${gsm}/QC_TSSPlot.svg`"
             download
             style="position: absolute;right: 2vw;"
           ><el-button
@@ -233,7 +233,7 @@
             </span></sup>
           <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" -->
           <a
-            :href="`http://127.0.0.1:8000/download/${gse}/${gsm}/QC_hist.svg`"
+            :href="`http://127.0.0.1:8000/api/download/${gse}/${gsm}/QC_hist.svg`"
             download
             style="position: absolute;right: 2vw;"
           ><el-button
@@ -278,7 +278,7 @@
             </span></sup>
           <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/peakHeatmap.png`" -->
           <a
-            :href="`http://127.0.0.1:8000/download/${gse}/${gsm}/QC_VlnPlot.svg`"
+            :href="`http://127.0.0.1:8000/api/download/${gse}/${gsm}/QC_VlnPlot.svg`"
             download
             style="position: absolute;right: 2vw;"
           ><el-button
