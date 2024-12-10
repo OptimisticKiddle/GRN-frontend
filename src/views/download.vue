@@ -48,23 +48,37 @@
                 label="Sample Source :"
                 style="margin-left: 10px"
               >
-                <el-input
+                <el-select
                   v-model="filter.sample_source"
-                  placeholder="e.g. Frontal cortex (BA9)"
-                  clearable
+                  placeholder="Please select Sample Source"
                   style="width: 100%;"
-                ></el-input>
+                >
+                  <el-option
+                    v-for='item in sampleSourceList'
+                    :key='item'
+                    :label="item"
+                    :value="item"
+                  >
+                  </el-option>
+                </el-select>
               </el-form-item>
               <el-form-item
                 label="Sample Type :"
                 style="margin-left: 10px"
               >
-                <el-input
+                <el-select
                   v-model="filter.sample_type"
-                  placeholder="e.g. SRA"
-                  clearable
+                  placeholder="Please select Sample Type"
                   style="width: 100%;"
-                ></el-input>
+                >
+                  <el-option
+                    v-for='item in sampleTypeList'
+                    :key='item'
+                    :label="item"
+                    :value="item"
+                  >
+                  </el-option>
+                </el-select>
               </el-form-item>
 
             </div>
@@ -196,7 +210,7 @@
             >
               <template v-slot="scope">
                 <a
-                  :href="`http://127.0.0.1:8000/download/${scope.row.id}_GRN.hg`"
+                  :href="`http://127.0.0.1:8000/download/${scope.row.gse.substring(3)}/${scope.row.gsm.substring(3)}/GRN.hg`"
                   download
                 >
                   <el-icon style="text-align: middle; vertical-align: -15%;">
@@ -248,8 +262,8 @@ export default {
       currentPage: 1,
       total: 0,
       pageSize: 10,
-      datasourceList: [],
-      methodList: [],
+      sampleSourceList: [],
+      sampleTypeList: [],
       activeNames: ['1', '2', '3'],
       globalID: 1,
       timer: '',
@@ -269,6 +283,14 @@ export default {
       const loadingInstance = this.$loading({
         lock: true,
         background: 'rgba(255,255,255,0.8)'
+      })
+      request.get("/get_samplesource_enum",
+      ).then(res => {
+        this.sampleSourceList = res.data;
+      })
+      request.get("/get_sampletype_enum",
+      ).then(res => {
+        this.sampleTypeList = res.data;
       })
       request.post("/get_overall_data",
         {

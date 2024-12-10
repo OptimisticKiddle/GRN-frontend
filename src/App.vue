@@ -13,7 +13,11 @@
 
 </template>
   
-<style></style>
+<style>
+input[type='file'] {
+  display: none !important;
+}
+</style>
   
 <script>
 import Header from "@/components/Header.vue";

@@ -34,6 +34,7 @@
     <div
       class="col-md-12"
       data-plugin-portlet
+      style="margin-top: 20px;"
     >
       <el-collapse v-model="activeNames">
         <el-collapse-item name="1">

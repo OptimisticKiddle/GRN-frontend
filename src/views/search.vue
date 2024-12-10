@@ -48,23 +48,49 @@
                 label="Sample Source :"
                 style="margin-left: 10px"
               >
-                <el-input
+                <el-select
+                  v-model="filter.sample_source"
+                  placeholder="Please select Sample Source"
+                  style="width: 100%;"
+                >
+                  <el-option
+                    v-for='item in sampleSourceList'
+                    :key='item'
+                    :label="item"
+                    :value="item"
+                  >
+                  </el-option>
+                </el-select>
+                <!-- <el-input
                   v-model="filter.sample_source"
                   placeholder="e.g. Frontal cortex (BA9)"
                   clearable
                   style="width: 100%;"
-                ></el-input>
+                ></el-input> -->
               </el-form-item>
               <el-form-item
                 label="Sample Type :"
                 style="margin-left: 10px"
               >
-                <el-input
+                <el-select
+                  v-model="filter.sample_type"
+                  placeholder="Please select Sample Type"
+                  style="width: 100%;"
+                >
+                  <el-option
+                    v-for='item in sampleTypeList'
+                    :key='item'
+                    :label="item"
+                    :value="item"
+                  >
+                  </el-option>
+                </el-select>
+                <!-- <el-input
                   v-model="filter.sample_type"
                   placeholder="e.g. SRA"
                   clearable
                   style="width: 100%;"
-                ></el-input>
+                ></el-input> -->
               </el-form-item>
 
             </div>
@@ -263,8 +289,8 @@ export default {
       total: 0,
       pageSize: 10,
 
-      datasourceList: [],
-      methodList: [],
+      sampleSourceList: [],
+      sampleTypeList: [],
       activeNames: ['1', '2'],
       timer: '',
 
@@ -295,14 +321,14 @@ export default {
         lock: true,
         background: 'rgba(255,255,255,0.8)'
       })
-      //   request.get("/get_datasource_enum",
-      //   ).then(res => {
-      //     this.datasourceList = res.data;
-      //   })
-      //   request.get("/get_method_enum",
-      //   ).then(res => {
-      //     this.methodList = res.data;
-      //   })
+      request.get("/get_samplesource_enum",
+      ).then(res => {
+        this.sampleSourceList = res.data;
+      })
+      request.get("/get_sampletype_enum",
+      ).then(res => {
+        this.sampleTypeList = res.data;
+      })
       request.post("/get_overall_data",
         {
           filter: this.filter,
@@ -317,7 +343,7 @@ export default {
 
     },
     onExample () {
-      this.filter.gsm = '80';
+      this.filter.cell_type = 'Blood';
     },
     onSubmit () {
       this.filter.id = !Number(this.filter.id) ? null : Number(this.filter.id);

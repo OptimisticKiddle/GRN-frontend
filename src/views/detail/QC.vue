@@ -42,7 +42,6 @@
           <a
             :href="`http://127.0.0.1:8000/download/${gse}/${gsm}/QC_Peaks_DensityScatter.svg`"
             download
-            target="_blank"
             style="position: absolute;right: 2vw;"
           ><el-button
               type="warning"
@@ -54,7 +53,6 @@
         </header>
         <div class="panel-body">
           <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" alt=""> -->
-          testtest
           <img
             :src="`http://127.0.0.1:8000/static/GSE${gse}/GSM${gsm}/QC_Peaks_DensityScatter.svg`"
             alt=""
@@ -88,7 +86,6 @@
           <a
             :href="`http://127.0.0.1:8000/download/${gse}/${gsm}/QC_FragmentHistogram.svg`"
             download
-            target="_blank"
             style="position: absolute;right: 2vw;"
           ><el-button
               type="warning"
@@ -142,7 +139,6 @@
           <a
             :href="`http://127.0.0.1:8000/download/${gse}/${gsm}/QC_TSS_DensityScatter.svg`"
             download
-            target="_blank"
             style="position: absolute;right: 2vw;"
           ><el-button
               type="warning"
@@ -187,7 +183,6 @@
           <a
             :href="`http://127.0.0.1:8000/download/${gse}/${gsm}/QC_TSSPlot.svg`"
             download
-            target="_blank"
             style="position: absolute;right: 2vw;"
           ><el-button
               type="warning"
@@ -240,7 +235,6 @@
           <a
             :href="`http://127.0.0.1:8000/download/${gse}/${gsm}/QC_hist.svg`"
             download
-            target="_blank"
             style="position: absolute;right: 2vw;"
           ><el-button
               type="warning"
@@ -286,7 +280,6 @@
           <a
             :href="`http://127.0.0.1:8000/download/${gse}/${gsm}/QC_VlnPlot.svg`"
             download
-            target="_blank"
             style="position: absolute;right: 2vw;"
           ><el-button
               type="warning"
@@ -314,7 +307,6 @@
 
 
 <script>
-import request from "@/utils/request";
 
 export default {
   name: "QC",

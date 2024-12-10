@@ -11,9 +11,15 @@
       </el-tab-pane>
       <el-tab-pane label="Dim reduction & clustering">
         <Dim_reduction_clustering
-          :dbID="globalID"
-          :globalDataset="globalDataset"
+          :gse="gse"
+          :gsm="gsm"
         ></Dim_reduction_clustering>
+      </el-tab-pane>
+      <el-tab-pane label="Gene regulatory network">
+        <Gene_network
+          :gse="gse"
+          :gsm="gsm"
+        ></Gene_network>
       </el-tab-pane>
 
       <!-- <el-tab-pane label="Perturbed gene activity">
@@ -48,6 +54,7 @@ import KO_gene_activity from '@/views/detail/KO_gene_activity.vue'
 import Gene_activity from '@/views/detail/Gene_activity.vue'
 // import Diff_motif from '@/views/detail/Diff_motif.vue'
 import Dim_reduction_clustering from '@/views/detail/Dim_reduction_clustering.vue'
+import Gene_network from '@/views/detail/Gene_network.vue'
 // import Ctrl from '@/views/detail/Ctrl.vue'
 // import Treat from '@/views/detail/Treat.vue'
 // import request from "@/utils/request";
@@ -56,7 +63,7 @@ import bus from 'vue3-eventbus'
 export default {
   name: "detail",
   components: {
-    QC, KO_gene_activity, Gene_activity, Dim_reduction_clustering
+    QC, KO_gene_activity, Gene_activity, Dim_reduction_clustering, Gene_network
 
   },
   props: {
