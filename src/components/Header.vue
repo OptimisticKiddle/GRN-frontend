@@ -11,10 +11,12 @@
     router
   >
     <div style="margin:10px 10% 0 ">
-      <a href="Home"><img
-          src="new_logo.png"
-          width="210"
-        ></a>
+      <img
+        src="new_logo.png"
+        width="210"
+        style="cursor:pointer"
+        @click="()=>router.push('/Home')"
+      >
     </div>
     <div class="flex-grow"></div>
     <div class="menu-item">
@@ -45,6 +47,8 @@
 </template>
 
 <script setup>
+import router from '@/router';
+
 
 
 // export default {
