@@ -3,11 +3,11 @@
   <div>
 
     <el-tabs type="border-card">
-      <el-tab-pane label="QC">
-        <QC
+      <el-tab-pane label="Gene regulatory network">
+        <Gene_network
           :gse="gse"
           :gsm="gsm"
-        ></QC>
+        ></Gene_network>
       </el-tab-pane>
       <el-tab-pane label="Dim reduction & clustering">
         <Dim_reduction_clustering
@@ -15,11 +15,12 @@
           :gsm="gsm"
         ></Dim_reduction_clustering>
       </el-tab-pane>
-      <el-tab-pane label="Gene regulatory network">
-        <Gene_network
+
+      <el-tab-pane label="QC">
+        <QC
           :gse="gse"
           :gsm="gsm"
-        ></Gene_network>
+        ></QC>
       </el-tab-pane>
 
       <!-- <el-tab-pane label="Perturbed gene activity">
