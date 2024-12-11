@@ -289,6 +289,14 @@ export default {
       this.filter.cell_type = '';
       this.get_tissue();
       this.get_celltype();
+    },
+    'filter.tissue' (val) {
+
+      console.log(val);
+      if (val && val.length) {
+        this.filter.cell_type = '';
+        this.get_celltype();
+      }
     }
   },
   methods: {
@@ -311,7 +319,16 @@ export default {
       this.get_all();
     },
     onReset () {
-      this.filter.sample_source = '';
+
+      if (this.filter.sample_source && this.filter.sample_source.length) {
+        this.filter.sample_source = '';
+      }
+      else {
+        this.filter.tissue = '';
+        this.filter.cell_type = '';
+        this.get_celltype();
+      }
+
     },
     onDownload () {
       let link = document.createElement('a');
