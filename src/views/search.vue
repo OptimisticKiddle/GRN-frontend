@@ -22,33 +22,10 @@
             label-width="130px"
           >
             <div class="formRow1">
-
-              <el-form-item
-                label="Cell Type :"
-                style="margin-left: 10px"
-              >
-                <el-input
-                  v-model="filter.cell_type"
-                  placeholder="e.g. Blood cells"
-                  clearable
-                  style="width: 100%;"
-                ></el-input>
-              </el-form-item>
-              <el-form-item
-                label="Tissue :"
-                style="margin-left: 10px"
-              >
-                <el-input
-                  v-model="filter.tissue"
-                  placeholder="e.g. Blood"
-                  clearable
-                  style="width: 100%;"
-                ></el-input>
-              </el-form-item>
-              <el-form-item label="Sample Source :">
+              <el-form-item label="Organ :">
                 <el-select
                   v-model="filter.sample_source"
-                  placeholder="Please select Sample Source"
+                  placeholder="Please select Organ"
                   style="width: 100%;"
                 >
                   <el-option
@@ -59,47 +36,48 @@
                   >
                   </el-option>
                 </el-select>
-                <!-- <el-input
-                  v-model="filter.sample_source"
-                  placeholder="e.g. Frontal cortex (BA9)"
-                  clearable
-                  style="width: 100%;"
-                ></el-input> -->
               </el-form-item>
               <el-form-item
-                label="Sample Type :"
+                label="Tissue :"
                 style="margin-left: 10px"
               >
                 <el-select
-                  v-model="filter.sample_type"
-                  placeholder="Please select Sample Type"
+                  v-model="filter.tissue"
+                  placeholder="Please select Tissue"
                   style="width: 100%;"
                 >
                   <el-option
-                    v-for='item in sampleTypeList'
+                    v-for='item in tissueList'
                     :key='item'
                     :label="item"
                     :value="item"
                   >
                   </el-option>
                 </el-select>
-                <!-- <el-input
-                  v-model="filter.sample_type"
-                  placeholder="e.g. SRA"
-                  clearable
+              </el-form-item>
+              <el-form-item
+                label="Cell Type :"
+                style="margin-left: 10px"
+              >
+                <el-select
+                  v-model="filter.cell_type"
+                  placeholder="Please select Cell Type"
                   style="width: 100%;"
-                ></el-input> -->
+                >
+                  <el-option
+                    v-for='item in cellTypeList'
+                    :key='item'
+                    :label="item"
+                    :value="item"
+                  >
+                  </el-option>
+                </el-select>
               </el-form-item>
 
             </div>
 
             <div class="formRow3">
               <el-form-item style="margin-left: -120px;">
-                <el-button
-                  type="warning"
-                  @click="onExample"
-                  style="width: 100px;font-weight: 700;"
-                >Example</el-button>
                 <el-button
                   type="success"
                   @click="onSubmit"
@@ -169,24 +147,19 @@
                 >{{scope.row.gsm}}</a>
               </template>
             </el-table-column>
-
             <el-table-column
-              prop="cell_type"
-              label="Cell Type"
+              prop="sample_source"
+              label="Organ"
               align="center"
-            /> <el-table-column
+            />
+            <el-table-column
               prop="tissue"
               label="Tissue"
               align="center"
             />
             <el-table-column
-              prop="sample_source"
-              label="Sample Source"
-              align="center"
-            />
-            <el-table-column
-              prop="sample_type"
-              label="Sample Type"
+              prop="cell_type"
+              label="Cell Type"
               align="center"
             />
 
@@ -195,14 +168,6 @@
               align="center"
             >
               <template v-slot="scope">
-                <!-- <el-button
-                  link
-                  type="primary"
-                  size="big"
-                  @click="handleClick"
-                >
-                  Visualization
-                </el-button> -->
 
                 <el-button
                   link
@@ -288,7 +253,9 @@ export default {
       pageSize: 10,
 
       sampleSourceList: [],
-      sampleTypeList: [],
+      tissueList: [],
+      cellTypeList: [],
+
       activeNames: ['1', '2'],
       timer: '',
 
@@ -300,7 +267,11 @@ export default {
       },
 
       tableData: [],
-      filter: {},
+      filter: {
+        sample_source: '',
+        tissue: '',
+        cell_type: '',
+      },
       filterId: null,
       n_sample_greater: null,
       n_sample_less: null,
@@ -311,55 +282,36 @@ export default {
       }
     };
   },
-
+  watch: {
+    'filter.sample_source' (val) {
+      console.log(val);
+      this.filter.tissue = '';
+      this.filter.cell_type = '';
+      this.get_tissue();
+      this.get_celltype();
+    }
+  },
   methods: {
-
     load () {
-      const loadingInstance = this.$loading({
-        lock: true,
-        background: 'rgba(255,255,255,0.8)'
-      })
-      request.get("/get_samplesource_enum",
-      ).then(res => {
-        this.sampleSourceList = res.data;
-      })
-      request.get("/get_sampletype_enum",
-      ).then(res => {
-        this.sampleTypeList = res.data;
-      })
-      request.post("/get_overall_data",
-        {
-          filter: this.filter,
-          paging: this.paging
+      //   const loadingInstance = this.$loading({
+      //     lock: true,
+      //     background: 'rgba(255,255,255,0.8)'
+      //   })
+      this.get_samplesource();
+      this.get_tissue();
+      this.get_celltype();
+      this.get_all();
 
-        }).then(res => {
-          this.tableData = res.data;
-          this.total = res.records_sum;
-          loadingInstance.close()
-
-        })
 
     },
     onExample () {
       this.filter.cell_type = 'Blood';
     },
     onSubmit () {
-      this.filter.id = !Number(this.filter.id) ? null : Number(this.filter.id);
-      //   this.filter.n_sample_greater = !Number(this.filter.n_sample_greater) ? null : Number(this.filter.n_sample_greater);
-      //   this.filter.n_sample_less = !Number(this.filter.n_sample_less) ? null : Number(this.filter.n_sample_less);
-
-      request.post("/get_overall_data",
-        {
-          filter: this.filter,
-          paging: this.paging
-        }).then(res => {
-
-          this.tableData = res.data;
-          this.total = res.records_sum;
-        })
+      this.get_all();
     },
     onReset () {
-      this.filter = {}
+      this.filter.sample_source = '';
     },
     onDownload () {
       let link = document.createElement('a');
@@ -387,7 +339,40 @@ export default {
       this.globalDataset.pb_gene = row.pb_gene
       this.globalDataset.cell_line = row.celline
       this.timer = new Date().getTime()  //父组件中每次点击按钮重新加载子组件,与上面的:key="timer"对应
+    },
+    get_samplesource () {
+      request.get("/get_samplesource_enum",
+      ).then(res => {
+        this.sampleSourceList = res.data;
+      })
+    },
+    get_tissue () {
+      request.get(`/get_tissue_enum?sample_source=${this.filter.sample_source}`
+      ).then(res => {
+        this.tissueList = res.data;
+      })
+
+    },
+    get_celltype () {
+      request.get(`/get_celltype_enum?sample_source=${this.filter.sample_source}&tissue=${this.filter.tissue}`
+      ).then(res => {
+        this.cellTypeList = res.data;
+      })
+
+    },
+    get_all () {
+      request.post("/get_overall_data",
+        {
+          filter: this.filter,
+          paging: this.paging
+
+        }).then(res => {
+          this.tableData = res.data;
+          this.total = res.records_sum;
+
+        })
     }
+
   },
 
 
