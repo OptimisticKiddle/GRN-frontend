@@ -12,10 +12,11 @@
     >
       <el-form-item label="WT gene activity by cluster :">
         <el-upload
-          ref="uploadRef"
           class="upload-demo"
-          action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-          :auto-upload="false"
+          :http-request="({file})=>beforeUpload(file,'WT')"
+          accept=".csv"
+          :file-list="fileList1"
+          :on-change="changeFile1"
         >
           <template #trigger>
             <el-button
@@ -28,10 +29,11 @@
       </el-form-item>
       <el-form-item label="KO gene activity by cluster :">
         <el-upload
-          ref="uploadRef"
           class="upload-demo"
-          action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-          :auto-upload="false"
+          :http-request="({file})=>beforeUpload(file,'KO')"
+          accept=".csv"
+          :file-list="fileList2"
+          :on-change="changeFile2"
         >
           <template #trigger>
             <el-button
@@ -40,11 +42,6 @@
             >select file</el-button>
           </template>
 
-          <!-- <template #tip>
-	  <div class="el-upload__tip">
-		jpg/png files with a size less than 500kb
-	  </div>
-	</template> -->
         </el-upload>
       </el-form-item>
 
@@ -162,6 +159,8 @@
   
   <script>
 
+import request from "@/utils/request";
+
 export default {
   name: "Gene_network",
   components: {
@@ -177,30 +176,60 @@ export default {
       activeNames: ['1'],
       baseUrl: process.env.VUE_APP_BASE_URL,
       dataSet: {},
-
+      fileList1: [],
+      fileList2: [],
 
     }
 
   },
   methods: {
+    changeFile1 (file, fileList) {
+      if (fileList.length > 1) {
+        fileList.splice(0, 1);
+      }
+      this.fileList1 = fileList;
+    },
+    changeFile2 (file, fileList) {
+      if (fileList.length > 1) {
+        fileList.splice(0, 1);
+      }
+      this.fileList2 = fileList;
+    },
+    uploadFile (formData, mark) {
+      console.log('formdata', formData);
+      request({
+        url: `/upload/${this.gse}/${this.gsm}/${mark}`,
+        method: 'post',
+        data: formData,
+        //关键，这里是将其转换为二进制文件，否则只会得到一个uid的对象
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }).then(res => {
+        this.$message({
+          message: res.message,
+          type: "success",
+        });
+      })
+    },
+    beforeUpload (file, mark) {
+      console.log(file)
+      const isCSV = file.name.split(".").pop().toLowerCase() === "csv";
+      if (!isCSV) {
+        this.$message.error("Please upload files in CSV format!");
+        return false;
+      }
+      const formData = new FormData();
+      formData.append("file", file);
+      this.uploadFile(formData, mark);
+
+    },
 
 
 
   },
   created () {
-    // console.log(this.dbID);
 
-    // let router = useRouter()
-    // 监听当前路由变化
-    // watch(
-    //   () => router.currentRoute.value,
-    //   () => {
-    //     // this.dbID = router.currentRoute.value.params.id;
-    //     this.load();
-    //   }
-    // );
-    // this.dbID = router.currentRoute.value.params.id;
-    // this.load();
 
 
 

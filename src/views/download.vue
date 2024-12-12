@@ -165,35 +165,6 @@
             />
 
             <el-table-column
-              label="Gene-cell activity matrix"
-              align="center"
-            >
-              <template v-slot="scope">
-                <a
-                  href="javascript:;"
-                  @click="dlNarrowPeaks(scope.row)"
-                >
-                  <el-icon style="text-align: middle; vertical-align: -15%;">
-                    <Download />
-                  </el-icon>[tar]</a>
-              </template>
-            </el-table-column>
-            <el-table-column
-              label="Gene-Cluster activity matrix"
-              align="center"
-            >
-              <template v-slot="scope">
-                <a
-                  href="javascript:;"
-                  @click="dlNarrowPeaks(scope.row)"
-                >
-                  <el-icon style="text-align: middle; vertical-align: -15%;">
-                    <Download />
-                  </el-icon>[tar]</a>
-              </template>
-            </el-table-column>
-
-            <el-table-column
               label="Base GRN"
               align="center"
             >

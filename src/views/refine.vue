@@ -44,7 +44,6 @@ const trigger = ref(false);
 const { params } = toRefs(route)
 console.log(params.gse)
 console.log(params.gsm)
-console.log('wtf')
 onActivated(() => {
   console.log(111)
   trigger.value = false;
