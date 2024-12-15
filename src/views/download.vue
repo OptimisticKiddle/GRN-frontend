@@ -127,6 +127,7 @@
             ref="multipleTable"
             header-cell-class-name="header-cell-class-name"
             style="color: black;margin-top: 20px;"
+            v-loading="loading"
           >
             <!-- prop是表头属性名 label是展示的列名 宽度不写就是自适应-->
 
@@ -175,7 +176,7 @@
                 >
                   <el-icon style="text-align: middle; vertical-align: -15%;">
                     <Download />
-                  </el-icon>[tar]</a>
+                  </el-icon></a>
               </template>
             </el-table-column>
           </el-table>
@@ -228,7 +229,7 @@ export default {
       activeNames: ['1', '2', '3'],
       globalID: 1,
       timer: '',
-
+      loading: false,
 
       tableData: [],
       filter: {
@@ -334,15 +335,25 @@ export default {
 
     },
     get_all () {
+      this.loading = true;
+
       request.post("/get_overall_data",
         {
           filter: this.filter,
           paging: this.paging
 
         }).then(res => {
+          this.loading = false
+
           this.tableData = res.data;
           this.total = res.records_sum;
 
+        }).catch(err => {
+          this.loading = false
+          this.$message({
+            message: 'error',
+            type: "error",
+          });
         })
     }
 

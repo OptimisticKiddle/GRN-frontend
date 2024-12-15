@@ -27,6 +27,7 @@
                   v-model="filter.sample_source"
                   placeholder="Please select Organ"
                   style="width: 100%;"
+                  @change="handleSampleSourceChange"
                 >
                   <el-option
                     v-for='item in sampleSourceList'
@@ -45,6 +46,7 @@
                   v-model="filter.tissue"
                   placeholder="Please select Tissue"
                   style="width: 100%;"
+                  @change="handleTissueChange"
                 >
                   <el-option
                     v-for='item in tissueList'
@@ -63,6 +65,7 @@
                   v-model="filter.cell_type"
                   placeholder="Please select Cell Type"
                   style="width: 100%;"
+                  @change="handleCellTypeChange"
                 >
                   <el-option
                     v-for='item in cellTypeList'
@@ -127,6 +130,7 @@
             @row-click="rowClick"
             header-cell-class-name="header-cell-class-name"
             style="color: black;margin-top: 20px;"
+            v-loading="loading"
           >
             <!-- prop是表头属性名 label是展示的列名 宽度不写就是自适应-->
 
@@ -251,11 +255,12 @@ export default {
       currentPage: 1,
       total: 0,
       pageSize: 10,
-
+      loading: false,
       sampleSourceList: [],
       tissueList: [],
+      totalData: [],
       cellTypeList: [],
-
+      mapping: {},
       activeNames: ['1', '2'],
       timer: '',
 
@@ -282,35 +287,26 @@ export default {
       }
     };
   },
-  watch: {
-    'filter.sample_source' (val) {
-      console.log(val);
-      this.filter.tissue = '';
-      this.filter.cell_type = '';
-      this.get_tissue();
-      this.get_celltype();
-    },
-    'filter.tissue' (val) {
-
-      console.log(val);
-      if (val && val.length) {
-        this.filter.cell_type = '';
-        this.get_celltype();
-      }
-    }
-  },
   methods: {
     load () {
-      //   const loadingInstance = this.$loading({
-      //     lock: true,
-      //     background: 'rgba(255,255,255,0.8)'
-      //   })
       this.get_samplesource();
       this.get_tissue();
       this.get_celltype();
       this.get_all();
+      this.get_total();
 
-
+    },
+    get_mapping () {
+      this.mapping.tissue = {}
+      this.mapping.cell_type = {}
+      this.totalData.forEach(row => {
+        this.mapping.tissue[row.tissue] = row.sample_source
+        this.mapping.cell_type[row.cell_type] = {
+          tissue: row.tissue,
+          sample_source: row.sample_source
+        }
+      });
+      console.log(this.mapping)
     },
     onExample () {
       this.filter.cell_type = 'Blood';
@@ -319,17 +315,14 @@ export default {
       this.get_all();
     },
     onReset () {
-
-      if (this.filter.sample_source && this.filter.sample_source.length) {
-        this.filter.sample_source = '';
-      }
-      else {
-        this.filter.tissue = '';
-        this.filter.cell_type = '';
-        this.get_celltype();
-      }
-
+      this.filter.sample_source = '';
+      this.filter.tissue = '';
+      this.filter.cell_type = '';
+      this.get_tissue();
+      this.get_celltype();
     },
+
+
     onDownload () {
       let link = document.createElement('a');
       link.style.display = 'none';
@@ -377,18 +370,56 @@ export default {
       })
 
     },
+    get_total () {
+      request.post("/get_overall_data",
+        {
+          filter: {},
+          paging: {
+            length: 500,
+            start: 0,
+          }
+
+        }).then(res => {
+          this.totalData = res.data;
+          this.get_mapping();
+        })
+    },
     get_all () {
+      this.loading = true;
       request.post("/get_overall_data",
         {
           filter: this.filter,
           paging: this.paging
 
         }).then(res => {
-          this.tableData = res.data;
+          this.loading = false,
+            this.tableData = res.data;
           this.total = res.records_sum;
 
+
+        }).catch(err => {
+          this.loading = false
+          this.$message({
+            message: 'error',
+            type: "error",
+          });
         })
-    }
+    },
+    handleSampleSourceChange (val) {
+      this.filter.tissue = '';
+      this.filter.cell_type = '';
+      this.get_tissue();
+      this.get_celltype();
+    },
+    handleTissueChange (val) {
+      this.filter.sample_source = this.mapping.tissue[val];
+      this.filter.cell_type = '';
+      this.get_celltype();
+    },
+    handleCellTypeChange (val) {
+      this.filter.tissue = this.mapping.cell_type[val].tissue;
+      this.filter.sample_source = this.mapping.cell_type[val].sample_source;
+    },
 
   },
 
