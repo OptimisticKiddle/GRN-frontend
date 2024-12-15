@@ -105,7 +105,7 @@
 
         <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" -->
         <a
-          :href="baseUrl + `/api/download/${gse}/${gsm}/GRN_network.png`"
+          :href="baseUrl + `/api/download/${gse}/${gsm}/GRN_network.html`"
           download
           style="position: absolute;right: 2vw;"
         ><el-button
@@ -119,10 +119,15 @@
       <div class="panel-body twoimg">
 
         <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" alt=""> -->
-        <img
-          :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/GRN_network.png`"
+        <!-- <img
+          :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/GRN_network.html`"
           alt=""
-        >
+        > -->
+        <iframe
+          :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/GRN_network.html`"
+          frameborder="0"
+          style="height: 500px;"
+        ></iframe>
       </div>
     </section>
     <section
