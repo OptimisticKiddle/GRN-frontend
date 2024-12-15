@@ -1,14 +1,13 @@
 import { createStore } from 'vuex'
 
 export default createStore({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
+	state: {
+		loading: false
+	  },
+	  mutations: {
+		setLoading (state,val) {
+		  // 变更状态
+		  state.loading = val
+		}
+	  }
 })

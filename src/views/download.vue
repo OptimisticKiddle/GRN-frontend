@@ -170,7 +170,7 @@
             >
               <template v-slot="scope">
                 <a
-                  :href="baseUrl + `/api/download/${scope.row.gse.substring(3)}/${scope.row.gsm.substring(3)}/GRN.hg`"
+                  :href="baseUrl + `/api/download/${scope.row.gse.substring(3)}/${scope.row.gsm.substring(3)}/GRN.mm`"
                   download
                 >
                   <el-icon style="text-align: middle; vertical-align: -15%;">

@@ -49,11 +49,14 @@
         <el-form-item style="margin-right: 20px;">
           <el-button
             type="success"
-            :style="{width:'180px',backgroundColor:trigger ? '#027750' : '#8cd069'}"
+            :style="{width:'180px',backgroundColor:'#8cd069'}"
+            @click="handleRefine"
+            :disabled="isLoading"
+            :loading="isLoading"
           >Refine</el-button>
         </el-form-item>
         <el-form-item style="margin-right: 20px;">
-          <a :href="baseUrl + `/api/download/${gse}/${gsm}/GRN.hg`">
+          <a :href="baseUrl + `/api/download/${gse}/${gsm}/GRN.mm`">
 
             <el-button
               type="success"
@@ -62,19 +65,31 @@
           </a>
 
         </el-form-item>
+        <el-form-item
+          style="margin-right: 20px;"
+          v-if="isRefined"
+        >
+          <a :href="baseUrl + `/api/download/${gse}/${gsm}/refined_GRN.npy`">
+
+            <el-button
+              type="success"
+              :style="{width:'180px',backgroundColor:'#027750' }"
+            >Download Refined GRN</el-button>
+          </a>
+
+        </el-form-item>
 
       </div>
 
     </el-form>
   </div>
-  <!-- 2--中间的一张图 -->
-  <!-- 降维 -->
+
   <h2>GRN visualization</h2>
   <hr
     style="margin: 0  20px 20px 20px;"
     color='green'
   >
-  <div style="display:flex;justify-content: space-between;">
+  <div :style="{display:'flex',justifyContent: isRefined ? 'space-between':'center',}">
     <section
       class="col-md-8  panel panel-tertiary "
       data-portlet-item
@@ -113,6 +128,7 @@
     <section
       class="col-md-8  panel panel-tertiary "
       data-portlet-item
+      v-if="isRefined"
     >
       <header
         class="panel-heading"
@@ -123,7 +139,6 @@
           class="panel-title"
         >Refined GRN</span>
 
-        <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" -->
         <a
           :href="baseUrl + `/api/download/${gse}/${gsm}/string_network.png`"
           download
@@ -142,13 +157,138 @@
           <img
             :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/string_network.png`"
             alt=""
-            style="filter: blur(35px);"
           >
 
         </div>
 
       </div>
     </section>
+  </div>
+  <div
+    :style="{display:'flex',justifyContent: 'space-between'}"
+    v-if="isRefined"
+  >
+    <section
+      class="col-md-8  panel panel-tertiary "
+      data-portlet-item
+    >
+      <header
+        class="panel-heading"
+        style="position: relative;"
+      >
+        <span
+          style="font-size: 16px;"
+          class="panel-title"
+        >Performance Evaluation</span>
+
+        <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" -->
+        <a
+          :href="baseUrl + `/api/download/${gse}/${gsm}/PerformanceEvaluation.png`"
+          download
+          style="position: absolute;right: 2vw;"
+        ><el-button
+            type="warning"
+            size="small"
+            circle
+          ><el-icon>
+              <Download />
+            </el-icon></el-button></a>
+      </header>
+      <div class="panel-body twoimg">
+
+        <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" alt=""> -->
+        <img
+          :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/refine/PerformanceEvaluation.png`"
+          alt=""
+        >
+      </div>
+    </section>
+    <section
+      class="col-md-8  panel panel-tertiary "
+      data-portlet-item
+      v-if="isRefined"
+    >
+      <header
+        class="panel-heading"
+        style="position: relative;"
+      >
+        <span
+          style="font-size: 16px;"
+          class="panel-title"
+        >Losses</span>
+
+        <a
+          :href="baseUrl + `/api/download/${gse}/${gsm}/Losses.png`"
+          download
+          style="position: absolute;right: 2vw;"
+        ><el-button
+            type="warning"
+            size="small"
+            circle
+          ><el-icon>
+              <Download />
+            </el-icon></el-button></a>
+      </header>
+
+      <div class="panel-body twoimg">
+        <div style="position:relative">
+          <img
+            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/refine/Losses.png`"
+            alt=""
+          >
+
+        </div>
+
+      </div>
+    </section>
+  </div>
+  <div
+    :style="{display:'flex',justifyContent: 'space-between'}"
+    v-if="isRefined"
+  >
+    <section
+      class="col-md-8  panel panel-tertiary "
+      data-portlet-item
+      v-if="isRefined"
+    >
+      <header
+        class="panel-heading"
+        style="position: relative;"
+      >
+        <span
+          style="font-size: 16px;"
+          class="panel-title"
+        >Distances</span>
+
+        <a
+          :href="baseUrl + `/api/download/${gse}/${gsm}/Distances.png`"
+          download
+          style="position: absolute;right: 2vw;"
+        ><el-button
+            type="warning"
+            size="small"
+            circle
+          ><el-icon>
+              <Download />
+            </el-icon></el-button></a>
+      </header>
+
+      <div class="panel-body twoimg">
+        <div style="position:relative">
+          <img
+            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/refine/Distances.png`"
+            alt=""
+          >
+
+        </div>
+
+      </div>
+    </section>
+    <section
+      class="col-md-8  panel panel-tertiary "
+      data-portlet-item
+      v-if="isRefined"
+    ></section>
   </div>
 
   <div style="margin-bottom: 2%; overflow: hidden;"></div>
@@ -160,6 +300,7 @@
   <script>
 
 import request from "@/utils/request";
+
 
 export default {
   name: "Gene_network",
@@ -178,7 +319,8 @@ export default {
       dataSet: {},
       fileList1: [],
       fileList2: [],
-
+      isRefined: false,
+      isLoading: false,
     }
 
   },
@@ -224,6 +366,38 @@ export default {
       this.uploadFile(formData, mark);
 
     },
+    handleRefine () {
+      if (!this.fileList1.length || !this.fileList2.length) {
+        this.$message({
+          message: 'Please upload files',
+          type: "error",
+        });
+        return;
+      }
+      this.isLoading = true;
+      this.$store.commit('setLoading', true);
+      this.isRefined = false;
+      request.get(`/refine/${this.gse}/${this.gsm}`).then(res => {
+        this.isRefined = true;
+        this.isLoading = false;
+        this.$store.commit('setLoading', false);
+        this.$message({
+          message: res.message,
+          type: "success",
+        });
+
+      }).catch(err => {
+        this.$store.commit('setLoading', false);
+        this.isLoading = false;
+        this.$message({
+          message: 'Refine failed',
+          type: "error",
+        });
+      })
+    },
+
+
+
 
 
 
@@ -237,6 +411,8 @@ export default {
   beforeDestroy () {
     // bus.off('ID')
   },
+
+
 }
 
 

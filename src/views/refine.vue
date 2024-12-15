@@ -35,19 +35,28 @@
 </template>
 
 <script setup>
-import { onActivated, onMounted, ref, toRefs } from "vue";
+import { ref, toRefs } from "vue";
 import detail from "@/views/detail.vue";
-import { useRoute } from "vue-router";
+import { useRoute, onBeforeRouteLeave } from "vue-router";
+import { useStore } from 'vuex' // 引入useStore 方法
+const store = useStore()
 const route = useRoute();
 const activeNames = ref(['1', '2']);
-const trigger = ref(false);
+
 const { params } = toRefs(route)
-console.log(params.gse)
-console.log(params.gsm)
-onActivated(() => {
-  console.log(111)
-  trigger.value = false;
+onBeforeRouteLeave((to, from) => {
+  console.log(store.state.loading)
+  if (store.state.loading) {
+    const answer = window.confirm(
+      'Do you really want to leave? you have unsaved changes!'
+    )
+    // 取消导航并停留在同一页面上
+    if (!answer) return false
+  }
+
 })
+
+
 </script>
 
 <style>
