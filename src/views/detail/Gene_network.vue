@@ -60,7 +60,7 @@
 
             <el-button
               type="success"
-              :style="{width:'180px',backgroundColor:'#027750' }"
+              :style="{width:'180px',backgroundColor:'#8cd069'}"
             >Download Base GRN</el-button>
           </a>
 
@@ -73,7 +73,7 @@
 
             <el-button
               type="success"
-              :style="{width:'180px',backgroundColor:'#027750' }"
+              :style="{width:'180px',backgroundColor:'#8cd069'}"
             >Download Refined GRN</el-button>
           </a>
 
@@ -117,16 +117,12 @@
             </el-icon></el-button></a>
       </header>
       <div class="panel-body twoimg">
-
-        <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/differential_statistics.png`" alt=""> -->
-        <!-- <img
-          :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/GRN_network.html`"
-          alt=""
-        > -->
         <iframe
+          class="iframe-view"
           :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/GRN_network.html`"
           frameborder="0"
           style="height: 500px;"
+          scrolling="auto"
         ></iframe>
       </div>
     </section>
@@ -145,7 +141,7 @@
         >Refined GRN</span>
 
         <a
-          :href="baseUrl + `/api/download/${gse}/${gsm}/string_network.png`"
+          :href="baseUrl + `/api/download/${gse}/${gsm}/refined_GRN_network.html`"
           download
           style="position: absolute;right: 2vw;"
         ><el-button
@@ -158,11 +154,27 @@
       </header>
 
       <div class="panel-body twoimg">
-        <div style="position:relative">
+        <div style="position:relative;">
           <img
-            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/string_network.png`"
+            src="../../assets/images/string_network.png"
             alt=""
+            style="filter: blur(40px);height: 500px;"
+            v-if="!isPlot"
           >
+          <iframe
+            class="iframe-view"
+            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/refine/refined_GRN_network.html`"
+            frameborder="0"
+            style="height: 500px;"
+            v-if="isPlot"
+          ></iframe>
+          <el-button
+            v-if="!isPlot"
+            type="success"
+            style="width:80px;position:absolute;top:50%;left:50%;transform: translate(-50%, -50%);"
+            :loading="ploating"
+            @click="handleGenerate"
+          >Generate</el-button>
 
         </div>
 
@@ -326,10 +338,30 @@ export default {
       fileList2: [],
       isRefined: false,
       isLoading: false,
+      isPlot: false,
+      ploating: false,
     }
 
   },
   methods: {
+    handleGenerate () {
+      this.ploating = true;
+      request.get(`/plot_grn/${this.gse}/${this.gsm}`).then(res => {
+        this.isPlot = true;
+        this.ploating = false;
+
+        this.$message({
+          message: res.message,
+          type: "success",
+        })
+      }).catch(err => {
+        this.ploating = false;
+        this.$message({
+          message: 'Generate failed',
+          type: "error",
+        })
+      })
+    },
     changeFile1 (file, fileList) {
       if (fileList.length > 1) {
         fileList.splice(0, 1);
@@ -447,5 +479,7 @@ img {
   width: 100%;
 
   object-fit: cover;
+}
+.iframe-view {
 }
 </style>
