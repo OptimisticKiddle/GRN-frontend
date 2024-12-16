@@ -144,6 +144,7 @@
           :href="baseUrl + `/api/download/${gse}/${gsm}/refined_GRN_network.html`"
           download
           style="position: absolute;right: 2vw;"
+          v-if="isPlot"
         ><el-button
             type="warning"
             size="small"
@@ -346,9 +347,11 @@ export default {
   methods: {
     handleGenerate () {
       this.ploating = true;
+      this.$store.commit('setLoading', true)
       request.get(`/plot_grn/${this.gse}/${this.gsm}`).then(res => {
         this.isPlot = true;
         this.ploating = false;
+        this.$store.commit('setLoading', false)
 
         this.$message({
           message: res.message,
@@ -356,6 +359,8 @@ export default {
         })
       }).catch(err => {
         this.ploating = false;
+        this.$store.commit('setLoading', false)
+
         this.$message({
           message: 'Generate failed',
           type: "error",

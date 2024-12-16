@@ -68,7 +68,7 @@
                   context of genetic genetic perturbations, helping to investigate the potential
                   effects of genetic perturbations on tissues or cells with different functions.
                 </p>
-                GP-scATACdb has the following main functions:
+                <!-- GP-scATACdb has the following main functions:
 
                 <ol>
                   <li>To explore differential chromatin accessibility in single cells under different genetic perturbations
@@ -76,7 +76,7 @@
                   <li>QC, downscaling and clustering of scATAC-seq downstream data</li>
                   <li>Calculate the gene activity matrices before and after the perturbation</li>
                   <li>Provide a code tutorial for inferring GRNs from gene activity matrices</li>
-                </ol>
+                </ol> -->
 
                 <!-- 第一个面板 body 轮播图 -->
 
@@ -284,9 +284,9 @@ export default {
     return {
       activeNames: ['1', '2', '3'],
       pics: [
-        { url: require("../assets/images/scATAC-db/home-1.jpg") },
-        { url: require("../assets/images/scATAC-db/home-2.jpg") },
-        { url: require("../assets/images/scATAC-db/home-3.jpg") },
+        { url: require("../assets/images/scATAC-db/img1.jpg") },
+        { url: require("../assets/images/scATAC-db/img2.jpg") },
+        // { url: require("../assets/images/scATAC-db/img3.png") },
         { url: require("../assets/images/scATAC-db/home-4.jpg") },
       ]
 
