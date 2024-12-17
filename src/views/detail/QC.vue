@@ -37,8 +37,7 @@
                 style="font-size: 70%"
               > </i>
             </span></sup>
-          <!-- 下载链接改了  但是命名还没改 -->
-          <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" -->
+
           <a
             :href="baseUrl + `/api/download/${gse}/${gsm}/QC_Peaks_DensityScatter.svg`"
             download
@@ -52,7 +51,6 @@
               </el-icon></el-button></a>
         </header>
         <div class="panel-body">
-          <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" alt=""> -->
           <img
             :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/QC_Peaks_DensityScatter.svg`"
             alt=""
@@ -82,7 +80,6 @@
                 style="font-size: 70%"
               > </i>
             </span></sup>
-          <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/peakHeatmap.png`" -->
           <a
             :href="baseUrl + `/api/download/${gse}/${gsm}/QC_FragmentHistogram.svg`"
             download
@@ -97,7 +94,6 @@
         </header>
         <div class="panel-body">
 
-          <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/peakHeatmap.png`" alt=""> -->
           <img
             :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/QC_FragmentHistogram.svg`"
             alt=""
@@ -135,7 +131,6 @@
                 style="font-size: 70%"
               > </i>
             </span></sup>
-          <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" -->
           <a
             :href="baseUrl + `/api/download/${gse}/${gsm}/QC_TSS_DensityScatter.svg`"
             download
@@ -149,7 +144,6 @@
               </el-icon></el-button></a>
         </header>
         <div class="panel-body">
-          <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" alt=""> -->
           <img
             :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/QC_TSS_DensityScatter.svg`"
             alt=""
@@ -179,7 +173,6 @@
                 style="font-size: 70%"
               > </i>
             </span></sup>
-          <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/peakHeatmap.png`" -->
           <a
             :href="baseUrl + `/api/download/${gse}/${gsm}/QC_TSSPlot.svg`"
             download
@@ -197,7 +190,6 @@
             :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/QC_TSSPlot.svg`"
             alt=""
           >
-          <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/peakHeatmap.png`" alt=""> -->
         </div>
       </section>
     </div>
@@ -231,7 +223,6 @@
                 style="font-size: 70%"
               > </i>
             </span></sup>
-          <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" -->
           <a
             :href="baseUrl + `/api/download/${gse}/${gsm}/QC_hist.svg`"
             download
@@ -245,7 +236,6 @@
               </el-icon></el-button></a>
         </header>
         <div class="panel-body">
-          <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/plotDistToTSS.png`" alt=""> -->
           <img
             :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/QC_hist.svg`"
             alt=""
@@ -276,7 +266,6 @@
                 style="font-size: 70%"
               > </i>
             </span></sup>
-          <!-- <a :href="`http://43.143.155.140/atac_db/${this.dbID}/plots/peakHeatmap.png`" -->
           <a
             :href="baseUrl + `/api/download/${gse}/${gsm}/QC_VlnPlot.svg`"
             download
@@ -295,7 +284,6 @@
             alt=""
           >
 
-          <!-- <img :src="`http://43.143.155.140/atac_db/${this.dbID}/plots/peakHeatmap.png`" alt=""> -->
         </div>
       </section>
     </div>

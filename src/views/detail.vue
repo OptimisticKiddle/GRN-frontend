@@ -51,20 +51,17 @@
 <script>
 
 import QC from '@/views/detail/QC.vue'
-import KO_gene_activity from '@/views/detail/KO_gene_activity.vue'
-import Gene_activity from '@/views/detail/Gene_activity.vue'
+
 // import Diff_motif from '@/views/detail/Diff_motif.vue'
 import Dim_reduction_clustering from '@/views/detail/Dim_reduction_clustering.vue'
 import Gene_network from '@/views/detail/Gene_network.vue'
-// import Ctrl from '@/views/detail/Ctrl.vue'
-// import Treat from '@/views/detail/Treat.vue'
-// import request from "@/utils/request";
 
-import bus from 'vue3-eventbus'
+
+
 export default {
   name: "detail",
   components: {
-    QC, KO_gene_activity, Gene_activity, Dim_reduction_clustering, Gene_network
+    QC, Dim_reduction_clustering, Gene_network
 
   },
   props: {

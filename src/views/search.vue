@@ -323,13 +323,7 @@ export default {
     },
 
 
-    onDownload () {
-      let link = document.createElement('a');
-      link.style.display = 'none';
-      link.href = "http://43.143.155.140/download_overall_data";
-      document.body.appendChild(link);
-      link.click();
-    },
+
 
     handleSizeChange (val) {   //改变当前每页的个数触发
       this.pageSize = val

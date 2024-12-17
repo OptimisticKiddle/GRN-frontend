@@ -301,15 +301,6 @@ export default {
       this.load();
     },
 
-    // 下载gene_activity_by_cluster函数
-    dlNarrowPeaks (row) {
-      let id = row.id;
-      let pb_gene = row.pb_gene;
-      let celline = row.celline;
-      let href = `http://43.143.155.140/scATACdb/GSE195882/download_files/norm_gene_activity_by_cluster.tar.gz`;
-      let fileName = `GSE195882_Prmt5_spleen_gene_activity_by_cluster.tar.gz`
-      fileDownloadHandle(href, fileName)
-    },
     // 下载gene_activity_by_cell函数
     dlDBA (row) {
 
