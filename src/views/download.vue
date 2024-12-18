@@ -164,7 +164,20 @@
               label="Cell Type"
               align="center"
             />
-
+            <el-table-column
+              label="Gene Activity Matrix"
+              align="center"
+            >
+              <template v-slot="scope">
+                <a
+                  :href="baseUrl + `/api/download/${scope.row.gse.substring(3)}/${scope.row.gsm.substring(3)}/GAM.rds`"
+                  download
+                >
+                  <el-icon style="text-align: middle; vertical-align: -15%;">
+                    <Download />
+                  </el-icon></a>
+              </template>
+            </el-table-column>
             <el-table-column
               label="Base GRN"
               align="center"

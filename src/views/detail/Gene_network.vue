@@ -24,6 +24,7 @@
               type="primary"
               style="background-color: #027750; border: none;"
               :loading="uploading"
+              :disabled="uploading"
             >{{uploading ? 'Uploading...':'select file'  }}</el-button>
           </template>
 

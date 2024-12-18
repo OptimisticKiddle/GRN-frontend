@@ -82,6 +82,12 @@
             <div class="formRow3">
               <el-form-item style="margin-left: -120px;">
                 <el-button
+                  type="warning"
+                  @click="onExample"
+                  style="width: 100px;font-weight: 700;"
+                >Example</el-button>
+
+                <el-button
                   type="success"
                   @click="onSubmit"
                   style="margin-left: 100px;width: 100px;font-weight: 700;"
@@ -309,7 +315,8 @@ export default {
       console.log(this.mapping)
     },
     onExample () {
-      this.filter.cell_type = 'Blood';
+      this.filter.sample_source = 'Lin-cells from bone marrow';
+      this.handleSampleSourceChange('Lin-cells from bone marrow');
     },
     onSubmit () {
       this.get_all();
