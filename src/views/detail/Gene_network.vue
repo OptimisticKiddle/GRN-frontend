@@ -10,28 +10,12 @@
       label-width="auto"
       style="margin-left: 20px;"
     >
-      <el-form-item label="WT gene activity by cluster :">
-        <el-upload
-          class="upload-demo"
-          :http-request="({file})=>beforeUpload(file,'WT')"
-          accept=".csv"
-          :file-list="fileList1"
-          :on-change="changeFile1"
-        >
-          <template #trigger>
-            <el-button
-              type="primary"
-              style="background-color: #027750; border: none;"
-            >select file</el-button>
-          </template>
 
-        </el-upload>
-      </el-form-item>
-      <el-form-item label="KO gene activity by cluster :">
+      <el-form-item label="KO GAM :">
         <el-upload
           class="upload-demo"
           :http-request="({file})=>beforeUpload(file,'KO')"
-          accept=".csv"
+          accept=".rds"
           :file-list="fileList2"
           :on-change="changeFile2"
         >
@@ -39,7 +23,8 @@
             <el-button
               type="primary"
               style="background-color: #027750; border: none;"
-            >select file</el-button>
+              :loading="uploading"
+            >{{uploading ? 'Uploading...':'select file'  }}</el-button>
           </template>
 
         </el-upload>
@@ -51,7 +36,7 @@
             type="success"
             :style="{width:'180px',backgroundColor:'#8cd069'}"
             @click="handleRefine"
-            :disabled="isLoading"
+            :disabled="isLoading || uploading"
             :loading="isLoading"
           >Refine</el-button>
         </el-form-item>
@@ -196,6 +181,114 @@
         <span
           style="font-size: 16px;"
           class="panel-title"
+        >(Violin)</span>
+
+        <a
+          :href="baseUrl + `/api/download/${gse}/${gsm}/violin_plot.png`"
+          download
+          style="position: absolute;right: 2vw;"
+        ><el-button
+            type="warning"
+            size="small"
+            circle
+          ><el-icon>
+              <Download />
+            </el-icon></el-button></a>
+      </header>
+      <div class="panel-body twoimg">
+
+        <img
+          :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/refine/violin_plot.png`"
+          alt=""
+        >
+      </div>
+    </section>
+    <section
+      class="col-md-8  panel panel-tertiary "
+      data-portlet-item
+    >
+      <header
+        class="panel-heading"
+        style="position: relative;"
+      >
+        <span
+          style="font-size: 16px;"
+          class="panel-title"
+        >(Feature)</span>
+
+        <a
+          :href="baseUrl + `/api/download/${gse}/${gsm}/VariableFeature.png`"
+          download
+          style="position: absolute;right: 2vw;"
+        ><el-button
+            type="warning"
+            size="small"
+            circle
+          ><el-icon>
+              <Download />
+            </el-icon></el-button></a>
+      </header>
+
+      <div class="panel-body twoimg">
+        <div style="position:relative">
+          <img
+            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/refine/VariableFeature.png`"
+            alt=""
+          >
+
+        </div>
+
+      </div>
+    </section>
+  </div>
+  <div
+    :style="{display:'flex',justifyContent: 'space-between'}"
+    v-if="isRefined"
+  >
+    <section
+      class="col-md-8  panel panel-tertiary "
+      data-portlet-item
+    >
+      <header
+        class="panel-heading"
+        style="position: relative;"
+      >
+        <span
+          style="font-size: 16px;"
+          class="panel-title"
+        >(umap)</span>
+
+        <a
+          :href="baseUrl + `/api/download/${gse}/${gsm}/umap.png`"
+          download
+          style="position: absolute;right: 2vw;"
+        ><el-button
+            type="warning"
+            size="small"
+            circle
+          ><el-icon>
+              <Download />
+            </el-icon></el-button></a>
+      </header>
+      <div class="panel-body twoimg">
+
+        <img
+          :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/refine/umap.png`"
+          alt=""
+        >
+      </div>
+    </section>
+    <section
+      class="col-md-8  panel panel-tertiary "
+      data-portlet-item
+    >
+      <header
+        class="panel-heading"
+        style="position: relative;"
+      >
+        <span
+          style="font-size: 16px;"
+          class="panel-title"
         >Performance Evaluation</span>
 
         <a
@@ -218,6 +311,12 @@
         >
       </div>
     </section>
+
+  </div>
+  <div
+    :style="{display:'flex',justifyContent: 'space-between'}"
+    v-if="isRefined"
+  >
     <section
       class="col-md-8  panel panel-tertiary "
       data-portlet-item
@@ -256,11 +355,6 @@
 
       </div>
     </section>
-  </div>
-  <div
-    :style="{display:'flex',justifyContent: 'space-between'}"
-    v-if="isRefined"
-  >
     <section
       class="col-md-8  panel panel-tertiary "
       data-portlet-item
@@ -294,16 +388,10 @@
             :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/refine/Distances.png`"
             alt=""
           >
-
         </div>
-
       </div>
     </section>
-    <section
-      class="col-md-8  panel panel-tertiary "
-      data-portlet-item
-      v-if="isRefined"
-    ></section>
+
   </div>
 
   <div style="margin-bottom: 2%; overflow: hidden;"></div>
@@ -338,6 +426,7 @@ export default {
       isLoading: false,
       isPlot: false,
       ploating: false,
+      uploading: false,
     }
 
   },
@@ -378,6 +467,7 @@ export default {
     },
     uploadFile (formData, mark) {
       console.log('formdata', formData);
+      this.uploading = true;
       request({
         url: `/upload/${this.gse}/${this.gsm}/${mark}`,
         method: 'post',
@@ -387,26 +477,29 @@ export default {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
       }).then(res => {
+        this.uploading = false;
         this.$message({
           message: res.message,
           type: "success",
+        });
+      }).catch(err => {
+        this.uploading = false;
+        this.$message({
+          message: 'error',
+          type: "error",
         });
       })
     },
     beforeUpload (file, mark) {
       console.log(file)
-      const isCSV = file.name.split(".").pop().toLowerCase() === "csv";
-      if (!isCSV) {
-        this.$message.error("Please upload files in CSV format!");
-        return false;
-      }
       const formData = new FormData();
       formData.append("file", file);
+      this.uploading = true;
       this.uploadFile(formData, mark);
 
     },
     handleRefine () {
-      if (!this.fileList1.length || !this.fileList2.length) {
+      if (!this.fileList2.length) {
         this.$message({
           message: 'Please upload files',
           type: "error",

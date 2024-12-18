@@ -23,23 +23,6 @@
         ></QC>
       </el-tab-pane>
 
-      <!-- <el-tab-pane label="Perturbed gene activity">
-        <KO_gene_activity
-          :dbID="globalID"
-          :globalDataset="globalDataset"
-        ></KO_gene_activity>
-      </el-tab-pane> -->
-
-      <!-- <el-tab-pane label="Diff Motif">
-      <Diff_motif :dbID="globalID" :globalDataset="globalDataset"></Diff_motif>
-    </el-tab-pane>
-
-    <el-tab-pane label="Ctrl Peaks">
-      <Ctrl :dbID="globalID" :globalDataset="globalDataset"></Ctrl>
-    </el-tab-pane>
-    <el-tab-pane label="Treat Peaks">
-      <Treat :dbID="globalID" :globalDataset="globalDataset"></Treat>
-    </el-tab-pane> -->
     </el-tabs>
 
   </div>

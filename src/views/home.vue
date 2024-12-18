@@ -266,12 +266,15 @@
           </div>
         </el-backtop>
       </el-footer>
+
     </el-container>
   </div>
 </template>
 
 
 <script>
+
+
 // @ is an alias to /src
 
 
@@ -296,7 +299,7 @@ export default {
   methods: {
     toTutorial () {
       this.$router.replace({ name: "tutorial" })
-    }
+    },
   }
 
 }
