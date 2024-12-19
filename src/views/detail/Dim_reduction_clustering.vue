@@ -32,7 +32,7 @@
           </span></sup>
 
         <a
-          :href="baseUrl + `/api/download/${gse}/${gsm}/Dim_reduction_DepthCor.svg`"
+          :href="baseUrl + `/app/download/${gse}/${gsm}/Dim_reduction_DepthCor.svg`"
           download
           style="position: absolute;right: 2vw;"
         >
@@ -49,7 +49,7 @@
       <div class="panel-body twoimg">
 
         <img
-          :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/Dim_reduction_DepthCor.svg`"
+          :src="baseUrl + `/app/static/GSE${gse}/GSM${gsm}/Dim_reduction_DepthCor.svg`"
           alt=""
         >
       </div>
@@ -89,7 +89,7 @@
           </span></sup>
 
         <a
-          :href="baseUrl + `/api/download/${gse}/${gsm}/Cluster_DimPlot.svg`"
+          :href="baseUrl + `/app/download/${gse}/${gsm}/Cluster_DimPlot.svg`"
           download
           style="position: absolute;right: 2vw;"
         >
@@ -106,7 +106,7 @@
       <div class="panel-body twoimg">
 
         <img
-          :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/Cluster_DimPlot.svg`"
+          :src="baseUrl + `/app/static/GSE${gse}/GSM${gsm}/Cluster_DimPlot.svg`"
           alt=""
         >
       </div>

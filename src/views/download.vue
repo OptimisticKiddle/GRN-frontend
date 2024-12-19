@@ -27,6 +27,7 @@
                   v-model="filter.sample_source"
                   placeholder="Please select Organ"
                   style="width: 100%;"
+                  @change="handleSampleSourceChange"
                 >
                   <el-option
                     v-for='item in sampleSourceList'
@@ -45,6 +46,7 @@
                   v-model="filter.tissue"
                   placeholder="Please select Tissue"
                   style="width: 100%;"
+                  @change="handleTissueChange"
                 >
                   <el-option
                     v-for='item in tissueList'
@@ -63,6 +65,7 @@
                   v-model="filter.cell_type"
                   placeholder="Please select Cell Type"
                   style="width: 100%;"
+                  @change="handleCellTypeChange"
                 >
                   <el-option
                     v-for='item in cellTypeList'
@@ -78,14 +81,15 @@
 
             <div class="formRow3">
               <el-form-item style="margin-left: -120px;">
+
                 <el-button
                   type="success"
                   @click="onSubmit"
-                  style="width: 100px;"
+                  style="margin-left: 100px;width: 100px;font-weight: 700;"
                 >Submit</el-button>
                 <el-button
                   @click="onReset"
-                  style="margin-left: 100px;width: 100px;"
+                  style="margin-left: 100px;width: 100px;font-weight: 700;"
                 >Reset</el-button>
               </el-form-item>
             </div>
@@ -170,7 +174,7 @@
             >
               <template v-slot="scope">
                 <a
-                  :href="baseUrl + `/api/download/${scope.row.gse.substring(3)}/${scope.row.gsm.substring(3)}/GAM.rds`"
+                  :href="baseUrl + `/app/download/${scope.row.gse.substring(3)}/${scope.row.gsm.substring(3)}/GAM.rds`"
                   download
                 >
                   <el-icon style="text-align: middle; vertical-align: -15%;">
@@ -184,7 +188,7 @@
             >
               <template v-slot="scope">
                 <a
-                  :href="baseUrl + `/api/download/${scope.row.gse.substring(3)}/${scope.row.gsm.substring(3)}/GRN.mm`"
+                  :href="baseUrl + `/app/download/${scope.row.gse.substring(3)}/${scope.row.gsm.substring(3)}/GRN.mm`"
                   download
                 >
                   <el-icon style="text-align: middle; vertical-align: -15%;">
@@ -224,8 +228,6 @@
 <script >
 
 import request from "@/utils/request";
-import downloadFile from "@/utils/download";
-import { fileDownloadHandle } from "@/utils/download";
 
 
 export default {
@@ -239,6 +241,8 @@ export default {
       sampleSourceList: [],
       tissueList: [],
       cellTypeList: [],
+      mapping: {},
+
       activeNames: ['1', '2', '3'],
       globalID: 1,
       timer: '',
@@ -256,23 +260,7 @@ export default {
       }
     };
   },
-  watch: {
-    'filter.sample_source' (val) {
-      console.log(val);
-      this.filter.tissue = '';
-      this.filter.cell_type = '';
-      this.get_tissue();
-      this.get_celltype();
-    },
-    'filter.tissue' (val) {
 
-      console.log(val);
-      if (val && val.length) {
-        this.filter.cell_type = '';
-        this.get_celltype();
-      }
-    }
-  },
 
   methods: {
     load () {
@@ -281,7 +269,34 @@ export default {
       this.get_tissue();
       this.get_celltype();
       this.get_all();
+      this.get_total();
 
+    },
+    get_total () {
+      request.post("/get_overall_data",
+        {
+          filter: {},
+          paging: {
+            length: 500,
+            start: 0,
+          }
+
+        }).then(res => {
+          this.totalData = res.data;
+          this.get_mapping();
+        })
+    },
+    get_mapping () {
+      this.mapping.tissue = {}
+      this.mapping.cell_type = {}
+      this.totalData.forEach(row => {
+        this.mapping.tissue[row.tissue] = row.sample_source
+        this.mapping.cell_type[row.cell_type] = {
+          tissue: row.tissue,
+          sample_source: row.sample_source
+        }
+      });
+      console.log(this.mapping)
     },
     onSubmit () {
       request.post("/get_overall_data",
@@ -294,14 +309,11 @@ export default {
         })
     },
     onReset () {
-      if (this.filter.sample_source && this.filter.sample_source.length) {
-        this.filter.sample_source = '';
-      }
-      else {
-        this.filter.tissue = '';
-        this.filter.cell_type = '';
-        this.get_celltype();
-      }
+      this.filter.sample_source = '';
+      this.filter.tissue = '';
+      this.filter.cell_type = '';
+      this.get_tissue();
+      this.get_celltype();
     },
     handleSizeChange (val) {   //改变当前每页的个数触发
       this.pageSize = val
@@ -359,7 +371,22 @@ export default {
             type: "error",
           });
         })
-    }
+    },
+    handleSampleSourceChange (val) {
+      this.filter.tissue = '';
+      this.filter.cell_type = '';
+      this.get_tissue();
+      this.get_celltype();
+    },
+    handleTissueChange (val) {
+      this.filter.sample_source = this.mapping.tissue[val];
+      this.filter.cell_type = '';
+      this.get_celltype();
+    },
+    handleCellTypeChange (val) {
+      this.filter.tissue = this.mapping.cell_type[val].tissue;
+      this.filter.sample_source = this.mapping.cell_type[val].sample_source;
+    },
 
   },
   created () {

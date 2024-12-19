@@ -39,7 +39,7 @@
             </span></sup>
 
           <a
-            :href="baseUrl + `/api/download/${gse}/${gsm}/QC_Peaks_DensityScatter.svg`"
+            :href="baseUrl + `/app/download/${gse}/${gsm}/QC_Peaks_DensityScatter.svg`"
             download
             style="position: absolute;right: 2vw;"
           >
@@ -55,7 +55,7 @@
         </header>
         <div class="panel-body">
           <img
-            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/QC_Peaks_DensityScatter.svg`"
+            :src="baseUrl + `/app/static/GSE${gse}/GSM${gsm}/QC_Peaks_DensityScatter.svg`"
             alt=""
           >
         </div>
@@ -84,7 +84,7 @@
               > </i>
             </span></sup>
           <a
-            :href="baseUrl + `/api/download/${gse}/${gsm}/QC_FragmentHistogram.svg`"
+            :href="baseUrl + `/app/download/${gse}/${gsm}/QC_FragmentHistogram.svg`"
             download
             style="position: absolute;right: 2vw;"
           >
@@ -101,7 +101,7 @@
         <div class="panel-body">
 
           <img
-            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/QC_FragmentHistogram.svg`"
+            :src="baseUrl + `/app/static/GSE${gse}/GSM${gsm}/QC_FragmentHistogram.svg`"
             alt=""
           >
         </div>
@@ -138,7 +138,7 @@
               > </i>
             </span></sup>
           <a
-            :href="baseUrl + `/api/download/${gse}/${gsm}/QC_TSS_DensityScatter.svg`"
+            :href="baseUrl + `/app/download/${gse}/${gsm}/QC_TSS_DensityScatter.svg`"
             download
             style="position: absolute;right: 2vw;"
           >
@@ -154,7 +154,7 @@
         </header>
         <div class="panel-body">
           <img
-            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/QC_TSS_DensityScatter.svg`"
+            :src="baseUrl + `/app/static/GSE${gse}/GSM${gsm}/QC_TSS_DensityScatter.svg`"
             alt=""
           >
         </div>
@@ -183,7 +183,7 @@
               > </i>
             </span></sup>
           <a
-            :href="baseUrl + `/api/download/${gse}/${gsm}/QC_TSSPlot.svg`"
+            :href="baseUrl + `/app/download/${gse}/${gsm}/QC_TSSPlot.svg`"
             download
             style="position: absolute;right: 2vw;"
           >
@@ -199,7 +199,7 @@
         </header>
         <div class="panel-body">
           <img
-            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/QC_TSSPlot.svg`"
+            :src="baseUrl + `/app/static/GSE${gse}/GSM${gsm}/QC_TSSPlot.svg`"
             alt=""
           >
         </div>
@@ -236,7 +236,7 @@
               > </i>
             </span></sup>
           <a
-            :href="baseUrl + `/api/download/${gse}/${gsm}/QC_hist.svg`"
+            :href="baseUrl + `/app/download/${gse}/${gsm}/QC_hist.svg`"
             download
             style="position: absolute;right: 2vw;"
           >
@@ -252,7 +252,7 @@
         </header>
         <div class="panel-body">
           <img
-            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/QC_hist.svg`"
+            :src="baseUrl + `/app/static/GSE${gse}/GSM${gsm}/QC_hist.svg`"
             alt=""
           >
 
@@ -282,7 +282,7 @@
               > </i>
             </span></sup>
           <a
-            :href="baseUrl + `/api/download/${gse}/${gsm}/QC_VlnPlot.svg`"
+            :href="baseUrl + `/app/download/${gse}/${gsm}/QC_VlnPlot.svg`"
             download
             style="position: absolute;right: 2vw;"
           >
@@ -298,7 +298,7 @@
         </header>
         <div class="panel-body">
           <img
-            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/QC_VlnPlot.svg`"
+            :src="baseUrl + `/app/static/GSE${gse}/GSM${gsm}/QC_VlnPlot.svg`"
             alt=""
           >
 

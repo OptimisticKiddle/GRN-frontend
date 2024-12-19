@@ -66,7 +66,7 @@
           >Refine</el-button>
         </el-form-item>
         <el-form-item style="margin-right: 20px;">
-          <a :href="baseUrl + `/api/download/${gse}/${gsm}/GRN.mm`">
+          <a :href="baseUrl + `/app/download/${gse}/${gsm}/GRN.mm`">
 
             <el-button
               type="success"
@@ -79,7 +79,7 @@
           style="margin-right: 20px;"
           v-if="isRefined"
         >
-          <a :href="baseUrl + `/api/download/${gse}/${gsm}/refined_GRN.npy`">
+          <a :href="baseUrl + `/app/download/${gse}/${gsm}/refined_GRN.npy`">
 
             <el-button
               type="success"
@@ -102,7 +102,7 @@
   <div
     :style="{display:'flex',justifyContent: isRefined ? 'space-between':'center'}"
     v-loading="isLoading"
-    element-loading-text="It takes about 10~15 minutes to refine GRN and visualize."
+    element-loading-text="It takes about 5 ~ 10 minutes to refine GRN and visualize."
   >
     <section
       class="col-md-8  panel panel-tertiary "
@@ -118,7 +118,7 @@
         >Base GRN</span>
 
         <a
-          :href="baseUrl + `/api/download/${gse}/${gsm}/GRN_network.html`"
+          :href="baseUrl + `/app/download/${gse}/${gsm}/GRN_network.html`"
           download
           style="position: absolute;right: 2vw;"
         >
@@ -141,7 +141,7 @@
       <div class="panel-body twoimg">
         <iframe
           class="iframe-view"
-          :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/GRN_network.html`"
+          :src="baseUrl + `/app/static/GSE${gse}/GSM${gsm}/GRN_network.html`"
           frameborder="0"
           style="height: 500px;"
           scrolling="auto"
@@ -163,7 +163,7 @@
         >Refined GRN</span>
 
         <a
-          :href="baseUrl + `/api/download/${gse}/${gsm}/refined_GRN_network.html`"
+          :href="baseUrl + `/app/download/${gse}/${gsm}/refined_GRN_network.html`"
           download
           style="position: absolute;right: 2vw;"
           v-if="isPlot"
@@ -189,7 +189,7 @@
           >
           <iframe
             class="iframe-view"
-            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/refine/refined_GRN_network.html`"
+            :src="baseUrl + `/app/static/GSE${gse}/GSM${gsm}/refine/refined_GRN_network.html`"
             frameborder="0"
             style="height: 500px;"
             v-if="isPlot"
@@ -225,7 +225,7 @@
         >Violin plot</span>
 
         <a
-          :href="baseUrl + `/api/download/${gse}/${gsm}/violin_plot.png`"
+          :href="baseUrl + `/app/download/${gse}/${gsm}/violin_plot.png`"
           download
           style="position: absolute;right: 2vw;"
         >
@@ -242,7 +242,7 @@
       <div class="panel-body twoimg">
 
         <img
-          :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/refine/violin_plot.png`"
+          :src="baseUrl + `/app/static/GSE${gse}/GSM${gsm}/refine/violin_plot.png`"
           alt=""
         >
       </div>
@@ -261,7 +261,7 @@
         >Identify the 10 most highly variable genes</span>
 
         <a
-          :href="baseUrl + `/api/download/${gse}/${gsm}/VariableFeature.png`"
+          :href="baseUrl + `/app/download/${gse}/${gsm}/VariableFeature.png`"
           download
           style="position: absolute;right: 2vw;"
         >
@@ -279,7 +279,7 @@
       <div class="panel-body twoimg">
         <div style="position:relative">
           <img
-            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/refine/VariableFeature.png`"
+            :src="baseUrl + `/app/static/GSE${gse}/GSM${gsm}/refine/VariableFeature.png`"
             alt=""
           >
 
@@ -306,7 +306,7 @@
         >Umap</span>
 
         <a
-          :href="baseUrl + `/api/download/${gse}/${gsm}/umap.png`"
+          :href="baseUrl + `/app/download/${gse}/${gsm}/umap.png`"
           download
           style="position: absolute;right: 2vw;"
         >
@@ -323,7 +323,7 @@
       <div class="panel-body twoimg">
 
         <img
-          :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/refine/umap.png`"
+          :src="baseUrl + `/app/static/GSE${gse}/GSM${gsm}/refine/umap.png`"
           alt=""
         >
       </div>
@@ -343,7 +343,7 @@
         >Distances</span>
 
         <a
-          :href="baseUrl + `/api/download/${gse}/${gsm}/Distances.png`"
+          :href="baseUrl + `/app/download/${gse}/${gsm}/Distances.png`"
           download
           style="position: absolute;right: 2vw;"
         >
@@ -361,7 +361,7 @@
       <div class="panel-body twoimg">
         <div style="position:relative">
           <img
-            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/refine/Distances.png`"
+            :src="baseUrl + `/app/static/GSE${gse}/GSM${gsm}/refine/Distances.png`"
             alt=""
           >
         </div>
@@ -388,7 +388,7 @@
         >Losses</span>
 
         <a
-          :href="baseUrl + `/api/download/${gse}/${gsm}/Losses.png`"
+          :href="baseUrl + `/app/download/${gse}/${gsm}/Losses.png`"
           download
           style="position: absolute;right: 2vw;"
         >
@@ -406,7 +406,7 @@
       <div class="panel-body twoimg">
         <div style="position:relative">
           <img
-            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/refine/Losses.png`"
+            :src="baseUrl + `/app/static/GSE${gse}/GSM${gsm}/refine/Losses.png`"
             alt=""
           >
 
@@ -428,7 +428,7 @@
         >Performance Evaluation</span>
 
         <a
-          :href="baseUrl + `/api/download/${gse}/${gsm}/PerformanceEvaluation.png`"
+          :href="baseUrl + `/app/download/${gse}/${gsm}/PerformanceEvaluation.png`"
           download
           style="position: absolute;right: 2vw;"
         >
@@ -445,7 +445,7 @@
       <div class="panel-body twoimg">
 
         <img
-          :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/refine/PerformanceEvaluation.png`"
+          :src="baseUrl + `/app/static/GSE${gse}/GSM${gsm}/refine/PerformanceEvaluation.png`"
           alt=""
         >
       </div>
@@ -487,6 +487,7 @@ export default {
       isPlot: false,
       ploating: false,
       uploading: false,
+      task_id: '',
     }
 
   },
@@ -570,6 +571,25 @@ export default {
       this.$store.commit('setLoading', true);
       this.isRefined = false;
       request.get(`/refine/${this.gse}/${this.gsm}`).then(res => {
+        console.log(res);
+        this.task_id = res.task_id;
+        this.checkStatus();
+        // this.isRefined = true;
+        // this.isLoading = false;
+        // this.$store.commit('setLoading', false);
+        // this.$message({
+        //   message: res.message,
+        //   type: "success",
+        // });
+
+      })
+    },
+    async checkStatus () {
+      if (!this.task_id) return;
+      const res = await request.get(`/task_status/${this.task_id}`);
+      if (res.status != "completed") {
+        setTimeout(this.checkStatus, 20 * 1000); // 20s后再次检查
+      } else {
         this.isRefined = true;
         this.isLoading = false;
         this.$store.commit('setLoading', false);
@@ -577,16 +597,8 @@ export default {
           message: res.message,
           type: "success",
         });
-
-      }).catch(err => {
-        this.$store.commit('setLoading', false);
-        this.isLoading = false;
-        this.$message({
-          message: 'Refine failed',
-          type: "error",
-        });
-      })
-    },
+      }
+    }
 
 
 
@@ -595,8 +607,6 @@ export default {
 
   },
   created () {
-
-
 
 
   },
