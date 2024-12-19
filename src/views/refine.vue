@@ -24,6 +24,9 @@
               :choose="false"
               :gse="params.gse"
               :gsm="params.gsm"
+              :organ="params.organ"
+              :tissue="params.tissue"
+              :celltype="params.celltype"
             ></detail>
           </div>
 

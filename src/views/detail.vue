@@ -7,6 +7,9 @@
         <Gene_network
           :gse="gse"
           :gsm="gsm"
+          :organ="organ"
+          :tissue="tissue"
+          :celltype="celltype"
         ></Gene_network>
       </el-tab-pane>
       <el-tab-pane label="Dim reduction & clustering">
@@ -53,6 +56,9 @@ export default {
     choose: Boolean,
     gse: String,
     gsm: String,
+    organ: String,
+    tissue: String,
+    celltype: String,
   },
   data () {
     return {

@@ -23,7 +23,7 @@ const routes = [
         component: search,
       },
 	  {
-		path:'/Refine/:gse/:gsm',
+		path:'/Refine/:gse/:gsm/:organ/:tissue/:celltype',
 		name:'Refine',
 		component:()=>import('@/views/refine.vue')
 	  },

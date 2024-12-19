@@ -10,14 +10,38 @@
       label-width="auto"
       style="margin-left: 20px;"
     >
+      <el-form-item label="Organ :">
+        <div>{{ organ }}</div>
+      </el-form-item>
+      <el-form-item label="Tissue :">
+        <div>{{ tissue }}</div>
+      </el-form-item>
+      <el-form-item label="Cell Type :">
+        <div>{{ celltype }}</div>
+      </el-form-item>
+      <el-form-item>
+        <template v-slot:label>
+          <span>Gene Activity Matirx</span>
+          <el-tooltip
+            class="box-item"
+            effect="dark"
+            content="You can download it from Download Page"
+            placement="top"
+          >
+            <el-icon>
+              <QuestionFilled />
+            </el-icon>
+          </el-tooltip>
+          <span> :</span>
+        </template>
 
-      <el-form-item label="KO GAM :">
         <el-upload
           class="upload-demo"
           :http-request="({file})=>beforeUpload(file,'KO')"
           accept=".rds"
           :file-list="fileList2"
           :on-change="changeFile2"
+          :disabled="uploading"
         >
           <template #trigger>
             <el-button
@@ -75,7 +99,11 @@
     style="margin: 0  20px 20px 20px;"
     color='green'
   >
-  <div :style="{display:'flex',justifyContent: isRefined ? 'space-between':'center',}">
+  <div
+    :style="{display:'flex',justifyContent: isRefined ? 'space-between':'center'}"
+    v-loading="isLoading"
+    element-loading-text="It takes about 10~15 minutes to refine GRN and visualize."
+  >
     <section
       class="col-md-8  panel panel-tertiary "
       data-portlet-item
@@ -93,13 +121,22 @@
           :href="baseUrl + `/api/download/${gse}/${gsm}/GRN_network.html`"
           download
           style="position: absolute;right: 2vw;"
-        ><el-button
+        >
+          <span style="color:white;margin-right: 5px;">Download Image:</span>
+
+          <el-button
             type="warning"
             size="small"
             circle
-          ><el-icon>
+          >
+
+            <el-icon>
               <Download />
-            </el-icon></el-button></a>
+            </el-icon>
+          </el-button>
+
+        </a>
+
       </header>
       <div class="panel-body twoimg">
         <iframe
@@ -130,7 +167,10 @@
           download
           style="position: absolute;right: 2vw;"
           v-if="isPlot"
-        ><el-button
+        >
+          <span style="color:white;margin-right: 5px;">Download Image:</span>
+
+          <el-button
             type="warning"
             size="small"
             circle
@@ -182,13 +222,16 @@
         <span
           style="font-size: 16px;"
           class="panel-title"
-        >(Violin)</span>
+        >Violin plot</span>
 
         <a
           :href="baseUrl + `/api/download/${gse}/${gsm}/violin_plot.png`"
           download
           style="position: absolute;right: 2vw;"
-        ><el-button
+        >
+          <span style="color:white;margin-right: 5px;">Download Image:</span>
+
+          <el-button
             type="warning"
             size="small"
             circle
@@ -215,13 +258,16 @@
         <span
           style="font-size: 16px;"
           class="panel-title"
-        >(Feature)</span>
+        >Identify the 10 most highly variable genes</span>
 
         <a
           :href="baseUrl + `/api/download/${gse}/${gsm}/VariableFeature.png`"
           download
           style="position: absolute;right: 2vw;"
-        ><el-button
+        >
+          <span style="color:white;margin-right: 5px;">Download Image:</span>
+
+          <el-button
             type="warning"
             size="small"
             circle
@@ -257,13 +303,16 @@
         <span
           style="font-size: 16px;"
           class="panel-title"
-        >(umap)</span>
+        >Umap</span>
 
         <a
           :href="baseUrl + `/api/download/${gse}/${gsm}/umap.png`"
           download
           style="position: absolute;right: 2vw;"
-        ><el-button
+        >
+          <span style="color:white;margin-right: 5px;">Download Image:</span>
+
+          <el-button
             type="warning"
             size="small"
             circle
@@ -282,6 +331,7 @@
     <section
       class="col-md-8  panel panel-tertiary "
       data-portlet-item
+      v-if="isRefined"
     >
       <header
         class="panel-heading"
@@ -290,13 +340,16 @@
         <span
           style="font-size: 16px;"
           class="panel-title"
-        >Performance Evaluation</span>
+        >Distances</span>
 
         <a
-          :href="baseUrl + `/api/download/${gse}/${gsm}/PerformanceEvaluation.png`"
+          :href="baseUrl + `/api/download/${gse}/${gsm}/Distances.png`"
           download
           style="position: absolute;right: 2vw;"
-        ><el-button
+        >
+          <span style="color:white;margin-right: 5px;">Download Image:</span>
+
+          <el-button
             type="warning"
             size="small"
             circle
@@ -304,12 +357,14 @@
               <Download />
             </el-icon></el-button></a>
       </header>
-      <div class="panel-body twoimg">
 
-        <img
-          :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/refine/PerformanceEvaluation.png`"
-          alt=""
-        >
+      <div class="panel-body twoimg">
+        <div style="position:relative">
+          <img
+            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/refine/Distances.png`"
+            alt=""
+          >
+        </div>
       </div>
     </section>
 
@@ -336,7 +391,10 @@
           :href="baseUrl + `/api/download/${gse}/${gsm}/Losses.png`"
           download
           style="position: absolute;right: 2vw;"
-        ><el-button
+        >
+          <span style="color:white;margin-right: 5px;">Download Image:</span>
+
+          <el-button
             type="warning"
             size="small"
             circle
@@ -359,7 +417,6 @@
     <section
       class="col-md-8  panel panel-tertiary "
       data-portlet-item
-      v-if="isRefined"
     >
       <header
         class="panel-heading"
@@ -368,13 +425,16 @@
         <span
           style="font-size: 16px;"
           class="panel-title"
-        >Distances</span>
+        >Performance Evaluation</span>
 
         <a
-          :href="baseUrl + `/api/download/${gse}/${gsm}/Distances.png`"
+          :href="baseUrl + `/api/download/${gse}/${gsm}/PerformanceEvaluation.png`"
           download
           style="position: absolute;right: 2vw;"
-        ><el-button
+        >
+          <span style="color:white;margin-right: 5px;">Download Image:</span>
+
+          <el-button
             type="warning"
             size="small"
             circle
@@ -382,20 +442,16 @@
               <Download />
             </el-icon></el-button></a>
       </header>
-
       <div class="panel-body twoimg">
-        <div style="position:relative">
-          <img
-            :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/refine/Distances.png`"
-            alt=""
-          >
-        </div>
+
+        <img
+          :src="baseUrl + `/api/static/GSE${gse}/GSM${gsm}/refine/PerformanceEvaluation.png`"
+          alt=""
+        >
       </div>
     </section>
 
   </div>
-
-  <div style="margin-bottom: 2%; overflow: hidden;"></div>
 
 </template>
   
@@ -413,7 +469,10 @@ export default {
   },
   props: {
     gse: String,
-    gsm: String
+    gsm: String,
+    organ: String,
+    tissue: String,
+    celltype: String,
   },
   data () {
     return {

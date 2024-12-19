@@ -16,6 +16,10 @@
 input[type='file'] {
   display: none !important;
 }
+.el-loading-spinner .el-loading-text {
+  display: flex !important;
+  justify-content: center !important;
+}
 </style>
   
 <script>

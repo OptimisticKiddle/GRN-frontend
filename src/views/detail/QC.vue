@@ -42,7 +42,10 @@
             :href="baseUrl + `/api/download/${gse}/${gsm}/QC_Peaks_DensityScatter.svg`"
             download
             style="position: absolute;right: 2vw;"
-          ><el-button
+          >
+            <span style="color:white;margin-right: 5px;">Download Image:</span>
+
+            <el-button
               type="warning"
               size="small"
               circle
@@ -84,7 +87,10 @@
             :href="baseUrl + `/api/download/${gse}/${gsm}/QC_FragmentHistogram.svg`"
             download
             style="position: absolute;right: 2vw;"
-          ><el-button
+          >
+            <span style="color:white;margin-right: 5px;">Download Image:</span>
+
+            <el-button
               type="warning"
               size="small"
               circle
@@ -135,7 +141,10 @@
             :href="baseUrl + `/api/download/${gse}/${gsm}/QC_TSS_DensityScatter.svg`"
             download
             style="position: absolute;right: 2vw;"
-          ><el-button
+          >
+            <span style="color:white;margin-right: 5px;">Download Image:</span>
+
+            <el-button
               type="warning"
               size="small"
               circle
@@ -177,7 +186,10 @@
             :href="baseUrl + `/api/download/${gse}/${gsm}/QC_TSSPlot.svg`"
             download
             style="position: absolute;right: 2vw;"
-          ><el-button
+          >
+            <span style="color:white;margin-right: 5px;">Download Image:</span>
+
+            <el-button
               type="warning"
               size="small"
               circle
@@ -227,7 +239,10 @@
             :href="baseUrl + `/api/download/${gse}/${gsm}/QC_hist.svg`"
             download
             style="position: absolute;right: 2vw;"
-          ><el-button
+          >
+            <span style="color:white;margin-right: 5px;">Download Image:</span>
+
+            <el-button
               type="warning"
               size="small"
               circle
@@ -270,7 +285,10 @@
             :href="baseUrl + `/api/download/${gse}/${gsm}/QC_VlnPlot.svg`"
             download
             style="position: absolute;right: 2vw;"
-          ><el-button
+          >
+            <span style="color:white;margin-right: 5px;">Download Image:</span>
+
+            <el-button
               type="warning"
               size="small"
               circle

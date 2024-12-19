@@ -35,7 +35,10 @@
           :href="baseUrl + `/api/download/${gse}/${gsm}/Dim_reduction_DepthCor.svg`"
           download
           style="position: absolute;right: 2vw;"
-        ><el-button
+        >
+          <span style="color:white;margin-right: 5px;">Download Image:</span>
+
+          <el-button
             type="warning"
             size="small"
             circle
@@ -89,7 +92,10 @@
           :href="baseUrl + `/api/download/${gse}/${gsm}/Cluster_DimPlot.svg`"
           download
           style="position: absolute;right: 2vw;"
-        ><el-button
+        >
+          <span style="color:white;margin-right: 5px;">Download Image:</span>
+
+          <el-button
             type="warning"
             size="small"
             circle
