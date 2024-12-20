@@ -183,7 +183,7 @@
                   link
                   type="primary"
                   size="big"
-                  @click="this.$router.push(`/refine/${scope.row.gse.substring(3)}/${scope.row.gsm.substring(3)}/${scope.row.sample_source}/${scope.row.tissue}/${scope.row.cell_type}`)"
+                  @click="this.$router.push(`/Refine?gse=${scope.row.gse.substring(3)}&gsm=${scope.row.gsm.substring(3)}&organ=${scope.row.sample_source}&tissue=${scope.row.tissue}&celltype=${scope.row.cell_type}`)"
                 >
                   Detail
                 </el-button>
@@ -315,8 +315,8 @@ export default {
       console.log(this.mapping)
     },
     onExample () {
-      this.filter.cell_type = 'Blood cells';
-      this.handleCellTypeChange('Blood cells');
+      this.filter.cell_type = 'LSK';
+      this.handleCellTypeChange('LSK');
     },
     onSubmit () {
       this.get_all();

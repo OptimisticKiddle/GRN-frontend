@@ -25,9 +25,16 @@
           <el-tooltip
             class="box-item"
             effect="dark"
-            content="You can download it from Download Page"
             placement="top"
           >
+            <template #content>
+              <div>
+                Please refer to the <a
+                  :href="baseUrl + '/grn/#/Tutorial'"
+                  target="_blank"
+                >Tutorial</a> on how to generate GAM
+              </div>
+            </template>
             <el-icon>
               <QuestionFilled />
             </el-icon>

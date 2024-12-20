@@ -22,11 +22,11 @@
               :globalDataset="{pb_gene: '',cell_line: ''}"
               :key="''"
               :choose="false"
-              :gse="params.gse"
-              :gsm="params.gsm"
-              :organ="params.organ"
-              :tissue="params.tissue"
-              :celltype="params.celltype"
+              :gse="query.gse"
+              :gsm="query.gsm"
+              :organ="query.organ"
+              :tissue="query.tissue"
+              :celltype="query.celltype"
             ></detail>
           </div>
 
@@ -46,7 +46,7 @@ const store = useStore()
 const route = useRoute();
 const activeNames = ref(['1', '2']);
 
-const { params } = toRefs(route)
+const { query } = toRefs(route)
 onBeforeRouteLeave((to, from) => {
   console.log(store.state.loading)
   if (store.state.loading) {
@@ -58,6 +58,8 @@ onBeforeRouteLeave((to, from) => {
   }
 
 })
+
+console.log('inininin')
 
 
 </script>
